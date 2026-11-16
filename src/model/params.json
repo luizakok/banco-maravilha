@@ -1,0 +1,140 @@
+{
+  "inicial": {
+    "engajamento": { "valor": 62, "fonte": "premissa de design" },
+    "turnover": { "valor": 12, "fonte": "premissa de design" },
+    "prontidao": { "valor": 45, "fonte": "premissa inspirada no WEF: https://www.weforum.org/publications/the-future-of-jobs-report-2025/digest/" },
+    "custoPessoal": { "valor": 100, "fonte": "premissa de design" },
+    "receita": { "valor": 100, "fonte": "premissa de design" },
+    "nps": { "valor": 30, "fonte": "premissa de design" },
+    "risco": { "valor": 1, "fonte": "premissa de design (0 baixo, 1 médio, 2 alto)" }
+  },
+  "orcamentoPorTurno": { "valor": 10, "fonte": "premissa de design" },
+  "turnos": { "valor": 8, "fonte": "premissa de design (8 semestres, 2027-2030)" },
+  "pressao": {
+    "receitaPorTurno": { "valor": -0.5, "fonte": "premissa de design (bancos digitais)" },
+    "npsPorTurno": { "valor": -1, "fonte": "premissa de design" }
+  },
+  "contratar": {
+    "prontidaoPorMoeda": { "valor": 3, "fonte": "premissa calibrada" },
+    "fracaoImediata": { "valor": 0.8, "fonte": "https://knowledge.wharton.upenn.edu/article/why-external-hires-get-paid-more-and-perform-worse-than-internal-staff/ (pior performance nos 2 primeiros anos)" },
+    "lagRestante": { "valor": 4, "fonte": "Bidwell/Wharton (2 anos = 4 semestres)" },
+    "custoPorMoeda": { "valor": 2, "fonte": "Bidwell/Wharton (prêmio salarial de 18-20%)" },
+    "turnoverPorMoeda": { "valor": 0.3, "fonte": "Bidwell/Wharton (externos saem mais, ~+25% relativo)" },
+    "duracaoTurnoverExtra": { "valor": 4, "fonte": "Bidwell/Wharton" }
+  },
+  "interno": {
+    "prontidaoPorMoeda": { "valor": 1.5, "fonte": "premissa derivada de Bidwell (direção inversa)" },
+    "lag": { "valor": 1, "fonte": "premissa de design" },
+    "engajamentoPorMoeda": { "valor": 2, "fonte": "premissa de design" }
+  },
+  "ld": {
+    "cargoProntidaoPorMoeda": { "valor": 2, "fonte": "https://www.weforum.org/publications/the-future-of-jobs-report-2025/digest/ (29 de 100 requalificam no cargo)" },
+    "cargoLag": { "valor": 2, "fonte": "premissa de design (retorno em 2-3 turnos)" },
+    "realocarProntidaoPorMoeda": { "valor": 3, "fonte": "WEF 2025 (19 de 100 realocados)" },
+    "realocarLag": { "valor": 3, "fonte": "premissa de design" },
+    "receitaImediataPorMoeda": { "valor": -0.5, "fonte": "premissa de design (horas em treinamento)" },
+    "engajamentoPorMoeda": { "valor": 2, "fonte": "premissa de design" },
+    "engajamentoLag": { "valor": 1, "fonte": "premissa de design" },
+    "decaimentoSemLD": { "valor": -1.5, "fonte": "premissa de design (a partir do 2º turno sem investir)" },
+    "multiplicadorDanoChefao": { "valor": 1.5, "fonte": "premissa de design (gap explode na crise)" },
+    "limiarProntidaoChefao": { "valor": 40, "fonte": "premissa de design" }
+  },
+  "ia": {
+    "moedasPorFamiliaAuto": { "valor": 2, "fonte": "premissa de design" },
+    "autoCustoPorFamilia": { "valor": -8, "fonte": "premissa de design (corte de custo por família automatizada, uma vez)" },
+    "autoLag": { "valor": 1, "fonte": "premissa de design" },
+    "autoSemLDEngajamentoPorFamilia": { "valor": -8, "fonte": "premissa de design" },
+    "autoSemLDTurnover": { "valor": 3, "fonte": "premissa de design" },
+    "autoSemLDRisco": { "valor": 1, "fonte": "premissa de design" },
+    "autoSemLDProntidao": { "valor": -2, "fonte": "premissa de design (perda de conhecimento)" },
+    "autoComLDAtenuacao": { "valor": 0.5, "fonte": "premissa de design" },
+    "copilotoReceitaPorFamiliaTurno": { "valor": 0.55, "fonte": "https://www.nber.org/papers/w31161 (+14% de produtividade, média)" },
+    "copilotoBonusNovatos": { "valor": 1.5, "fonte": "NBER w31161 (+34% entre novatos, direção)" },
+    "copilotoLag": { "valor": 1, "fonte": "premissa de design" },
+    "copilotoTurnoverPorFamilia": { "valor": -0.3, "fonte": "NBER w31161 (retenção maior, direção)" },
+    "copilotoTurnoverLag": { "valor": 2, "fonte": "premissa de design" },
+    "copilotoSemLDAtenuacao": { "valor": 0.5, "fonte": "premissa derivada do NBER (ganho vem do aprendizado)" },
+    "janelaLDCopiloto": { "valor": 2, "fonte": "premissa de design (L&D nos últimos 2 turnos)" },
+    "totalFamilias": { "valor": 5, "fonte": "premissa de design (atendimento, comercial, tecnologia, dados, risco)" }
+  },
+  "futuroTrabalho": {
+    "hibridoTurnoverRelativo": { "valor": -0.33, "fonte": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11208135/ (Bloom, Han e Liang, Nature 2024)" },
+    "hibridoLag": { "valor": 1, "fonte": "premissa de design" },
+    "hibridoCustoComGPR": { "valor": 2, "fonte": "premissa de design (moedas, uma vez)" },
+    "hibridoCustoSemGPR": { "valor": 1, "fonte": "premissa de design" },
+    "hibridoSemGPREngajamentoPorTurno": { "valor": -3, "fonte": "premissa de design" },
+    "hibridoSemGPRAtenuacao": { "valor": 0.5, "fonte": "premissa de design" },
+    "flexProntidaoPorMoeda": { "valor": 2, "fonte": "premissa de design (borrow)" },
+    "flexCustoPorMoeda": { "valor": 1, "fonte": "premissa de design" }
+  },
+  "analytics": {
+    "custoRevelarIndicador": { "valor": 0.5, "fonte": "premissa de design (2 turnos)" },
+    "custoPrevisaoTurnover": { "valor": 1, "fonte": "premissa de design" },
+    "custoPiloto": { "valor": 1, "fonte": "premissa de design" },
+    "chanceInsightEnganoso": { "valor": 0.2, "fonte": "premissa de design (correlação não é causa)" },
+    "limiarMitigaAuditoria": { "valor": 2, "fonte": "premissa de design (moedas acumuladas)" }
+  },
+  "encadeamento": {
+    "engajamentoParaReceita": { "valor": 0.045, "fonte": "https://www.gallup.com/workplace/713024/employee-engagement-and-productivity.aspx (+18% produtividade no quartil superior; correlação, uso conservador: +0,45%/turno por +10 de engajamento)" },
+    "engajamentoParaReceitaLag": { "valor": 3, "fonte": "premissa de design (2-4 turnos)" },
+    "engajamentoParaNps": { "valor": 0.08, "fonte": "Gallup Q12 2024 (+10% fidelidade de clientes; calibrado)" },
+    "engajamentoParaNpsLag": { "valor": 2, "fonte": "premissa de design" },
+    "prontidaoParaReceita": { "valor": 0.06, "fonte": "premissa de design (capacidade de executar)" },
+    "prontidaoParaReceitaLag": { "valor": 3, "fonte": "premissa de design" },
+    "turnoverParaCusto": { "valor": 0.375, "fonte": "https://www.gallup.com/workplace/247391/fixable-problem-costs-businesses.aspx (reposição de 0,5x a 2x o salário anual; ponto médio, por semestre)" },
+    "turnoverBase": { "valor": 12, "fonte": "premissa de design" },
+    "turnoverAltoLimiar": { "valor": 18, "fonte": "premissa de design" },
+    "turnoverAltoProntidao": { "valor": -2, "fonte": "premissa de design (perda de conhecimento)" },
+    "prontidaoBaixaLimiarRisco": { "valor": 40, "fonte": "premissa de design" },
+    "turnosParaMelhorarRisco": { "valor": 2, "fonte": "premissa de design (prontidão >55% e sem automação sem requalificação)" },
+    "prontidaoLimiarMelhorarRisco": { "valor": 55, "fonte": "premissa de design" },
+    "eficienciaBase": { "valor": 62, "fonte": "definição: 62 x custo / receita" }
+  },
+  "capacidade": {
+    "maxIniciativas": { "valor": 3, "fonte": "premissa de design" },
+    "penalidadeEngajamentoPorExcesso": { "valor": -5, "fonte": "premissa de design" }
+  },
+  "divida": {
+    "gatilhoEngajamento": { "valor": 45, "fonte": "premissa de design" },
+    "gatilhoProntidao": { "valor": 35, "fonte": "premissa de design" },
+    "jurosReceitaPorTurno": { "valor": -1, "fonte": "premissa de design" },
+    "jurosTurnoverPorTurno": { "valor": 0.5, "fonte": "premissa de design" },
+    "turnosParaSanar": { "valor": 2, "fonte": "premissa de design" }
+  },
+  "chefoes": {
+    "ondaIA": {
+      "turno": { "valor": 3, "fonte": "premissa de design" },
+      "npsSemMitigacao": { "valor": -8, "fonte": "premissa de design" },
+      "receitaSemMitigacao": { "valor": -2, "fonte": "premissa de design" },
+      "npsComMitigacao": { "valor": -2, "fonte": "premissa de design" },
+      "familiasParaMitigar": { "valor": 2, "fonte": "premissa de design (copiloto ou automação)" }
+    },
+    "cacaTalentos": {
+      "turno": { "valor": 5, "fonte": "premissa de design" },
+      "prontidaoSemMitigacao": { "valor": -6, "fonte": "premissa de design" },
+      "turnoverSemMitigacao": { "valor": 2, "fonte": "premissa de design" },
+      "prontidaoComMitigacao": { "valor": -1, "fonte": "premissa de design" },
+      "engajamentoParaMitigar": { "valor": 65, "fonte": "premissa de design (ou híbrido ou copiloto ativos)" }
+    },
+    "auditoria": {
+      "turno": { "valor": 7, "fonte": "premissa de design" },
+      "receitaRiscoAlto": { "valor": -5, "fonte": "premissa de design" },
+      "custoRiscoAlto": { "valor": 3, "fonte": "premissa de design" },
+      "receitaRiscoMedio": { "valor": -2, "fonte": "premissa de design" }
+    }
+  },
+  "placar": {
+    "pesoReceita": { "valor": 0.4, "fonte": "premissa de design" },
+    "pesoEficiencia": { "valor": 0.3, "fonte": "premissa de design" },
+    "pesoNps": { "valor": 0.2, "fonte": "premissa de design" },
+    "pesoRisco": { "valor": 0.1, "fonte": "premissa de design" },
+    "eficienciaPior": { "valor": 80, "fonte": "premissa de design (mapa: 80 vira 0)" },
+    "eficienciaMelhor": { "valor": 45, "fonte": "premissa de design (mapa: 45 vira 100)" },
+    "limiarArquiteto": { "valor": 80, "fonte": "premissa de design (calibrado: equilibrada ~90, extremas 45-55)" },
+    "jardineiroEngajamento": { "valor": 68, "fonte": "premissa de design" },
+    "jardineiroProntidao": { "valor": 70, "fonte": "premissa de design" },
+    "jardineiroReceita": { "valor": 100, "fonte": "premissa de design" },
+    "apostadorFamilias": { "valor": 3, "fonte": "premissa de design" },
+    "apostadorProntidao": { "valor": 50, "fonte": "premissa de design" }
+  }
+}
