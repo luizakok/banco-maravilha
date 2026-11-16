@@ -131,6 +131,7 @@
     "eficienciaPior": { "valor": 80, "fonte": "premissa de design (mapa: 80 vira 0)" },
     "eficienciaMelhor": { "valor": 45, "fonte": "premissa de design (mapa: 45 vira 100)" },
     "limiarArquiteto": { "valor": 80, "fonte": "premissa de design (calibrado: equilibrada ~90, extremas 45-55)" },
+    "limiarArquitetoExpress": { "valor": 72, "fonte": "premissa de design (4 turnos compõem menos que 8; melhor caminho equilibrado ~72,5)" },
     "jardineiroEngajamento": { "valor": 68, "fonte": "premissa de design" },
     "jardineiroProntidao": { "valor": 70, "fonte": "premissa de design" },
     "jardineiroReceita": { "valor": 100, "fonte": "premissa de design" },

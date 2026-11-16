@@ -32,7 +32,7 @@ function notaDeDelta(deltaMedioPorTurno: number): string {
 
 export function notasPorHorizonte(historico: Estado[]): { curto: string; medio: string; longo: string } {
   const v = historico.map(valorDoBanco);
-  const media = (ini: number, fim: number) => (v[fim] - v[ini]) / (fim - ini);
+  const media = (ini: number, fim: number) => (fim <= ini ? 0 : (v[fim] - v[ini]) / (fim - ini));
   return {
     curto: notaDeDelta(media(0, Math.min(2, v.length - 1))),
     medio: notaDeDelta(media(Math.min(2, v.length - 1), Math.min(5, v.length - 1))),
@@ -40,10 +40,10 @@ export function notasPorHorizonte(historico: Estado[]): { curto: string; medio: 
   };
 }
 
-export function classificarFinal(historico: Estado[]): Final {
+export function classificarFinal(historico: Estado[], limiarArquiteto = p("placar.limiarArquiteto")): Final {
   const fim = historico[historico.length - 1];
   if (fim.apostadorMarcado) return "apostador";
-  if (valorDoBanco(fim) >= p("placar.limiarArquiteto") && !fim.dividaAtiva) return "arquiteto";
+  if (valorDoBanco(fim) >= limiarArquiteto && !fim.dividaAtiva) return "arquiteto";
   if (
     (fim.engajamento >= p("placar.jardineiroEngajamento") ||
       fim.prontidao >= p("placar.jardineiroProntidao")) &&

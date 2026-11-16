@@ -1,0 +1,53 @@
+{
+  "turnos": [
+    {
+      "mancheteKey": "express.t1.manchete",
+      "falas": [
+        { "conselheiro": "ceo", "key": "express.t1.fala_ceo" },
+        { "conselheiro": "voz", "key": "express.t1.fala_voz" }
+      ],
+      "cartas": [
+        { "id": "t1a", "alocacao": { "contratar": 9, "analytics": 1 } },
+        { "id": "t1b", "alocacao": { "ld_cargo": 6, "interno": 3, "analytics": 1 } },
+        { "id": "t1c", "alocacao": { "ia_copiloto": 3, "ld_cargo": 3, "contratar": 4 } }
+      ]
+    },
+    {
+      "mancheteKey": "express.t2.manchete",
+      "falas": [
+        { "conselheiro": "cfo", "key": "express.t2.fala_cfo" },
+        { "conselheiro": "voz", "key": "express.t2.fala_voz" }
+      ],
+      "cartas": [
+        { "id": "t2a", "alocacao": { "ia_auto": 8, "analytics": 2 } },
+        { "id": "t2b", "alocacao": { "ia_auto": 4, "ld_cargo": 4, "analytics": 2 } },
+        { "id": "t2c", "alocacao": { "hibrido": 2, "ld_cargo": 4, "interno": 4 }, "gestaoPorResultados": true }
+      ]
+    },
+    {
+      "chefao": true,
+      "mancheteKey": "express.t3.manchete",
+      "falas": [
+        { "conselheiro": "cto", "key": "express.t3.fala_cto" },
+        { "conselheiro": "ceo", "key": "express.t3.fala_ceo" }
+      ],
+      "cartas": [
+        { "id": "t3a", "alocacao": { "ia_copiloto": 5, "ld_cargo": 3, "analytics": 2 } },
+        { "id": "t3b", "alocacao": { "contratar": 7, "flex": 3 } },
+        { "id": "t3c", "alocacao": { "analytics": 3 } }
+      ]
+    },
+    {
+      "mancheteKey": "express.t4.manchete",
+      "falas": [
+        { "conselheiro": "cfo", "key": "express.t4.fala_cfo" },
+        { "conselheiro": "cto", "key": "express.t4.fala_cto" }
+      ],
+      "cartas": [
+        { "id": "t4a", "alocacao": { "ia_copiloto": 4, "ld_cargo": 3, "interno": 3 } },
+        { "id": "t4b", "alocacao": { "ia_auto": 6, "ia_copiloto": 4 } },
+        { "id": "t4c", "alocacao": { "ld_cargo": 5, "ld_realocar": 3, "interno": 2 } }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "banco": { "nome": "Banco Maravilha" },
+  "titulo": {
+    "subtitulo": "Um jogo de estratégia de pessoas",
+    "intro": "Você é a nova Diretoria de Pessoas de um banco com 80 anos de história, 30 mil pessoas, sistemas legados e bancos digitais na cola. Você tem de 2027 a 2030 para preparar o banco para a era da IA.",
+    "expressBotao": "Jogar Express (~5 min)",
+    "tradicionalBotao": "Modo Tradicional (~15 min)",
+    "tradicionalBloqueado": "Complete o Express para desbloquear",
+    "dica": "Cada decisão de pessoas mexe no negócio — só que não na hora."
+  },
+  "comum": {
+    "continuar": "Continuar",
+    "pular": "Pular",
+    "confirmar": "Confirmar escolha",
+    "turno": "Ano",
+    "de": "de",
+    "jogarDeNovo": "Jogar de novo",
+    "voltarInicio": "Voltar ao início",
+    "porque": "Por que isso aconteceu?",
+    "emAndamento": "Efeitos ainda em andamento",
+    "escolha": "Escolha 1 das 3 estratégias do ano"
+  },
+  "indicadores": {
+    "engajamento": "Engajamento",
+    "turnover": "Turnover voluntário",
+    "prontidao": "Prontidão de skills",
+    "custoPessoal": "Custo de pessoal",
+    "receita": "Receita",
+    "eficiencia": "Índice de eficiência",
+    "nps": "NPS de clientes",
+    "risco": "Risco",
+    "risco0": "Baixo",
+    "risco1": "Médio",
+    "risco2": "Alto",
+    "eficienciaDica": "menor é melhor"
+  },
+  "conselheiros": {
+    "ceo": "CEO",
+    "cfo": "CFO",
+    "cto": "CTO",
+    "voz": "Voz do Time"
+  },
+  "express": {
+    "t1": {
+      "manchete": "2027 — Novo plano estratégico exige um banco pronto para a IA. O gap de skills é o maior em décadas.",
+      "fala_ceo": "Preciso de resultado JÁ. Contrata gente pronta e vamos para cima.",
+      "fala_voz": "Se você só contratar de fora, quem está aqui há 20 anos vai entender o recado — e vai embora."
+    },
+    "t2": {
+      "manchete": "2028 — Bancos digitais cortam tarifas. O conselho cobra eficiência.",
+      "fala_cfo": "Automatiza tudo que der. Treinamento? Corta. É o primeiro a sair do orçamento.",
+      "fala_voz": "Automatizar sem requalificar é demitir em câmera lenta. O time sente."
+    },
+    "t3": {
+      "manchete": "2029 — CHEFÃO: A ONDA DA IA. Um concorrente digital lança atendimento 100% IA. Nosso NPS começa a derreter.",
+      "fala_cto": "Eu avisei! Escala os copilotos AGORA ou viramos peça de museu.",
+      "fala_ceo": "Não importa como, importa quando: ontem."
+    },
+    "t4": {
+      "manchete": "2030 — Último ano do ciclo. O conselho quer ver o Valor do Banco. O que você plantou?",
+      "fala_cfo": "Hora de colher. Nada de aventura nova no último ano.",
+      "fala_cto": "Aventura? O futuro não espera ciclo de planejamento."
+    },
+    "chefaoAviso": "CHEFÃO DO ANO"
+  },
+  "cartas": {
+    "t1a": { "titulo": "Contratação relâmpago", "conselheiro": "ceo", "descricao": "Buscar no mercado os perfis que faltam, pagando o prêmio que for preciso. Capacidade imediata — e conta salarial idem." },
+    "t1b": { "titulo": "Escola do futuro", "conselheiro": "voz", "descricao": "Requalificar o time atual e promover por dentro. Custa agora, retorna em 2–3 anos." },
+    "t1c": { "titulo": "Copiloto já", "conselheiro": "cto", "descricao": "Licenciar copilotos de IA com treinamento e trazer alguns especialistas. Produtividade sobe — mais entre os novatos." },
+    "t2a": { "titulo": "Cortar para crescer", "conselheiro": "cfo", "descricao": "Automatizar processos inteiros e segurar o orçamento de treinamento. A eficiência agradece. O time... veremos." },
+    "t2b": { "titulo": "Automatizar e requalificar", "conselheiro": "cto", "descricao": "Automatizar com um programa de requalificação junto. Mais caro, menos trauma." },
+    "t2c": { "titulo": "Híbrido com gestão por resultados", "conselheiro": "voz", "descricao": "Formalizar o híbrido com metas claras e seguir formando gente por dentro. Quem tem flexibilidade, fica." },
+    "t3a": { "titulo": "Escalar copilotos", "conselheiro": "cto", "descricao": "Responder à onda com IA que aumenta o time de atendimento, treinando junto." },
+    "t3b": { "titulo": "Comprar time pronto", "conselheiro": "ceo", "descricao": "Contratar um squad de IA de mercado e reforçar com temporários. Rápido e caro." },
+    "t3c": { "titulo": "Segurar o caixa", "conselheiro": "cfo", "descricao": "Não reagir por impulso: investir só em dados para decidir melhor no ano que vem." },
+    "t4a": { "titulo": "Colher resultados", "conselheiro": "voz", "descricao": "Consolidar copilotos, promover quem se requalificou e fechar o ciclo com o time junto." },
+    "t4b": { "titulo": "Última cartada em IA", "conselheiro": "cto", "descricao": "Automatizar o que restou e dobrar os copilotos. Tudo na mesa final." },
+    "t4c": { "titulo": "Dobrar nas pessoas", "conselheiro": "voz", "descricao": "Investir pesado em requalificação e realocação. O resultado pode vir depois de 2030." }
+  },
+  "porque": {
+    "capacidade.excesso": "Iniciativas demais ao mesmo tempo: a organização não absorveu e o engajamento caiu.",
+    "contratar.imediato": "Contratações externas trouxeram capacidade imediata (performando abaixo do potencial nos 2 primeiros anos — Bidwell/Wharton).",
+    "contratar.rampa": "Os contratados de fora atingiram a performance plena (Bidwell/Wharton).",
+    "contratar.premioSalarial": "Quem vem de fora custa ~20% a mais (Bidwell/Wharton).",
+    "contratar.turnoverExterno": "Contratados externos saem mais nos primeiros anos (Bidwell/Wharton).",
+    "contratar.turnoverExternoFim": "A rotatividade extra dos contratados externos passou.",
+    "interno.prontidao": "Movimentações internas cobriram gaps com quem já conhece o banco.",
+    "interno.engajamento": "Promoções internas sinalizam carreira: o engajamento subiu.",
+    "ld.cargo": "A requalificação no cargo elevou a prontidão (WEF: 29 de cada 100 precisam disso).",
+    "ld.realocar": "Requalificar e realocar cobriu posições críticas (WEF: 19 de cada 100).",
+    "ld.horasTreinamento": "Horas em treinamento reduziram a produção neste período.",
+    "ld.engajamento": "Investir em desenvolvimento elevou o engajamento.",
+    "ld.decaimento": "Sem investimento em L&D, as skills ficam obsoletas e a prontidão cai.",
+    "ia.automacaoCusto": "A automação reduziu o custo de pessoal.",
+    "ia.autoEngajamento": "Automatizar sem requalificar assustou o time: engajamento em queda.",
+    "ia.autoTurnover": "Medo de substituição por IA: mais gente pedindo demissão.",
+    "ia.autoPerdaConhecimento": "Conhecimento tácito saiu pela porta junto com as pessoas.",
+    "ia.copilotoProdutividade": "Copilotos de IA elevaram a produtividade (+14% na média, +34% entre novatos — NBER w31161).",
+    "ia.copilotoRetencao": "Ferramentas que ajudam (em vez de ameaçar) aumentaram a retenção (NBER w31161).",
+    "hibrido.turnover": "O híbrido reduziu as saídas em cerca de um terço (Bloom et al., Nature 2024).",
+    "hibrido.semGPR": "Híbrido sem gestão por resultados: confusão e queda de engajamento.",
+    "flex.prontidao": "Temporários e parceiros cobriram gaps no curto prazo.",
+    "flex.custo": "A força de trabalho flexível tem seu preço.",
+    "pressao.receita": "Bancos digitais seguem mordendo a receita.",
+    "pressao.nps": "A régua dos clientes sobe todo ano; parado, o NPS cai.",
+    "encadeamento.engajamentoReceita": "Times mais engajados venderam mais (Gallup: correlação de +18% em produtividade).",
+    "encadeamento.engajamentoNps": "Gente engajada atende melhor: NPS respondeu (Gallup).",
+    "encadeamento.prontidaoReceita": "Skills prontas viraram capacidade de executar a estratégia.",
+    "encadeamento.custoReposicao": "Repor quem sai custa de 0,5 a 2 salários anuais (Gallup).",
+    "encadeamento.perdaConhecimento": "Turnover alto demais: o conhecimento está evaporando.",
+    "divida.jurosReceita": "A dívida de pessoas está cobrando juros na receita.",
+    "divida.jurosTurnover": "A dívida de pessoas está cobrando juros no turnover.",
+    "chefao.ondaIA.mitigado": "Você tinha IA em produção: a onda bateu de raspão no NPS.",
+    "chefao.ondaIA.nps": "Sem resposta de IA, os clientes migraram: NPS despencou.",
+    "chefao.ondaIA.receita": "A onda da IA levou receita junto.",
+    "chefao.cacaTalentos.mitigado": "Seu time tinha motivos para ficar: o caça-talentos levou pouco.",
+    "chefao.cacaTalentos.prontidao": "A fintech levou seus melhores especialistas de dados.",
+    "chefao.cacaTalentos.turnover": "O assédio da fintech contagiou outras saídas.",
+    "chefao.auditoria.receita": "O regulador restringiu modelos de crédito sem governança.",
+    "chefao.auditoria.custo": "Correr atrás da governança em cima da hora custou caro."
+  },
+  "resultado": {
+    "titulo": "Resultado do ano",
+    "valorBanco": "Valor do Banco"
+  },
+  "finais": {
+    "arquiteto": { "nome": "O Arquiteto", "texto": "Você equilibrou curto e longo prazo: pessoas prontas, negócio saudável. O banco chega a 2030 pronto para a era da IA." },
+    "bombeiro": { "nome": "O Bombeiro", "texto": "Você apagou cada incêndio do trimestre — e chegou em 2030 sem fôlego. Resultados rápidos, fundação frágil." },
+    "jardineiro": { "nome": "O Jardineiro", "texto": "Você plantou um time incrível... e o negócio murchou esperando a colheita. Estratégia de pessoas é estratégia de negócio — nas duas direções." },
+    "apostador": { "nome": "O Apostador", "texto": "All-in na IA, sem dados e sem pessoas prontas. O custo caiu rápido; a conta chegou depois, com juros." }
+  },
+  "debrief": {
+    "titulo": "Debrief",
+    "notas": "Suas notas por horizonte",
+    "curto": "Curto prazo",
+    "medio": "Médio prazo",
+    "longo": "Longo prazo",
+    "pergunta": "Para levar para o trabalho: qual decisão de pessoas da sua área está sendo avaliada só pelo efeito de curto prazo?",
+    "desbloqueio": "Modo Tradicional desbloqueado! 8 semestres, orçamento livre, névoa de guerra e 3 chefões."
+  }
+}
