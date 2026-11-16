@@ -1,15 +1,29 @@
 import { jogarCarta, novaPartidaExpress, TURNOS_EXPRESS, type PartidaExpress } from "./game/express";
+import {
+  acabou,
+  aplicarEvento,
+  fecharTurno,
+  jogarTurnoTrad,
+  novaPartidaTrad,
+  type PartidaTrad,
+} from "./game/tradicional";
 import { telaTitulo } from "./ui/screens/titulo";
 import { telaTurnoExpress } from "./ui/screens/turnoExpress";
 import { telaResultadoExpress } from "./ui/screens/resultadoExpress";
 import { telaFinalExpress } from "./ui/screens/finalExpress";
+import { telaBriefingTrad } from "./ui/screens/briefingTrad";
+import { telaDecisaoTrad } from "./ui/screens/decisaoTrad";
+import { telaEventoTrad } from "./ui/screens/eventoTrad";
+import { telaResultadoTrad } from "./ui/screens/resultadoTrad";
+import { telaDebriefTrad } from "./ui/screens/debriefTrad";
 
 const app = document.getElementById("app")!;
 
 function mostrarTitulo() {
-  telaTitulo(app, iniciarExpress);
+  telaTitulo(app, iniciarExpress, iniciarTradicional);
 }
 
+// ── Express ──
 function iniciarExpress() {
   const partida = novaPartidaExpress();
   mostrarTurno(partida, 0);
@@ -22,6 +36,34 @@ function mostrarTurno(p: PartidaExpress, indice: number) {
       const proximo = indice + 1;
       if (proximo < TURNOS_EXPRESS.length) mostrarTurno(p, proximo);
       else telaFinalExpress(app, p, iniciarExpress, mostrarTitulo);
+    });
+  });
+}
+
+// ── Tradicional ──
+function iniciarTradicional() {
+  const partida = novaPartidaTrad();
+  mostrarSemestre(partida);
+}
+
+function mostrarSemestre(part: PartidaTrad) {
+  telaBriefingTrad(app, part, () => {
+    telaDecisaoTrad(app, part, (d) => {
+      const evento = jogarTurnoTrad(part, d);
+      const aoResultado = () =>
+        telaResultadoTrad(app, part, () => {
+          fecharTurno(part);
+          if (acabou(part)) telaDebriefTrad(app, part, iniciarTradicional, mostrarTitulo);
+          else mostrarSemestre(part);
+        });
+      if (evento) {
+        telaEventoTrad(app, evento, (opcao) => {
+          aplicarEvento(part, evento, opcao);
+          aoResultado();
+        });
+      } else {
+        aoResultado();
+      }
     });
   });
 }

@@ -77,6 +77,110 @@
     "t4b": { "titulo": "Última cartada em IA", "conselheiro": "cto", "descricao": "Automatizar o que restou e dobrar os copilotos. Tudo na mesa final." },
     "t4c": { "titulo": "Dobrar nas pessoas", "conselheiro": "voz", "descricao": "Investir pesado em requalificação e realocação. O resultado pode vir depois de 2030." }
   },
+  "tradicional": {
+    "t1": { "manchete": "2027/1 — Você assume a Diretoria de Pessoas. O diagnóstico: o maior gap de skills em décadas e um plano estratégico que depende de fechá-lo.", "conselheiro": "voz", "fala": "O time quer acreditar. Mostra que dá para crescer por dentro antes de encher o banco de gente de fora." },
+    "t2": { "manchete": "2027/2 — Bancos digitais cortam tarifas e o conselho cobra o índice de eficiência.", "conselheiro": "cfo", "fala": "Cada ponto de eficiência vale ouro. Treinamento é o primeiro corte — sempre foi." },
+    "t3": { "manchete": "2028/1 — CHEFÃO: A ONDA DA IA. Um concorrente digital lança atendimento 100% IA e nosso NPS começa a derreter.", "conselheiro": "cto", "fala": "Ou a gente escala IA agora, ou daqui a dois anos seremos o estudo de caso que ninguém quer ser." },
+    "t4": { "manchete": "2028/2 — Ressaca da onda: todo comitê quer 'fazer algo com IA'. Poucos sabem o quê.", "conselheiro": "ceo", "fala": "Receita. É a única palavra que eu quero ouvir nesse comitê." },
+    "t5": { "manchete": "2029/1 — CHEFÃO: O CAÇA-TALENTOS. Uma fintech oferece o dobro de salário ao seu time de dados.", "conselheiro": "voz", "fala": "Dinheiro leva embora quem já estava com um pé fora. Carreira e propósito seguram o resto." },
+    "t6": { "manchete": "2029/2 — Penúltimo ano. Os investimentos de 2027 começam a aparecer (ou a fazer falta).", "conselheiro": "ceo", "fala": "O conselho quer ver curva subindo. O que você plantou, colhe agora." },
+    "t7": { "manchete": "2030/1 — CHEFÃO: A AUDITORIA. O regulador exige governança dos modelos de IA usados no crédito.", "conselheiro": "cfo", "fala": "Multa e provisão eu sei calcular. Governança improvisada, não." },
+    "t8": { "manchete": "2030/2 — Último semestre. Em dezembro, o conselho avalia o Valor do Banco — e o seu legado.", "conselheiro": "cto", "fala": "O futuro não termina em 2030. O que fica de pé depois do seu mandato?" },
+    "chefaoAviso": "CHEFÃO DO SEMESTRE",
+    "semestre": "Semestre"
+  },
+  "grupos": {
+    "recrutamento": "Recrutamento e seleção",
+    "ld": "Aprendizado e desenvolvimento (L&D)",
+    "ia": "IA por família de funções",
+    "futuro": "Futuro do trabalho",
+    "nota": "Workforce planning: para cada gap, decida entre build (L&D), buy (contratar), borrow (flex) ou bot (IA)."
+  },
+  "alavancas": {
+    "contratar": "Contratar no mercado",
+    "contratarDica": "Capacidade imediata; custa ~20% a mais e sai mais",
+    "interno": "Promover / mover interno",
+    "internoDica": "Mais barato e engaja; leva um semestre",
+    "ld_cargo": "Requalificar no cargo",
+    "ld_cargoDica": "Retorna em 2 turnos",
+    "ld_realocar": "Requalificar e realocar",
+    "ld_realocarDica": "Retorna mais, em 3 turnos",
+    "ia_auto": "Automatizar (2 moedas = 1 família)",
+    "ia_autoDica": "Corta custo; sem L&D junto, machuca o time",
+    "ia_copiloto": "Copiloto de IA (1 moeda = 1 família/semestre)",
+    "ia_copilotoDica": "Produtividade e retenção; treine junto",
+    "hibrido": "Modelo híbrido (ativação única)",
+    "hibridoDica": "2 moedas = com gestão por resultados",
+    "flex": "Força de trabalho flexível",
+    "flexDica": "Cobre gaps já, a um preço"
+  },
+  "inteligencia": {
+    "titulo": "Inteligência (opcional)",
+    "descricao": "Os indicadores de pessoas estão na névoa. Pague por dados — ou decida no escuro.",
+    "revelar": "Revelar por 2 semestres",
+    "previsao": "Prever turnover do próximo semestre",
+    "previsaoResultado": "Se nada mudar, o turnover deve ficar em ~{v}% ao ano.",
+    "piloto": "Rodar um piloto antes de escalar",
+    "pilotoResultado": "Piloto registrado: sua base de evidências cresceu (ajuda na Auditoria).",
+    "moedas": "moedas",
+    "saldo": "Orçamento do semestre",
+    "irDecisao": "Ir para a decisão"
+  },
+  "decisao": {
+    "titulo": "Decisão do semestre",
+    "orcamentoRestante": "Moedas restantes",
+    "iniciativas": "Iniciativas ativas",
+    "avisoCapacidade": "Mais de 3 iniciativas ao mesmo tempo derruba o engajamento!",
+    "gpr": "Com gestão por resultados",
+    "confirmar": "Confirmar decisão"
+  },
+  "eventos": {
+    "titulo": "Evento do semestre",
+    "corte": { "texto": "O CFO pede um corte de 20% no orçamento de pessoas do próximo semestre. 'Todo mundo está cortando.'", "a": "Aceitar o corte (menos 2 moedas no próximo semestre; custo cai)", "b": "Negociar e manter (o time nota a defesa; custo segue um pouco maior)" },
+    "aposentadoria": { "texto": "Três dos últimos especialistas no sistema legado de crédito anunciam aposentadoria no fim do semestre.", "a": "Pacote de permanência + mentoria (custa caro, o conhecimento fica)", "b": "Deixar ir e confiar na documentação (spoiler: ela não existe)" },
+    "voltaEscritorio": { "texto": "Um conselheiro viu uma matéria sobre 'o fim do home office' e quer todo mundo de volta 5 dias por semana.", "a": "Defender a flexibilidade com dados de desempenho", "b": "Acatar: todos de volta ao presencial" },
+    "pilotoIA": { "texto": "Um piloto de IA no atendimento foi bem em UMA agência. Todo comitê quer escalar nacionalmente — sem grupo de controle.", "a": "Escalar já (receita rápida, risco de modelo sem medição)", "b": "Medir antes de escalar (custa 1 moeda, vira evidência)" }
+  },
+  "porqueEvento": {
+    "corte.a": "Você aceitou o corte do CFO: custo menor, orçamento menor.",
+    "corte.b": "Você defendeu o orçamento de pessoas: o time notou.",
+    "aposentadoria.a": "O pacote de permanência segurou o conhecimento do legado.",
+    "aposentadoria.b": "Os especialistas saíram — e o conhecimento do legado junto.",
+    "voltaEscritorio.a": "A flexibilidade sobreviveu ao comitê.",
+    "voltaEscritorio.b": "Volta forçada ao presencial: engajamento e retenção sentiram.",
+    "pilotoIA.a": "Escalar sem medir: a receita veio, o risco também.",
+    "pilotoIA.b": "Você mediu antes de escalar: evidência no bolso."
+  },
+  "nevoa": {
+    "oculto": "na névoa",
+    "enganoso": "(dado possivelmente enganoso — ver debrief)"
+  },
+  "feedback": {
+    "botao": "Enviar meus resultados e feedback",
+    "previaTitulo": "Isso — e só isso — será enviado:",
+    "previaAviso": "Nenhum nome, e-mail ou dado pessoal. Abre um formulário em nova aba; nada é enviado sem você clicar em Enviar lá.",
+    "abrir": "Abrir formulário preenchido",
+    "cancelar": "Cancelar"
+  },
+  "debrief2": {
+    "decisoesChave": "As 3 decisões que mais pesaram",
+    "eSe": "E se?",
+    "eSeExplica": "Refaça uma dessas decisões com uma alocação equilibrada e veja o resultado alternativo.",
+    "eSeBotao": "Refazer o semestre {t}",
+    "eSeResultado": "Com essa troca, o Valor do Banco em 2030 seria {v} (foi {v0}).",
+    "pesquisa": "A pesquisa por trás dos efeitos",
+    "insightsEnganosos": "Dados que enganaram você",
+    "insightEnganosoItem": "No semestre {t}, o dado mostrado ({campo}: {mostrado}) estava distorcido; o real era {real}. Correlação não é causa — e dashboards erram.",
+    "valorCaminho": "Valor do Banco, semestre a semestre"
+  },
+  "pesquisa": {
+    "nber": "Copiloto de IA: +14% de produtividade (+34% entre novatos) e mais retenção — Brynjolfsson, Li & Raymond (NBER)",
+    "bidwell": "Contratados de fora: ~+20% de salário, pior avaliação por 2 anos, saem mais — Bidwell (Wharton)",
+    "bloom": "Híbrido (2 dias em casa): -1/3 de saídas, desempenho igual — Bloom, Han & Liang (Nature 2024)",
+    "wef": "39% das skills mudam até 2030; 59 de cada 100 pessoas precisam de treinamento — WEF Future of Jobs 2025",
+    "gallupQ12": "Engajamento no quartil superior: +23% lucratividade, +18% produtividade em vendas (correlação) — Gallup Q12",
+    "gallupCusto": "Repor uma pessoa custa de 0,5 a 2 salários anuais — Gallup"
+  },
   "porque": {
     "capacidade.excesso": "Iniciativas demais ao mesmo tempo: a organização não absorveu e o engajamento caiu.",
     "contratar.imediato": "Contratações externas trouxeram capacidade imediata (performando abaixo do potencial nos 2 primeiros anos — Bidwell/Wharton).",
@@ -121,6 +225,7 @@
   },
   "resultado": {
     "titulo": "Resultado do ano",
+    "tituloSemestre": "Resultado do semestre",
     "valorBanco": "Valor do Banco"
   },
   "finais": {

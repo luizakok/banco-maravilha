@@ -17,11 +17,20 @@ const DEFS: Def[] = [
   { campo: "nps", fmt: (v) => v.toFixed(0), bomQuandoSobe: true },
 ];
 
-export function painelIndicadores(e: Estado, anterior?: Estado): HTMLElement {
+export interface OpcoesNevoa {
+  /** Campos escondidos: mostram "?" no lugar do valor. */
+  ocultos?: string[];
+  /** Valores a exibir no lugar do real (insight possivelmente enganoso). */
+  substitutos?: Partial<Record<string, number>>;
+}
+
+export function painelIndicadores(e: Estado, anterior?: Estado, nevoa?: OpcoesNevoa): HTMLElement {
   const grade = document.createElement("div");
   grade.className = "indicadores";
   for (const def of DEFS) {
-    const v = e[def.campo] as number;
+    const oculto = nevoa?.ocultos?.includes(def.campo) ?? false;
+    const substituto = nevoa?.substitutos?.[def.campo];
+    const v = substituto ?? (e[def.campo] as number);
     const div = document.createElement("div");
     div.className = "indicador";
     const rotulo = document.createElement("span");
@@ -31,9 +40,17 @@ export function painelIndicadores(e: Estado, anterior?: Estado): HTMLElement {
       (def.campo === "eficiencia" ? ` (${t("indicadores.eficienciaDica")})` : "");
     const valor = document.createElement("span");
     valor.className = "valor";
+    if (oculto) {
+      valor.textContent = "?";
+      valor.title = t("nevoa.oculto");
+      div.classList.add("na-nevoa");
+      div.append(rotulo, valor);
+      grade.append(div);
+      continue;
+    }
     valor.textContent = def.fmt(v);
     div.append(rotulo, valor);
-    if (anterior) {
+    if (anterior && substituto === undefined) {
       const delta = v - (anterior[def.campo] as number);
       if (Math.abs(delta) >= 0.05) {
         const s = document.createElement("span");

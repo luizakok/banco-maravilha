@@ -1,0 +1,32 @@
+{
+  "eventos": [
+    {
+      "id": "corte",
+      "opcoes": [
+        { "efeitos": [{ "campo": "custoPessoal", "delta": -2, "percentual": true }], "orcamentoDelta": -2 },
+        { "efeitos": [{ "campo": "engajamento", "delta": 2 }, { "campo": "custoPessoal", "delta": 1, "percentual": true }] }
+      ]
+    },
+    {
+      "id": "aposentadoria",
+      "opcoes": [
+        { "efeitos": [{ "campo": "custoPessoal", "delta": 2, "percentual": true }] },
+        { "efeitos": [{ "campo": "prontidao", "delta": -4 }, { "riscoDelta": 1 }] }
+      ]
+    },
+    {
+      "id": "voltaEscritorio",
+      "opcoes": [
+        { "efeitos": [{ "campo": "engajamento", "delta": 2 }] },
+        { "efeitos": [{ "campo": "turnover", "delta": 1.5 }, { "campo": "engajamento", "delta": -3 }, { "campo": "custoPessoal", "delta": -1, "percentual": true }] }
+      ]
+    },
+    {
+      "id": "pilotoIA",
+      "opcoes": [
+        { "efeitos": [{ "campo": "receita", "delta": 1, "percentual": true }, { "riscoDelta": 1 }] },
+        { "efeitos": [{ "analyticsDelta": 1 }], "orcamentoDelta": -1 }
+      ]
+    }
+  ]
+}

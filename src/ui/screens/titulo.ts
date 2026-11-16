@@ -2,7 +2,7 @@ import { t } from "../../i18n";
 import { expressConcluido } from "../../game/state";
 import { el, limpar } from "../dom";
 
-export function telaTitulo(raiz: HTMLElement, aoJogarExpress: () => void) {
+export function telaTitulo(raiz: HTMLElement, aoJogarExpress: () => void, aoJogarTradicional: () => void) {
   limpar(raiz);
   raiz.append(el("div", "espaco"));
   raiz.append(el("h1", undefined, t("banco.nome")));
@@ -23,7 +23,7 @@ export function telaTitulo(raiz: HTMLElement, aoJogarExpress: () => void) {
     btnTrad.title = t("titulo.tradicionalBloqueado");
     acoes.append(btnTrad, el("p", "centro relogio", t("titulo.tradicionalBloqueado")));
   } else {
-    btnTrad.disabled = true; // Fase 3
+    btnTrad.addEventListener("click", aoJogarTradicional);
     acoes.append(btnTrad);
   }
   raiz.append(acoes);

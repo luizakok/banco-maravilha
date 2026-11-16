@@ -134,6 +134,76 @@ details.porque li { font-size: 0.85rem; color: var(--muted); }
 }
 .final-card .valorzao { font-size: 2.4rem; color: var(--gold); font-family: var(--font-title); }
 
+/* ── Modo Tradicional ── */
+.indicador.na-nevoa { opacity: 0.6; border-style: dashed; }
+.indicador.na-nevoa .valor { color: var(--muted); }
+
+.painel-intel {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin: 12px 0;
+}
+.painel-intel h3 { margin: 0 0 4px; }
+.intel-acoes { justify-content: flex-start; margin-top: 10px; }
+.intel-acoes button { font-size: 0.85rem; padding: 8px 12px; }
+.intel-msg { color: var(--green); font-size: 0.9rem; }
+.saldo-moedas { color: var(--gold); font-weight: 700; }
+.aviso { color: var(--red); font-weight: 700; }
+
+.grupo-alavancas {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 10px 0;
+}
+.grupo-alavancas h3 { margin: 0 0 6px; font-size: 0.9rem; color: var(--blue); }
+.alavanca {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 0;
+  border-top: 1px solid rgba(74, 79, 140, 0.4);
+  flex-wrap: wrap;
+}
+.alavanca:first-of-type { border-top: none; }
+.alavanca-info { flex: 1; min-width: 200px; display: flex; flex-direction: column; }
+.alavanca-nome { font-weight: 600; }
+.alavanca-dica { color: var(--muted); font-size: 0.78rem; }
+.stepper { display: flex; align-items: center; gap: 8px; }
+.stepper .passo { min-height: 36px; min-width: 40px; padding: 4px 10px; font-size: 1.1rem; }
+.stepper-valor { min-width: 24px; text-align: center; font-weight: 700; font-size: 1.1rem; }
+label.gpr { font-size: 0.85rem; color: var(--muted); display: flex; align-items: center; gap: 4px; }
+
+.grafico-valor { display: flex; align-items: flex-end; gap: 6px; margin: 10px 0 16px; }
+.grafico-col { display: flex; flex-direction: column; align-items: center; gap: 2px; flex: 1; }
+.grafico-barra { width: 100%; max-width: 48px; background: var(--gold); border-radius: 3px 3px 0 0; }
+.grafico-num { font-size: 0.7rem; color: var(--muted); }
+.grafico-rotulo { font-size: 0.75rem; color: var(--muted); }
+
+.decisao-chave {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 8px 0;
+}
+.decisao-chave p { margin: 0 0 8px; }
+
+.feedback-previa {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin: 10px 0;
+  text-align: left;
+}
+.feedback-previa li { font-size: 0.82rem; color: var(--muted); word-break: break-all; }
+
+a { color: var(--blue); }
+
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
