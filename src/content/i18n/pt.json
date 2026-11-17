@@ -18,7 +18,9 @@
     "voltarInicio": "Voltar ao início",
     "porque": "Por que isso aconteceu?",
     "emAndamento": "Efeitos ainda em andamento",
-    "escolha": "Escolha 1 das 3 estratégias do ano"
+    "escolha": "Escolha 1 das 3 estratégias do ano",
+    "som": "Som",
+    "idioma": "Idioma / Language"
   },
   "indicadores": {
     "engajamento": "Engajamento",

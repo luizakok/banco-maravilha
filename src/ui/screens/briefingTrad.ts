@@ -27,9 +27,8 @@ export function telaBriefingTrad(raiz: HTMLElement, part: PartidaTrad, aoDecidir
     raiz.append(el("p", "tag-turno", `${t("tradicional.semestre")} ${turno} ${t("comum.de")} ${TOTAL_TURNOS}`));
     if (ehTurnoChefao(part)) raiz.append(el("h2", "centro", `⚠ ${t("tradicional.chefaoAviso")} ⚠`));
     raiz.append(el("div", "manchete", t(`tradicional.t${turno}.manchete`)));
-    raiz.append(
-      caixaDialogo(t(`conselheiros.${t(`tradicional.t${turno}.conselheiro`)}`), t(`tradicional.t${turno}.fala`))
-    );
+    const conselheiro = t(`tradicional.t${turno}.conselheiro`);
+    raiz.append(caixaDialogo(t(`conselheiros.${conselheiro}`), t(`tradicional.t${turno}.fala`), conselheiro));
 
     const ocultos = CAMPOS_NEVOA.filter((c) => part.reveladas[c] === 0);
     raiz.append(painelIndicadores(part.estado, part.historico.at(-2), { ocultos, substitutos: mostrados }));

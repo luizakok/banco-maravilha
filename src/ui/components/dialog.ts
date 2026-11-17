@@ -1,13 +1,22 @@
-/** Caixa de diálogo estilo RPG com efeito máquina de escrever (pulável). */
-export function caixaDialogo(falante: string, texto: string): HTMLElement {
+import { retrato } from "./pixel";
+
+/** Caixa de diálogo estilo RPG com retrato pixelado e máquina de escrever (pulável). */
+export function caixaDialogo(falante: string, texto: string, conselheiroId?: string): HTMLElement {
   const caixa = document.createElement("div");
   caixa.className = "caixa-dialogo";
+  if (conselheiroId) {
+    const img = retrato(conselheiroId);
+    if (img) caixa.append(img);
+  }
+  const conteudo = document.createElement("div");
+  conteudo.className = "caixa-conteudo";
   const quem = document.createElement("span");
   quem.className = "falante";
   quem.textContent = falante;
   const corpo = document.createElement("p");
   corpo.style.margin = "0";
-  caixa.append(quem, corpo);
+  conteudo.append(quem, corpo);
+  caixa.append(conteudo);
 
   const reduzir = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (reduzir) {

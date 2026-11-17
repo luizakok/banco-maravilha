@@ -20,7 +20,8 @@ export function telaTurnoExpress(
   if (def.chefao) raiz.append(el("h2", "centro", `⚠ ${t("express.chefaoAviso")} ⚠`));
   raiz.append(el("div", "manchete", t(def.mancheteKey)));
 
-  for (const fala of def.falas) raiz.append(caixaDialogo(t(`conselheiros.${fala.conselheiro}`), t(fala.key)));
+  for (const fala of def.falas)
+    raiz.append(caixaDialogo(t(`conselheiros.${fala.conselheiro}`), t(fala.key), fala.conselheiro));
 
   raiz.append(painelIndicadores(p.estado, p.historico.at(-2)));
 

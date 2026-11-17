@@ -1,3 +1,248 @@
 {
-  "banco": { "nome": "The Amazing Bank" }
+  "banco": { "nome": "The Amazing Bank" },
+  "titulo": {
+    "subtitulo": "A people-strategy game",
+    "intro": "You are the new Chief People Officer of a bank with 80 years of history, 30,000 people, legacy systems and digital banks closing in. You have from 2027 to 2030 to get the bank ready for the AI era.",
+    "expressBotao": "Play Express (~5 min)",
+    "tradicionalBotao": "Traditional Mode (~15 min)",
+    "tradicionalBloqueado": "Finish Express to unlock",
+    "dica": "Every people decision moves the business — just not right away."
+  },
+  "comum": {
+    "continuar": "Continue",
+    "pular": "Skip",
+    "confirmar": "Confirm choice",
+    "turno": "Year",
+    "de": "of",
+    "jogarDeNovo": "Play again",
+    "voltarInicio": "Back to start",
+    "porque": "Why did this happen?",
+    "emAndamento": "Effects still in motion",
+    "escolha": "Pick 1 of the 3 strategies for the year",
+    "som": "Sound",
+    "idioma": "Idioma / Language"
+  },
+  "indicadores": {
+    "engajamento": "Engagement",
+    "turnover": "Voluntary turnover",
+    "prontidao": "Skills readiness",
+    "custoPessoal": "People cost",
+    "receita": "Revenue",
+    "eficiencia": "Efficiency ratio",
+    "nps": "Customer NPS",
+    "risco": "Risk",
+    "risco0": "Low",
+    "risco1": "Medium",
+    "risco2": "High",
+    "eficienciaDica": "lower is better"
+  },
+  "conselheiros": {
+    "ceo": "CEO",
+    "cfo": "CFO",
+    "cto": "CTO",
+    "voz": "Voice of the Team"
+  },
+  "express": {
+    "t1": {
+      "manchete": "2027 — The new strategic plan demands an AI-ready bank. The skills gap is the widest in decades.",
+      "fala_ceo": "I need results NOW. Hire ready-made people and let's go.",
+      "fala_voz": "If you only hire from outside, the people who've been here 20 years will get the message — and leave."
+    },
+    "t2": {
+      "manchete": "2028 — Digital banks slash fees. The board demands efficiency.",
+      "fala_cfo": "Automate everything you can. Training? Cut it. It's always the first thing out of the budget.",
+      "fala_voz": "Automating without reskilling is firing in slow motion. The team feels it."
+    },
+    "t3": {
+      "manchete": "2029 — BOSS: THE AI WAVE. A digital competitor launches 100% AI service. Our NPS starts to melt.",
+      "fala_cto": "I warned you! Scale the copilots NOW or we become a museum piece.",
+      "fala_ceo": "It's not about how, it's about when: yesterday."
+    },
+    "t4": {
+      "manchete": "2030 — Last year of the cycle. The board wants to see the Bank Value. What did you plant?",
+      "fala_cfo": "Harvest time. No new adventures in the final year.",
+      "fala_cto": "Adventures? The future doesn't wait for planning cycles."
+    },
+    "chefaoAviso": "BOSS OF THE YEAR"
+  },
+  "cartas": {
+    "t1a": { "titulo": "Lightning hiring", "conselheiro": "ceo", "descricao": "Go to the market for the missing profiles, paying whatever premium it takes. Immediate capacity — and a payroll to match." },
+    "t1b": { "titulo": "School of the future", "conselheiro": "voz", "descricao": "Reskill the current team and promote from within. Costs now, pays back in 2–3 years." },
+    "t1c": { "titulo": "Copilot now", "conselheiro": "cto", "descricao": "License AI copilots with training and bring in a few specialists. Productivity rises — most among novices." },
+    "t2a": { "titulo": "Cut to grow", "conselheiro": "cfo", "descricao": "Automate entire processes and freeze the training budget. Efficiency says thanks. The team... we'll see." },
+    "t2b": { "titulo": "Automate and reskill", "conselheiro": "cto", "descricao": "Automate with a reskilling program alongside. Pricier, less trauma." },
+    "t2c": { "titulo": "Hybrid with results-based management", "conselheiro": "voz", "descricao": "Formalize hybrid work with clear goals and keep growing people from within. Those with flexibility stay." },
+    "t3a": { "titulo": "Scale copilots", "conselheiro": "cto", "descricao": "Answer the wave with AI that augments the service team, training as you go." },
+    "t3b": { "titulo": "Buy a ready-made team", "conselheiro": "ceo", "descricao": "Hire an AI squad from the market and reinforce with temps. Fast and expensive." },
+    "t3c": { "titulo": "Hold the cash", "conselheiro": "cfo", "descricao": "Don't react on impulse: invest only in data to decide better next year." },
+    "t4a": { "titulo": "Harvest results", "conselheiro": "voz", "descricao": "Consolidate copilots, promote those who reskilled and close the cycle with the team on board." },
+    "t4b": { "titulo": "Last AI gambit", "conselheiro": "cto", "descricao": "Automate what's left and double the copilots. Everything on the final table." },
+    "t4c": { "titulo": "Double down on people", "conselheiro": "voz", "descricao": "Invest heavily in reskilling and redeployment. The payoff may come after 2030." }
+  },
+  "tradicional": {
+    "t1": { "manchete": "2027/1 — You take over the People Office. The diagnosis: the widest skills gap in decades and a strategic plan that depends on closing it.", "conselheiro": "voz", "fala": "The team wants to believe. Show them we can grow from within before filling the bank with outsiders." },
+    "t2": { "manchete": "2027/2 — Digital banks cut fees and the board demands the efficiency ratio.", "conselheiro": "cfo", "fala": "Every efficiency point is gold. Training is the first cut — always has been." },
+    "t3": { "manchete": "2028/1 — BOSS: THE AI WAVE. A digital competitor launches 100% AI service and our NPS starts to melt.", "conselheiro": "cto", "fala": "Either we scale AI now, or in two years we're the case study nobody wants to be." },
+    "t4": { "manchete": "2028/2 — Wave hangover: every committee wants to 'do something with AI'. Few know what.", "conselheiro": "ceo", "fala": "Revenue. It's the only word I want to hear in this committee." },
+    "t5": { "manchete": "2029/1 — BOSS: THE TALENT RAIDER. A fintech offers your data team double the salary.", "conselheiro": "voz", "fala": "Money takes away those who already had one foot out the door. Career and purpose keep the rest." },
+    "t6": { "manchete": "2029/2 — Second-to-last year. The 2027 investments start to show up (or to be missed).", "conselheiro": "ceo", "fala": "The board wants to see the curve going up. What you planted, you harvest now." },
+    "t7": { "manchete": "2030/1 — BOSS: THE AUDIT. The regulator demands governance of the AI models used in credit.", "conselheiro": "cfo", "fala": "Fines and provisions I know how to calculate. Improvised governance, I don't." },
+    "t8": { "manchete": "2030/2 — Final semester. In December, the board assesses the Bank Value — and your legacy.", "conselheiro": "cto", "fala": "The future doesn't end in 2030. What stays standing after your tenure?" },
+    "chefaoAviso": "BOSS OF THE SEMESTER",
+    "semestre": "Semester"
+  },
+  "grupos": {
+    "recrutamento": "Recruiting and selection",
+    "ld": "Learning and development (L&D)",
+    "ia": "AI by job family",
+    "futuro": "Future of work",
+    "nota": "Workforce planning: for each gap, decide between build (L&D), buy (hiring), borrow (flex) or bot (AI)."
+  },
+  "alavancas": {
+    "contratar": "Hire from the market",
+    "contratarDica": "Immediate capacity; costs ~20% more and leaves more",
+    "interno": "Promote / move internally",
+    "internoDica": "Cheaper and engaging; takes a semester",
+    "ld_cargo": "Reskill in role",
+    "ld_cargoDica": "Pays back in 2 turns",
+    "ld_realocar": "Reskill and redeploy",
+    "ld_realocarDica": "Pays back more, in 3 turns",
+    "ia_auto": "Automate (2 coins = 1 family)",
+    "ia_autoDica": "Cuts cost; without L&D alongside, it hurts the team",
+    "ia_copiloto": "AI copilot (1 coin = 1 family/semester)",
+    "ia_copilotoDica": "Productivity and retention; train alongside",
+    "hibrido": "Hybrid model (one-time activation)",
+    "hibridoDica": "2 coins = with results-based management",
+    "flex": "Flexible workforce",
+    "flexDica": "Covers gaps now, at a price"
+  },
+  "inteligencia": {
+    "titulo": "Intelligence (optional)",
+    "descricao": "People indicators are in the fog. Pay for data — or decide in the dark.",
+    "revelar": "Reveal for 2 semesters",
+    "previsao": "Forecast next semester's turnover",
+    "previsaoResultado": "If nothing changes, turnover should land at ~{v}% a year.",
+    "piloto": "Run a pilot before scaling",
+    "pilotoResultado": "Pilot logged: your evidence base grew (helps in the Audit).",
+    "moedas": "coins",
+    "saldo": "Semester budget",
+    "irDecisao": "Go to the decision"
+  },
+  "decisao": {
+    "titulo": "Semester decision",
+    "orcamentoRestante": "Coins remaining",
+    "iniciativas": "Active initiatives",
+    "avisoCapacidade": "More than 3 initiatives at once drags engagement down!",
+    "gpr": "With results-based management",
+    "confirmar": "Confirm decision"
+  },
+  "eventos": {
+    "titulo": "Event of the semester",
+    "corte": { "texto": "The CFO asks for a 20% cut in next semester's people budget. 'Everyone is cutting.'", "a": "Accept the cut (2 fewer coins next semester; cost drops)", "b": "Negotiate and keep it (the team notices the defense; cost stays a bit higher)" },
+    "aposentadoria": { "texto": "Three of the last specialists in the legacy credit system announce retirement at the end of the semester.", "a": "Retention package + mentoring (expensive, the knowledge stays)", "b": "Let them go and trust the documentation (spoiler: it doesn't exist)" },
+    "voltaEscritorio": { "texto": "A board member read an article about 'the end of home office' and wants everyone back 5 days a week.", "a": "Defend flexibility with performance data", "b": "Comply: everyone back on site" },
+    "pilotoIA": { "texto": "An AI pilot in customer service did well in ONE branch. Every committee wants to scale it nationally — without a control group.", "a": "Scale now (quick revenue, unmeasured model risk)", "b": "Measure before scaling (costs 1 coin, becomes evidence)" }
+  },
+  "porqueEvento": {
+    "corte.a": "You accepted the CFO's cut: lower cost, smaller budget.",
+    "corte.b": "You defended the people budget: the team noticed.",
+    "aposentadoria.a": "The retention package kept the legacy knowledge in-house.",
+    "aposentadoria.b": "The specialists left — and the legacy knowledge with them.",
+    "voltaEscritorio.a": "Flexibility survived the committee.",
+    "voltaEscritorio.b": "Forced return to the office: engagement and retention felt it.",
+    "pilotoIA.a": "Scaling without measuring: the revenue came, so did the risk.",
+    "pilotoIA.b": "You measured before scaling: evidence in your pocket."
+  },
+  "nevoa": {
+    "oculto": "in the fog",
+    "enganoso": "(data possibly misleading — see the debrief)"
+  },
+  "feedback": {
+    "botao": "Send my results and feedback",
+    "previaTitulo": "This — and only this — will be sent:",
+    "previaAviso": "No name, e-mail or personal data. Opens a form in a new tab; nothing is sent unless you click Submit there.",
+    "abrir": "Open pre-filled form",
+    "cancelar": "Cancel"
+  },
+  "debrief2": {
+    "decisoesChave": "The 3 decisions that mattered most",
+    "eSe": "What if?",
+    "eSeExplica": "Redo one of these decisions with a balanced allocation and see the alternative outcome.",
+    "eSeBotao": "Redo semester {t}",
+    "eSeResultado": "With that swap, the Bank Value in 2030 would be {v} (it was {v0}).",
+    "pesquisa": "The research behind the effects",
+    "insightsEnganosos": "Data that misled you",
+    "insightEnganosoItem": "In semester {t}, the data shown ({campo}: {mostrado}) was distorted; the real value was {real}. Correlation isn't causation — and dashboards get it wrong.",
+    "valorCaminho": "Bank Value, semester by semester"
+  },
+  "pesquisa": {
+    "nber": "AI copilot: +14% productivity (+34% among novices) and higher retention — Brynjolfsson, Li & Raymond (NBER)",
+    "bidwell": "External hires: ~+20% salary, worse reviews for 2 years, leave more — Bidwell (Wharton)",
+    "bloom": "Hybrid (2 days at home): -1/3 attrition, equal performance — Bloom, Han & Liang (Nature 2024)",
+    "wef": "39% of skills change by 2030; 59 in every 100 people need training — WEF Future of Jobs 2025",
+    "gallupQ12": "Top-quartile engagement: +23% profitability, +18% sales productivity (correlation) — Gallup Q12",
+    "gallupCusto": "Replacing a person costs 0.5 to 2 annual salaries — Gallup"
+  },
+  "porque": {
+    "capacidade.excesso": "Too many initiatives at once: the organization couldn't absorb them and engagement fell.",
+    "contratar.imediato": "External hires brought immediate capacity (performing below potential in the first 2 years — Bidwell/Wharton).",
+    "contratar.rampa": "The external hires reached full performance (Bidwell/Wharton).",
+    "contratar.premioSalarial": "Outside hires cost ~20% more (Bidwell/Wharton).",
+    "contratar.turnoverExterno": "External hires leave more in the first years (Bidwell/Wharton).",
+    "contratar.turnoverExternoFim": "The extra attrition from external hires has passed.",
+    "interno.prontidao": "Internal moves covered gaps with people who already know the bank.",
+    "interno.engajamento": "Internal promotions signal career paths: engagement rose.",
+    "ld.cargo": "Reskilling in role lifted readiness (WEF: 29 in 100 need it).",
+    "ld.realocar": "Reskill-and-redeploy filled critical positions (WEF: 19 in 100).",
+    "ld.horasTreinamento": "Hours in training reduced output this period.",
+    "ld.engajamento": "Investing in development lifted engagement.",
+    "ld.decaimento": "Without L&D investment, skills go stale and readiness drops.",
+    "ia.automacaoCusto": "Automation reduced people cost.",
+    "ia.autoEngajamento": "Automating without reskilling scared the team: engagement falling.",
+    "ia.autoTurnover": "Fear of being replaced by AI: more people resigning.",
+    "ia.autoPerdaConhecimento": "Tacit knowledge walked out the door with the people.",
+    "ia.copilotoProdutividade": "AI copilots lifted productivity (+14% on average, +34% among novices — NBER w31161).",
+    "ia.copilotoRetencao": "Tools that help (instead of threaten) increased retention (NBER w31161).",
+    "hibrido.turnover": "Hybrid cut attrition by about a third (Bloom et al., Nature 2024).",
+    "hibrido.semGPR": "Hybrid without results-based management: confusion and falling engagement.",
+    "flex.prontidao": "Temps and partners covered gaps in the short term.",
+    "flex.custo": "The flexible workforce has its price.",
+    "pressao.receita": "Digital banks keep biting into revenue.",
+    "pressao.nps": "The customer bar rises every year; stand still and NPS falls.",
+    "encadeamento.engajamentoReceita": "More engaged teams sold more (Gallup: +18% productivity correlation).",
+    "encadeamento.engajamentoNps": "Engaged people serve better: NPS responded (Gallup).",
+    "encadeamento.prontidaoReceita": "Ready skills became capacity to execute the strategy.",
+    "encadeamento.custoReposicao": "Replacing leavers costs 0.5 to 2 annual salaries (Gallup).",
+    "encadeamento.perdaConhecimento": "Turnover too high: knowledge is evaporating.",
+    "divida.jurosReceita": "People debt is charging interest on revenue.",
+    "divida.jurosTurnover": "People debt is charging interest on turnover.",
+    "chefao.ondaIA.mitigado": "You had AI in production: the wave only grazed the NPS.",
+    "chefao.ondaIA.nps": "With no AI answer, customers migrated: NPS plunged.",
+    "chefao.ondaIA.receita": "The AI wave took revenue with it.",
+    "chefao.cacaTalentos.mitigado": "Your team had reasons to stay: the raider took little.",
+    "chefao.cacaTalentos.prontidao": "The fintech took your best data specialists.",
+    "chefao.cacaTalentos.turnover": "The fintech's poaching spread to other departures.",
+    "chefao.auditoria.receita": "The regulator restricted ungoverned credit models.",
+    "chefao.auditoria.custo": "Scrambling for governance at the last minute was expensive."
+  },
+  "resultado": {
+    "titulo": "Results of the year",
+    "tituloSemestre": "Results of the semester",
+    "valorBanco": "Bank Value"
+  },
+  "finais": {
+    "arquiteto": { "nome": "The Architect", "texto": "You balanced short and long term: people ready, business healthy. The bank reaches 2030 ready for the AI era." },
+    "bombeiro": { "nome": "The Firefighter", "texto": "You put out every quarterly fire — and reached 2030 out of breath. Quick results, fragile foundation." },
+    "jardineiro": { "nome": "The Gardener", "texto": "You grew an amazing team... and the business wilted waiting for the harvest. People strategy is business strategy — in both directions." },
+    "apostador": { "nome": "The Gambler", "texto": "All-in on AI, with no data and no people ready. Costs fell fast; the bill came later, with interest." }
+  },
+  "debrief": {
+    "titulo": "Debrief",
+    "notas": "Your grades by horizon",
+    "curto": "Short term",
+    "medio": "Medium term",
+    "longo": "Long term",
+    "pergunta": "To take back to work: which people decision in your area is being judged only by its short-term effect?",
+    "desbloqueio": "Traditional Mode unlocked! 8 semesters, free budget, fog of war and 3 bosses."
+  }
 }

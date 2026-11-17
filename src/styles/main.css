@@ -1,3 +1,32 @@
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("/fonts/atkinson-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("/fonts/atkinson-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("/fonts/atkinson-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "VT323";
+  src: url("/fonts/vt323-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --bg: #121428;
   --bg2: #1c1f3a;
@@ -9,8 +38,8 @@
   --green: #6fe08a;
   --red: #ff7a7a;
   --blue: #7ab8ff;
-  --font-body: "Avenir Next", "Segoe UI", system-ui, sans-serif;
-  --font-title: "Courier New", monospace;
+  --font-body: "Atkinson Hyperlegible", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --font-title: "VT323", "Courier New", monospace;
 }
 
 * { box-sizing: border-box; }
@@ -63,8 +92,21 @@ button.primario { background: var(--gold); color: #1a1a2e; border-color: var(--g
   padding: 14px 16px;
   margin: 10px 0;
   position: relative;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
 }
 .caixa-dialogo .falante { color: var(--gold); font-weight: 700; display: block; margin-bottom: 4px; }
+.caixa-dialogo .retrato {
+  width: 48px;
+  height: 48px;
+  image-rendering: pixelated;
+  flex-shrink: 0;
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg);
+}
+.caixa-conteudo { flex: 1; min-width: 0; }
 
 .manchete {
   background: var(--bg2);
@@ -133,6 +175,20 @@ details.porque li { font-size: 0.85rem; color: var(--muted); }
   text-align: center;
 }
 .final-card .valorzao { font-size: 2.4rem; color: var(--gold); font-family: var(--font-title); }
+
+.controles-topo { display: flex; justify-content: flex-end; gap: 8px; }
+.controles-topo select {
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--text);
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  min-height: 44px;
+}
+.controles-topo select:focus-visible { border-color: var(--gold); outline: none; }
+.btn-som { min-width: 44px; padding: 8px 10px; }
 
 /* ── Modo Tradicional ── */
 .indicador.na-nevoa { opacity: 0.6; border-style: dashed; }

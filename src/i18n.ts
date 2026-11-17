@@ -5,10 +5,15 @@ export type Idioma = "pt" | "en";
 
 const dicionarios: Record<Idioma, unknown> = { pt, en };
 
-let idiomaAtual: Idioma = "pt";
+const CHAVE_IDIOMA = "bancomaravilha.idioma";
+
+let idiomaAtual: Idioma =
+  typeof localStorage !== "undefined" && localStorage.getItem(CHAVE_IDIOMA) === "en" ? "en" : "pt";
 
 export function setIdioma(id: Idioma) {
   idiomaAtual = id;
+  localStorage.setItem(CHAVE_IDIOMA, id);
+  document.documentElement.lang = id === "en" ? "en" : "pt-BR";
 }
 
 export function getIdioma(): Idioma {
