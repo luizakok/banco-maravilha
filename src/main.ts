@@ -7,10 +7,15 @@ import {
   jogarTurnoTrad,
   novaPartidaTrad,
   registrarEscolhas,
+  turnoAtual,
   type PartidaTrad,
 } from "./game/tradicional";
 import { montarDecisao, politicasDisponiveis } from "./game/gaps";
+import { t } from "./i18n";
 import { tocar } from "./ui/som";
+import { montarControles } from "./ui/components/controles";
+import { abrirBoasVindas, jaViuBoasVindas } from "./ui/components/boasVindas";
+import { telaPressStart } from "./ui/screens/pressStart";
 import { telaTitulo } from "./ui/screens/titulo";
 import { telaTurnoExpress } from "./ui/screens/turnoExpress";
 import { telaResultadoExpress } from "./ui/screens/resultadoExpress";
@@ -20,6 +25,8 @@ import { telaDecisaoTrad } from "./ui/screens/decisaoTrad";
 import { telaEventoTrad } from "./ui/screens/eventoTrad";
 import { telaResultadoTrad } from "./ui/screens/resultadoTrad";
 import { telaDebriefTrad } from "./ui/screens/debriefTrad";
+import { telaPassagemAno } from "./ui/screens/passagemAno";
+import { viraOAno } from "./game/fases";
 
 const app = document.getElementById("app")!;
 
@@ -29,8 +36,28 @@ app.addEventListener("click", (ev) => {
   if (alvo.closest("button") && !alvo.closest(".btn-som")) tocar("clique");
 });
 
+/**
+ * Última tela pintada. Trocar de idioma repinta ela mesma: um reload perderia
+ * a partida no meio.
+ */
+let ultimaTela: () => void = () => {};
+
+function pintar(tela: () => void) {
+  ultimaTela = tela;
+  tela();
+}
+
+function mostrarAbertura() {
+  pintar(() =>
+    telaPressStart(app, () => {
+      mostrarTitulo();
+      if (!jaViuBoasVindas()) abrirBoasVindas(() => {});
+    })
+  );
+}
+
 function mostrarTitulo() {
-  telaTitulo(app, iniciarExpress, iniciarTradicional);
+  pintar(() => telaTitulo(app, iniciarExpress, iniciarTradicional));
 }
 
 // ── Express ──
@@ -41,17 +68,21 @@ function iniciarExpress() {
 
 function mostrarTurno(p: PartidaExpress, indice: number) {
   if (TURNOS_EXPRESS[indice].chefao) tocar("chefao");
-  telaTurnoExpress(app, p, indice, (carta) => {
-    jogarCarta(p, carta);
-    telaResultadoExpress(app, p, () => {
-      const proximo = indice + 1;
-      if (proximo < TURNOS_EXPRESS.length) mostrarTurno(p, proximo);
-      else {
-        tocar("final");
-        telaFinalExpress(app, p, iniciarExpress, mostrarTitulo);
-      }
-    });
-  });
+  pintar(() =>
+    telaTurnoExpress(app, p, indice, (carta) => {
+      jogarCarta(p, carta);
+      pintar(() =>
+        telaResultadoExpress(app, p, () => {
+          const proximo = indice + 1;
+          if (proximo < TURNOS_EXPRESS.length) mostrarTurno(p, proximo);
+          else {
+            tocar("final");
+            pintar(() => telaFinalExpress(app, p, iniciarExpress, mostrarTitulo));
+          }
+        })
+      );
+    })
+  );
 }
 
 // ── Tradicional ──
@@ -62,30 +93,47 @@ function iniciarTradicional() {
 
 function mostrarSemestre(part: PartidaTrad) {
   if (ehTurnoChefao(part)) tocar("chefao");
-  telaBriefingTrad(app, part, () => {
-    telaDecisaoTrad(app, part, (esc) => {
-      const politicas = politicasDisponiveis(part.estado.hibridoAtivo);
-      const d = montarDecisao(esc, politicas, part.copilotosAtivos);
-      registrarEscolhas(part, esc);
-      const evento = jogarTurnoTrad(part, d);
-      const aoResultado = () =>
-        telaResultadoTrad(app, part, () => {
-          fecharTurno(part);
-          if (acabou(part)) {
-            tocar("final");
-            telaDebriefTrad(app, part, iniciarTradicional, mostrarTitulo);
-          } else mostrarSemestre(part);
-        });
-      if (evento) {
-        telaEventoTrad(app, evento, (opcao) => {
-          aplicarEvento(part, evento, opcao);
-          aoResultado();
-        });
-      } else {
-        aoResultado();
-      }
-    });
-  });
+  pintar(() =>
+    telaBriefingTrad(app, part, () => {
+      pintar(() =>
+        telaDecisaoTrad(app, part, (esc) => {
+          const politicas = politicasDisponiveis(part.estado.hibridoAtivo);
+          const d = montarDecisao(esc, politicas, part.copilotosAtivos);
+          registrarEscolhas(part, esc);
+          const evento = jogarTurnoTrad(part, d);
+          const aoResultado = () =>
+            pintar(() =>
+              telaResultadoTrad(app, part, () => {
+                // fecharTurno não mexe no contador: o turno que acabou de rodar
+                // é o que está no estado, e o próximo é turnoAtual
+                const jogado = part.estado.turno;
+                fecharTurno(part);
+                if (acabou(part)) {
+                  tocar("final");
+                  pintar(() => telaDebriefTrad(app, part, iniciarTradicional, mostrarTitulo));
+                } else if (viraOAno(jogado, turnoAtual(part))) {
+                  pintar(() => telaPassagemAno(app, part.estado, () => mostrarSemestre(part)));
+                } else mostrarSemestre(part);
+              })
+            );
+          if (evento) {
+            pintar(() =>
+              telaEventoTrad(app, evento, (opcao) => {
+                aplicarEvento(part, evento, opcao);
+                aoResultado();
+              })
+            );
+          } else {
+            aoResultado();
+          }
+        })
+      );
+    })
+  );
 }
 
-mostrarTitulo();
+montarControles(() => {
+  document.title = t("banco.nome");
+  ultimaTela();
+});
+mostrarAbertura();

@@ -9,11 +9,51 @@
     "dica": "Every people decision moves the business — just not right away.",
     "escolhaAvatar": "Who signs the decisions?",
     "diretora": "Chief People Officer (she)",
-    "diretor": "Chief People Officer (he)"
+    "diretor": "Chief People Officer (he)",
+    "pressStart": "PRESS START",
+    "pressStartDica": "Click to start. Sound comes on with it — mute it at the 🔊 in the corner."
+  },
+  "boasVindas": {
+    "titulo": "First day in the job",
+    "texto": "You have just taken over People at The Amazing Bank: 30,000 employees, four years ahead of you and a budget that never covers everything. Every decision shows up on a different timeline — some of them only in 2030. You can learn as you play, but the tutorial takes a minute.",
+    "verTutorial": "See the tutorial",
+    "pular": "Skip to the game",
+    "comecar": "Start",
+    "moedaTitulo": "The budget is your currency",
+    "moedaTexto": "You get 100 coins each half-year and pick the size of every bet: S, M or L. 🪙 is a one-off cost. 🔄 is a cost that comes back every half-year and eats into the next budget.",
+    "tempoTitulo": "Timing is part of the decision",
+    "tempoTexto": "Hiring ready-made people fixes things now and costs you in payroll. Building from within costs now and pays off in two years. The time ruler on each option shows when the effect lands.",
+    "nevoaTitulo": "You cannot see everything",
+    "nevoaTexto": "Engagement, turnover and skills readiness stay in the fog until you pay for a survey. And not everything you see is true: some insights come out skewed, just like in real life."
+  },
+  "chefoes": {
+    "ondaIA.nome": "The AI Wave",
+    "ondaIA.entrada": "Two competitors launched AI-powered service in the same month. Your call centre still answers the way it did in 2019.",
+    "cacaTalentos.nome": "The Headhunter",
+    "cacaTalentos.entrada": "A fintech opened an office three blocks away and is messaging your team on LinkedIn, one by one.",
+    "auditoria.nome": "The Audit",
+    "auditoria.entrada": "The regulator wants to see credit model governance. Not the deck: the documentation."
+  },
+  "passagem": {
+    "rotulo": "A year went by",
+    "legenda": "The office has changed: {estilo}."
+  },
+  "escritorio": {
+    "sala": "The office in {ano}: {estilo}.",
+    "estilo1": "individual cubicles and small windows",
+    "estilo2": "open space with wall-to-wall glass",
+    "estilo3": "hybrid room with a call screen on the wall",
+    "estilo4": "curved pods and a data wall running the full length",
+    "mesas": "{ocupadas} of {total} desks have someone at them.",
+    "telasIA1": "One screen running an AI copilot.",
+    "telasIA": "{n} screens running an AI copilot.",
+    "caixas1": "One moving box by the door.",
+    "caixas": "{n} moving boxes by the door."
   },
   "comum": {
     "continuar": "Continue",
     "pular": "Skip",
+    "voltar": "Back",
     "confirmar": "Confirm choice",
     "turno": "Year",
     "de": "of",
@@ -159,31 +199,62 @@
     "hibridoAtivo": "Hybrid work is live"
   },
   "conselheiros": {
-    "ceo": "CEO",
-    "cfo": "CFO",
-    "cto": "CTO",
-    "voz": "Voice of the Team"
+    "ceo": "Vera Lins",
+    "cfo": "Haroldo Bastos",
+    "cto": "Kenji Tavares",
+    "voz": "Sandra Vieira",
+    "ceoCargo": "CEO",
+    "cfoCargo": "CFO",
+    "ctoCargo": "CTO",
+    "vozCargo": "People Committee"
+  },
+  "reacoes": {
+    "titulo": "In the hallway, after the meeting",
+    "buildPesado": "{moedas} coins on training. I signed off on it. Now I want to see it in revenue before 2030.",
+    "recorrenteAlto": "{moedas} coins leave the budget before you decide anything. That's not a budget, that's rent.",
+    "gastouPouco": "{moedas} coins this semester. I applaud thrift. But in {ano} the board won't ask what's left over.",
+    "pagouPiloto": "You spent {moedas} coins proving it works before scaling. I hate to admit it was cheap.",
+    "eficienciaMelhorou": "Efficiency ratio {pontos} point better. I saved the screenshot. I'll need it in December.",
+    "auditoriaSemDados": "The regulator will ask for the history and we have what? Memory. Memory doesn't sign a report.",
+    "copilotoNovo": "{n} job families with a copilot. I already asked for access for my team. Just don't repeat last year's pilot, that nobody measured.",
+    "automatizouSemPreparo": "We automated and {pct}% of the team can't open the new dashboard. They'll be calling me tomorrow, right?",
+    "painelComprado": "Now I can see the team without asking HR for a favour. That changes my life more than the copilot.",
+    "ondaSemResposta": "The competitor launched AI in service and we launched a meeting. NPS {nps}. I'm just reading the dashboard.",
+    "prontidaoSubiu": "Readiness at {prontidao}. My team stopped asking me if the copilot is a fad.",
+    "comprouEmVezDeFormar": "{moedas} coins on outside hires for Pedro's team. He trained the new ones. Then he asked me, in the hallway, whether his job still exists.",
+    "turnoverSubiu": "Turnover at {turnover}. Three resignations in one week, at my branch. Not one of them mentioned salary.",
+    "engajamentoSubiu": "First time in four years someone stopped me at the branch to say something good. Write it down, it doesn't happen often.",
+    "engajamentoCaiu": "People stopped showing up to the Monday meeting. Nobody complained. That's the part that worries me.",
+    "hibridoComMetas": "Hybrid with the goals written down. Now I can defend the team when they ask who was working from home.",
+    "hibridoSemMetas": "Hybrid without clear goals turns into managers fighting over a timesheet. Call me before the next one.",
+    "temporarios": "{moedas} coins on contractors. They'll leave with what they learned here — and we keep the process.",
+    "cacaTalentosDoeu": "The fintech took good people. Turnover at {turnover}. The ones who stayed are watching to see what you do now.",
+    "receitaCaiu": "Revenue {receita}. I'm not going to the board to explain skills readiness. I'm going to explain {receita}.",
+    "receitaSubiu": "Revenue {receita}. Now don't stop. The board has a short memory for good news.",
+    "ultimoSemestre": "December. The board will see Bank Value at {valor} and ask what we've done since 2027.",
+    "riscoNoLimite": "Risk in the red. Legal already came to me. Fix it before it becomes a board topic.",
+    "npsCaiu": "NPS {nps}. Customers don't wait for our upskilling plan to finish."
   },
   "express": {
     "t1": {
       "manchete": "2027 — The new strategic plan demands an AI-ready bank. The skills gap is the widest in decades.",
-      "fala_ceo": "I need results NOW. Hire ready-made people and let's go.",
-      "fala_voz": "If you only hire from outside, the people who've been here 20 years will get the message — and leave."
+      "fala_ceo": "I have one quarter, not a career plan. Bring me people who already know how.",
+      "fala_voz": "Rita trained the last four people who joined. If the fifth comes from outside again, she's going to ask me why."
     },
     "t2": {
       "manchete": "2028 — Digital banks slash fees. The board demands efficiency.",
-      "fala_cfo": "Automate everything you can. Training? Cut it. It's always the first thing out of the budget.",
-      "fala_voz": "Automating without reskilling is firing in slow motion. The team feels it."
+      "fala_cfo": "Automate what you can. I cut training every year and nobody complains until December.",
+      "fala_voz": "Automate the back office and what does Cláudia do on Monday? Because she will ask me."
     },
     "t3": {
       "manchete": "2029 — BOSS: THE AI WAVE. A digital competitor launches 100% AI service. Our NPS starts to melt.",
-      "fala_cto": "I warned you! Scale the copilots NOW or we become a museum piece.",
-      "fala_ceo": "It's not about how, it's about when: yesterday."
+      "fala_cto": "I sent you the link to their launch back in March. Can we still scale the copilots this year?",
+      "fala_ceo": "The board asked me twice today. Tomorrow I won't have a new answer to give them."
     },
     "t4": {
       "manchete": "2030 — Last year of the cycle. The board wants to see the Bank Value. What did you plant?",
-      "fala_cfo": "Harvest time. No new adventures in the final year.",
-      "fala_cto": "Adventures? The future doesn't wait for planning cycles."
+      "fala_cfo": "Final year. I'm not signing anything new that only pays back in 2032.",
+      "fala_cto": "Haroldo, the competitor doesn't know it's the last year of our cycle."
     },
     "chefaoAviso": "BOSS OF THE YEAR"
   },
@@ -202,14 +273,14 @@
     "t4c": { "titulo": "Double down on people", "conselheiro": "voz", "descricao": "Invest heavily in reskilling and redeployment. The payoff may come after 2030." }
   },
   "tradicional": {
-    "t1": { "manchete": "2027/1 — You take over the People Office. The diagnosis: the widest skills gap in decades and a strategic plan that depends on closing it.", "conselheiro": "voz", "fala": "The team wants to believe. Show them we can grow from within before filling the bank with outsiders." },
-    "t2": { "manchete": "2027/2 — Digital banks cut fees and the board demands the efficiency ratio.", "conselheiro": "cfo", "fala": "Every efficiency point is gold. Training is the first cut — always has been." },
-    "t3": { "manchete": "2028/1 — BOSS: THE AI WAVE. A digital competitor launches 100% AI service and our NPS starts to melt.", "conselheiro": "cto", "fala": "Either we scale AI now, or in two years we're the case study nobody wants to be." },
-    "t4": { "manchete": "2028/2 — Wave hangover: every committee wants to 'do something with AI'. Few know what.", "conselheiro": "ceo", "fala": "Revenue. It's the only word I want to hear in this committee." },
-    "t5": { "manchete": "2029/1 — BOSS: THE TALENT RAIDER. A fintech offers your data team double the salary.", "conselheiro": "voz", "fala": "Money takes away those who already had one foot out the door. Career and purpose keep the rest." },
-    "t6": { "manchete": "2029/2 — Second-to-last year. The 2027 investments start to show up (or to be missed).", "conselheiro": "ceo", "fala": "The board wants to see the curve going up. What you planted, you harvest now." },
+    "t1": { "manchete": "2027/1 — You take over the People Office. The diagnosis: the widest skills gap in decades and a strategic plan that depends on closing it.", "conselheiro": "voz", "fala": "Someone at the branch asked me yesterday if there are changes coming. I said I didn't know. Tell me before the email goes out, please." },
+    "t2": { "manchete": "2027/2 — Digital banks cut fees and the board demands the efficiency ratio.", "conselheiro": "cfo", "fala": "The board asked for the efficiency ratio on one line. Training is the line I know how to cut without anyone shouting today." },
+    "t3": { "manchete": "2028/1 — BOSS: THE AI WAVE. A digital competitor launches 100% AI service and our NPS starts to melt.", "conselheiro": "cto", "fala": "I tried their app last night. Answered in four seconds. Our chat still asks for the ID number twice." },
+    "t4": { "manchete": "2028/2 — Wave hangover: every committee wants to 'do something with AI'. Few know what.", "conselheiro": "ceo", "fala": "Three committees this week asked me to talk about AI. Nobody brought a number. You bring one." },
+    "t5": { "manchete": "2029/1 — BOSS: THE TALENT RAIDER. A fintech offers your data team double the salary.", "conselheiro": "voz", "fala": "Two people from the data team are already gone. The third texted me asking what we're going to do. I haven't answered yet." },
+    "t6": { "manchete": "2029/2 — Second-to-last year. The 2027 investments start to show up (or to be missed).", "conselheiro": "ceo", "fala": "It's 2029. What you approved in 2027 either shows up now, or I have to explain why it didn't." },
     "t7": { "manchete": "2030/1 — BOSS: THE AUDIT. The regulator demands governance of the AI models used in credit.", "conselheiro": "cfo", "fala": "Fines and provisions I know how to calculate. Improvised governance, I don't." },
-    "t8": { "manchete": "2030/2 — Final semester. In December, the board assesses the Bank Value — and your legacy.", "conselheiro": "cto", "fala": "The future doesn't end in 2030. What stays standing after your tenure?" },
+    "t8": { "manchete": "2030/2 — Final semester. In December, the board assesses the Bank Value — and your legacy.", "conselheiro": "cto", "fala": "In January someone else sits in that chair. I'd like to be able to say what we built runs without you." },
     "chefaoAviso": "BOSS OF THE SEMESTER",
     "semestre": "Semester"
   },

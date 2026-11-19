@@ -1,7 +1,9 @@
-import { t } from "../../i18n";
+import { t, tf } from "../../i18n";
 import { faseDoTurno } from "../../game/fases";
 import type { PartidaTrad } from "../../game/tradicional";
 import { CAMPOS_NEVOA, relacoesFortes } from "../../game/tradicional";
+import { reacaoDoSemestre } from "../../game/reacoes";
+import { caixaDialogo, nomeConselheiro } from "../components/dialog";
 import { painelIndicadores } from "../components/indicadores";
 import { rodapeFontes } from "../components/fontes";
 import { barraValorDoBanco, dashboardLinhas } from "../components/graficos";
@@ -38,6 +40,15 @@ export function telaResultadoTrad(raiz: HTMLElement, part: PartidaTrad, aoContin
 
   raiz.append(el("h2", undefined, t("resultado.tituloSemestre")));
   raiz.append(el("p", "faixa-ano", t(`resultado.fase${fase}`)));
+
+  // ── O conselheiro só reage depois da assinatura, e só se tiver o que dizer ──
+  const reacao = reacaoDoSemestre(part);
+  if (reacao) {
+    raiz.append(el("p", "relogio", t("reacoes.titulo")));
+    raiz.append(
+      caixaDialogo(nomeConselheiro(reacao.conselheiro), tf(`reacoes.${reacao.chave}`, reacao.vars), reacao.conselheiro)
+    );
+  }
 
   const ocultos = CAMPOS_NEVOA.filter((c) => part.reveladas[c] === 0);
   raiz.append(painelIndicadores(atual, anterior, { ocultos }));

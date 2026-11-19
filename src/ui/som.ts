@@ -12,11 +12,28 @@ export function somLigado(): boolean {
   return ligado;
 }
 
+/** Qualquer botão de som desenhado na tela se redesenha ao ouvir isto. */
+const EVENTO = "bancomaravilha:som";
+
 export function alternarSom(): boolean {
   ligado = !ligado;
   localStorage.setItem(CHAVE, ligado ? "1" : "0");
   if (ligado) tocar("clique");
+  else pararTema();
+  window.dispatchEvent(new Event(EVENTO));
   return ligado;
+}
+
+/**
+ * O PRESS START liga o som: o clique é o consentimento, e é o que faz o
+ * jogo soar como videogame. Quem já mutou alguma vez continua mudo.
+ */
+export function ligarSomNoPrimeiroClique(): void {
+  if (localStorage.getItem(CHAVE) === null) {
+    ligado = true;
+    localStorage.setItem(CHAVE, "1");
+    window.dispatchEvent(new Event(EVENTO));
+  }
 }
 
 function contexto(): AudioContext {
@@ -67,6 +84,19 @@ const EFEITOS: Record<string, Nota[]> = {
     { freq: 196, dur: 0.14, atraso: 0, vol: 0.08 },
     { freq: 185, dur: 0.14, atraso: 0.16, vol: 0.08 },
     { freq: 196, dur: 0.22, atraso: 0.32, vol: 0.08 },
+    { freq: 98, dur: 0.3, atraso: 0.32, tipo: "triangle", vol: 0.09 },
+    { freq: 233, dur: 0.14, atraso: 0.6, vol: 0.08 },
+    { freq: 220, dur: 0.14, atraso: 0.76, vol: 0.08 },
+    { freq: 233, dur: 0.4, atraso: 0.92, vol: 0.08 },
+    { freq: 116, dur: 0.5, atraso: 0.92, tipo: "triangle", vol: 0.09 },
+  ],
+  // passagem de ano: uma escada subindo, como um relógio avançando
+  transicao: [
+    { freq: 392, dur: 0.1, atraso: 0 },
+    { freq: 523, dur: 0.1, atraso: 0.11 },
+    { freq: 659, dur: 0.1, atraso: 0.22 },
+    { freq: 784, dur: 0.24, atraso: 0.33 },
+    { freq: 131, dur: 0.5, atraso: 0.33, tipo: "triangle", vol: 0.07 },
   ],
   final: [
     { freq: 523, dur: 0.12, atraso: 0 },
@@ -88,6 +118,73 @@ export function tocar(efeito: Efeito) {
   }
 }
 
+// ── Tema: um loop de 6,4s em lá menor, melodia em onda quadrada e baixo em triângulo ──
+
+const PASSO = 0.2;
+const PASSOS = 32;
+const LOOP = PASSOS * PASSO;
+
+/** [passo, frequência, duração em passos] */
+const MELODIA: [number, number, number][] = [
+  [0, 440, 2],
+  [2, 523, 2],
+  [4, 659, 3],
+  [7, 587, 1],
+  [8, 523, 2],
+  [10, 659, 2],
+  [12, 880, 4],
+  [16, 784, 2],
+  [18, 659, 2],
+  [20, 698, 3],
+  [23, 659, 1],
+  [24, 587, 2],
+  [26, 523, 2],
+  [28, 494, 2],
+  [30, 330, 2],
+];
+
+const BAIXO = [110, 110, 87, 87, 131, 131, 98, 82];
+
+let temaInicio = 0;
+let relogioTema: number | null = null;
+
+function agendarCompasso(ac: AudioContext) {
+  const base = temaInicio - ac.currentTime;
+  for (const [passo, freq, dur] of MELODIA) {
+    nota(ac, { freq, dur: dur * PASSO * 0.9, atraso: base + passo * PASSO, vol: 0.035 });
+  }
+  BAIXO.forEach((freq, i) => {
+    nota(ac, { freq, dur: PASSO * 3.6, atraso: base + i * 4 * PASSO, tipo: "triangle", vol: 0.05 });
+  });
+  temaInicio += LOOP;
+}
+
+/**
+ * Toca o tema em loop. O agendamento é absoluto (temaInicio), e não relativo ao
+ * tick do setInterval: assim o compasso seguinte encosta no anterior sem engasgo.
+ */
+export function tocarTema() {
+  if (!ligado || relogioTema !== null) return;
+  try {
+    const ac = contexto();
+    temaInicio = ac.currentTime + 0.1;
+    agendarCompasso(ac);
+    relogioTema = window.setInterval(() => {
+      if (!ligado) return pararTema();
+      if (temaInicio - ac.currentTime < LOOP) agendarCompasso(ac);
+    }, 400);
+  } catch {
+    // áudio indisponível: segue sem som
+  }
+}
+
+export function pararTema() {
+  if (relogioTema !== null) {
+    clearInterval(relogioTema);
+    relogioTema = null;
+  }
+}
+
 /** Botão de alternar som (🔊/🔇), para o canto das telas. */
 export function botaoSom(aoMudar?: () => void): HTMLButtonElement {
   const btn = document.createElement("button");
@@ -98,9 +195,9 @@ export function botaoSom(aoMudar?: () => void): HTMLButtonElement {
   };
   btn.addEventListener("click", () => {
     alternarSom();
-    render();
     aoMudar?.();
   });
+  window.addEventListener(EVENTO, render);
   render();
   return btn;
 }

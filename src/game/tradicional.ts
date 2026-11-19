@@ -1,5 +1,6 @@
 import eventosJson from "../content/events.json";
 import { copilotosDaDecisao, opcaoPorId, type Escolhas } from "./gaps";
+import type { Reacao } from "./reacoes";
 import type { CampoNum, Decisao, Estado, Explicacao } from "../model/types";
 import { criarRng, type Rng } from "../model/rng";
 import { estadoInicial, p, simularTurno } from "../model/simulate";
@@ -73,6 +74,8 @@ export interface PartidaTrad {
   /** piloto contratado neste semestre; o resultado medido aparece no próximo */
   pilotoPendente: boolean;
   pilotoResultado: number | null;
+  /** quem comentou cada semestre (null = ninguém tinha o que dizer) */
+  reacoesPorTurno: (Reacao | null)[];
 }
 
 function montarAgenda(seed: number): Map<number, EventoDef> {
@@ -111,6 +114,7 @@ export function novaPartidaTrad(seed = Date.now() >>> 0): PartidaTrad {
     insightsEnganosos: [],
     pilotoPendente: false,
     pilotoResultado: null,
+    reacoesPorTurno: [],
   };
 }
 

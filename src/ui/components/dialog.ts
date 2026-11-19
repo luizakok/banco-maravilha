@@ -1,4 +1,10 @@
+import { t } from "../../i18n";
 import { retrato } from "./pixel";
+
+/** "Vera Lins · CEO": o nome manda, o cargo explica de onde ela fala. */
+export function nomeConselheiro(id: string): string {
+  return `${t(`conselheiros.${id}`)} · ${t(`conselheiros.${id}Cargo`)}`;
+}
 
 /** Caixa de diálogo estilo RPG com retrato pixelado e máquina de escrever (pulável). */
 export function caixaDialogo(falante: string, texto: string, conselheiroId?: string): HTMLElement {

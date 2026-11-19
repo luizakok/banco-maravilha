@@ -2,7 +2,7 @@ import { t } from "../../i18n";
 import type { CartaDef, PartidaExpress, TurnoDef } from "../../game/express";
 import { TURNOS_EXPRESS } from "../../game/express";
 import { avatarAtual } from "../../game/avatar";
-import { caixaDialogo } from "../components/dialog";
+import { caixaDialogo, nomeConselheiro } from "../components/dialog";
 import { painelIndicadores } from "../components/indicadores";
 import { retratoUrl } from "../components/pixel";
 import { el, limpar } from "../dom";
@@ -23,7 +23,7 @@ export function telaTurnoExpress(
   raiz.append(el("div", "manchete", t(def.mancheteKey)));
 
   for (const fala of def.falas)
-    raiz.append(caixaDialogo(t(`conselheiros.${fala.conselheiro}`), t(fala.key), fala.conselheiro));
+    raiz.append(caixaDialogo(nomeConselheiro(fala.conselheiro), t(fala.key), fala.conselheiro));
 
   raiz.append(painelIndicadores(p.estado, p.historico.at(-2)));
 

@@ -12,3 +12,8 @@ export function faseDoTurno(turno: number): Fase {
 export function anoDoTurno(turno: number): number {
   return 2026 + faseDoTurno(turno);
 }
+
+/** Houve virada de ano entre o turno que fechou e o próximo? */
+export function viraOAno(turnoAnterior: number, turnoNovo: number): boolean {
+  return faseDoTurno(turnoNovo) > faseDoTurno(turnoAnterior);
+}

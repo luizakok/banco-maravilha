@@ -33,25 +33,27 @@ const UI: Paleta = {
 
 // 12x12
 const RETRATOS: Record<string, Sprite> = {
+  // Vera Lins, 54 — cabelo na altura do ombro já com fios brancos, blazer do conselho
   ceo: {
-    paleta: { ...BASE, c: "#8a8fa8", t: "#2d3561", g: "#ffd24a" },
+    paleta: { ...BASE, c: "#3a2a38", t: "#2d3561", g: "#b9b2c4", f: "#f0eef8" },
     linhas: [
-      "....####....",
-      "...#cccc#...",
+      "...######...",
       "..#cccccc#..",
-      "..#pppppp#..",
-      "..#pbopbo#..",
-      "..#pppppp#..",
-      "..#p####p#..",
-      "...#pppp#...",
+      ".#cgcccgcc#.",
+      ".#cppppppc#.",
+      ".#cpbopboc#.",
+      ".#cppppppc#.",
+      ".#cp####pc#.",
+      "..#cppppc#..",
       "..##tttt##..",
-      ".#ttgttgtt#.",
+      ".#tt#ff#tt#.",
       "#tttt##tttt#",
       "#ttt#..#ttt#",
     ],
   },
+  // Haroldo Bastos, 61 — grisalho, óculos de sempre e a gravata que ele nunca trocou
   cfo: {
-    paleta: { ...BASE, c: "#5d4a66", t: "#3a3f6e", v: "#6fe08a" },
+    paleta: { ...BASE, c: "#c9ccd8", t: "#3a3f6e", v: "#8c3f6e" },
     linhas: [
       "....####....",
       "...#cccc#...",
@@ -62,13 +64,14 @@ const RETRATOS: Record<string, Sprite> = {
       "..#P####P#..",
       "...#PPPP#...",
       "..##tttt##..",
-      ".#tvvtvvtt#.",
-      "#tttt##tttt#",
+      ".#tt#vv#tt#.",
+      "#tttt#v#ttt#",
       "#ttt#..#ttt#",
     ],
   },
+  // Kenji Tavares, 38 — óculos de fintech e o moletom que ele usa até no comitê
   cto: {
-    paleta: { ...BASE, c: "#d8773a", t: "#24564f", z: "#7ab8ff" },
+    paleta: { ...BASE, c: "#2a2438", t: "#2f4f6b", z: "#7ab8ff", a: "#6fe0d0" },
     linhas: [
       "....####....",
       "...#cccc#...",
@@ -79,7 +82,7 @@ const RETRATOS: Record<string, Sprite> = {
       "..#pppppp#..",
       "...#pppp#...",
       "..##tttt##..",
-      ".#tttttttt#.",
+      ".#tt#aa#tt#.",
       "#tttt##tttt#",
       "#ttt#..#ttt#",
     ],
@@ -225,6 +228,77 @@ const PERSONAS: Record<string, Sprite> = {
       "..#tt#b##b#tt#..",
       "..#tttt##tttt#..",
       "..####....####..",
+    ],
+  },
+};
+
+// 16x16 — os três chefões
+const CHEFOES: Record<string, Sprite> = {
+  // Robô de duas cabeças de altura: a onda da IA chegando no banco.
+  ondaIA: {
+    paleta: { ...BASE, c: "#8a8fa8", r: "#ff7a7a", z: "#7ab8ff", a: "#ffd24a" },
+    linhas: [
+      ".....#....#.....",
+      "......#aa#......",
+      "....##cccc##....",
+      "...#cccccccc#...",
+      "...#crr##rrc#...",
+      "...#cccccccc#...",
+      "...#c######c#...",
+      "....#cccccc#....",
+      "..############..",
+      ".#zzcccccccczz#.",
+      ".#zz#cccccc#zz#.",
+      "..#.#cccccc#.#..",
+      "....#cc##cc#....",
+      "....##....##....",
+      "...##......##...",
+      "..##........##..",
+    ],
+  },
+  // Headhunter de boné e rede: veio levar quem você não reteve.
+  // A rede usa contorno claro (n) porque o contorno escuro some no fundo da faixa.
+  cacaTalentos: {
+    paleta: { ...BASE, c: "#3f6e4a", t: "#2d3561", n: "#f0eef8", f: "#7a8099", h: "#c9a06a" },
+    linhas: [
+      "...####....nnnn.",
+      "..#cccc#..nf.f.n",
+      ".#cccccc#.n.f.fn",
+      ".#pppppp#.nf.f.n",
+      ".#pbopbo#..nnnn.",
+      ".#pppppp#...hh..",
+      ".#p####p#..h....",
+      "..#pppp#..h.....",
+      ".##tttt##h......",
+      "#tttttttt#......",
+      "#tttttttt#......",
+      "#ttt##ttt#......",
+      "#tt#..#tt#......",
+      "#t#....#t#......",
+      "##......##......",
+      "................",
+    ],
+  },
+  // Auditora com uma lupa do tamanho da cabeça: tudo vai ser olhado de perto.
+  auditoria: {
+    paleta: { ...BASE, c: "#6b5a8c", t: "#3a3f6e", l: "#8fd0ff", g: "#c9ccd8" },
+    linhas: [
+      "...####....gggg.",
+      "..#cccc#..gllllg",
+      ".#cccccc#.gllllg",
+      ".#PPPPPP#.gllllg",
+      ".#PboPbo#..gggg.",
+      ".#PPPPPP#...gg..",
+      ".#P####P#..g....",
+      "..#PPPP#..g.....",
+      ".##tttt##g......",
+      "#tttttttt#......",
+      "#tttttttt#......",
+      "#ttt##ttt#......",
+      "#tt#..#tt#......",
+      "#t#....#t#......",
+      "##......##......",
+      "................",
     ],
   },
 };
@@ -454,6 +528,15 @@ export function personaUrl(nome: string): string {
 
 export function persona(nome: string): HTMLImageElement | null {
   return imagem(personaUrl(nome), "persona-pixel");
+}
+
+/** Retrato grande do chefão (ondaIA, cacaTalentos, auditoria). */
+export function chefaoUrl(nome: string): string {
+  return urlDe(`c:${nome}`, CHEFOES[nome]);
+}
+
+export function chefao(nome: string): HTMLImageElement | null {
+  return imagem(chefaoUrl(nome), "chefao-pixel");
 }
 
 function imagem(url: string, classe: string): HTMLImageElement | null {

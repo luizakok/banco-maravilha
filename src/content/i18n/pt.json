@@ -9,11 +9,51 @@
     "dica": "Cada decisão de pessoas mexe no negócio — só que não na hora.",
     "escolhaAvatar": "Quem assina as decisões?",
     "diretora": "Diretora de Pessoas",
-    "diretor": "Diretor de Pessoas"
+    "diretor": "Diretor de Pessoas",
+    "pressStart": "PRESS START",
+    "pressStartDica": "Clique para começar. O som entra junto — dá para desligar no 🔊 do canto."
+  },
+  "boasVindas": {
+    "titulo": "Primeiro dia na Diretoria",
+    "texto": "Você acabou de assumir a área de Pessoas do Banco Maravilha: 30 mil pessoas, quatro anos pela frente e um orçamento que nunca dá para tudo. Cada decisão aparece no resultado em um prazo diferente — algumas só em 2030. Dá para aprender jogando, mas o tutorial leva um minuto.",
+    "verTutorial": "Ver tutorial",
+    "pular": "Pular para o jogo",
+    "comecar": "Começar",
+    "moedaTitulo": "O orçamento é a sua moeda",
+    "moedaTexto": "Você recebe 100 moedas por semestre e escolhe o tamanho de cada aposta: P, M ou G. 🪙 é gasto de uma vez. 🔄 é gasto que volta todo semestre e come o orçamento do próximo.",
+    "tempoTitulo": "O prazo faz parte da decisão",
+    "tempoTexto": "Contratar gente pronta resolve agora e custa caro no salário. Formar por dentro custa agora e entrega daqui a dois anos. A régua de tempo em cada opção mostra quando o efeito chega.",
+    "nevoaTitulo": "Você não enxerga tudo",
+    "nevoaTexto": "Engajamento, turnover e prontidão ficam na névoa até você pagar por pesquisa. E nem tudo que aparece é verdade: parte dos insights vem torto, como na vida real."
+  },
+  "chefoes": {
+    "ondaIA.nome": "A Onda da IA",
+    "ondaIA.entrada": "Dois concorrentes lançaram atendimento com IA no mesmo mês. O seu call center continua atendendo igual a 2019.",
+    "cacaTalentos.nome": "O Caça-Talentos",
+    "cacaTalentos.entrada": "Uma fintech abriu escritório a três quarteirões daqui e está ligando para o seu time pelo LinkedIn, um por um.",
+    "auditoria.nome": "A Auditoria",
+    "auditoria.entrada": "O regulador quer ver governança de modelos de crédito. Não a apresentação: a documentação."
+  },
+  "passagem": {
+    "rotulo": "Passou um ano",
+    "legenda": "O escritório mudou: {estilo}."
+  },
+  "escritorio": {
+    "sala": "O escritório em {ano}: {estilo}.",
+    "estilo1": "baias individuais e janelas pequenas",
+    "estilo2": "open space com vidro de ponta a ponta",
+    "estilo3": "sala híbrida com uma tela de chamada na parede",
+    "estilo4": "pods curvos e painel de dados na parede inteira",
+    "mesas": "{ocupadas} de {total} mesas com gente.",
+    "telasIA1": "Uma tela com copiloto de IA aceso.",
+    "telasIA": "{n} telas com copiloto de IA aceso.",
+    "caixas1": "Uma caixa de mudança perto da porta.",
+    "caixas": "{n} caixas de mudança perto da porta."
   },
   "comum": {
     "continuar": "Continuar",
     "pular": "Pular",
+    "voltar": "Voltar",
     "confirmar": "Confirmar escolha",
     "turno": "Ano",
     "de": "de",
@@ -159,31 +199,62 @@
     "hibridoAtivo": "Trabalho híbrido no ar"
   },
   "conselheiros": {
-    "ceo": "CEO",
-    "cfo": "CFO",
-    "cto": "CTO",
-    "voz": "Voz do Time"
+    "ceo": "Vera Lins",
+    "cfo": "Haroldo Bastos",
+    "cto": "Kenji Tavares",
+    "voz": "Sandra Vieira",
+    "ceoCargo": "CEO",
+    "cfoCargo": "CFO",
+    "ctoCargo": "CTO",
+    "vozCargo": "Comitê de Pessoas"
+  },
+  "reacoes": {
+    "titulo": "No corredor, depois da reunião",
+    "buildPesado": "{moedas} moedas em treinamento. Eu assinei embaixo. Agora quero ver isso na receita antes de 2030.",
+    "recorrenteAlto": "{moedas} moedas já saem do orçamento antes de você decidir qualquer coisa. Isso não é orçamento, é aluguel.",
+    "gastouPouco": "{moedas} moedas no semestre. Economia eu aplaudo. Mas em {ano} o conselho não pergunta quanto sobrou.",
+    "pagouPiloto": "Você gastou {moedas} moedas pra provar que funciona antes de escalar. Odeio admitir que foi barato.",
+    "eficienciaMelhorou": "Índice de eficiência {pontos} ponto melhor. Guardei o print. Vou precisar dele em dezembro.",
+    "auditoriaSemDados": "O regulador vai pedir histórico e a gente tem o quê? Memória. Memória não assina laudo.",
+    "copilotoNovo": "{n} famílias com copiloto. Já pedi acesso pro meu time. Só não repete o piloto do ano passado, que ninguém mediu.",
+    "automatizouSemPreparo": "Automatizamos e {pct}% do time não sabe abrir o painel novo. Vão me ligar amanhã, né?",
+    "painelComprado": "Agora eu consigo ver o time sem pedir favor pro RH. Isso muda minha vida mais que o copiloto.",
+    "ondaSemResposta": "O concorrente lançou IA no atendimento e a gente lançou uma reunião. NPS {nps}. Eu só estou lendo o painel.",
+    "prontidaoSubiu": "Prontidão em {prontidao}. Meu time parou de me perguntar se o copiloto é moda.",
+    "comprouEmVezDeFormar": "{moedas} moedas em gente de fora pro time do Pedro. Ele treinou os novos. Depois me perguntou, no corredor, se a vaga dele ainda existe.",
+    "turnoverSubiu": "Turnover em {turnover}. Três pedidos de demissão na mesma semana, na minha agência. Nenhum falou de salário.",
+    "engajamentoSubiu": "Primeira vez em quatro anos que alguém me parou na agência pra elogiar. Anota, porque não acontece sempre.",
+    "engajamentoCaiu": "O pessoal parou de aparecer na reunião de segunda. Ninguém reclamou. É isso que me preocupa.",
+    "hibridoComMetas": "Híbrido com meta escrita. Agora eu consigo defender o time quando perguntam quem estava em casa.",
+    "hibridoSemMetas": "Híbrido sem meta clara vira briga de gerente com planilha de ponto. Me chama antes da próxima.",
+    "temporarios": "{moedas} moedas em temporário. Eles vão embora com o que aprenderam aqui — e a gente fica com o processo.",
+    "cacaTalentosDoeu": "A fintech levou gente boa. Turnover em {turnover}. Quem ficou está olhando pra ver o que você faz agora.",
+    "receitaCaiu": "Receita {receita}. Eu não vou ao conselho explicar prontidão de skills. Vou explicar {receita}.",
+    "receitaSubiu": "Receita {receita}. Agora não para. Conselho tem memória curta pra coisa boa.",
+    "ultimoSemestre": "Dezembro. O conselho vai ver o Valor do Banco em {valor} e perguntar o que a gente fez desde 2027.",
+    "riscoNoLimite": "Risco no vermelho. Jurídico já me procurou. Resolve isso antes que vire assunto do conselho.",
+    "npsCaiu": "NPS {nps}. Cliente não espera o nosso plano de capacitação terminar."
   },
   "express": {
     "t1": {
       "manchete": "2027 — Novo plano estratégico exige um banco pronto para a IA. O gap de skills é o maior em décadas.",
-      "fala_ceo": "Preciso de resultado JÁ. Contrata gente pronta e vamos para cima.",
-      "fala_voz": "Se você só contratar de fora, quem está aqui há 20 anos vai entender o recado — e vai embora."
+      "fala_ceo": "Eu tenho um trimestre, não um plano de carreira. Traz gente que já saiba fazer.",
+      "fala_voz": "A Rita treinou os últimos quatro que entraram. Se o quinto vier de fora de novo, ela vai me perguntar por quê."
     },
     "t2": {
       "manchete": "2028 — Bancos digitais cortam tarifas. O conselho cobra eficiência.",
-      "fala_cfo": "Automatiza tudo que der. Treinamento? Corta. É o primeiro a sair do orçamento.",
-      "fala_voz": "Automatizar sem requalificar é demitir em câmera lenta. O time sente."
+      "fala_cfo": "Automatiza o que der. Treinamento eu corto todo ano e ninguém reclama até dezembro.",
+      "fala_voz": "Automatiza o backoffice e a Cláudia faz o quê na segunda-feira? Porque ela vai me perguntar."
     },
     "t3": {
       "manchete": "2029 — CHEFÃO: A ONDA DA IA. Um concorrente digital lança atendimento 100% IA. Nosso NPS começa a derreter.",
-      "fala_cto": "Eu avisei! Escala os copilotos AGORA ou viramos peça de museu.",
-      "fala_ceo": "Não importa como, importa quando: ontem."
+      "fala_cto": "Eu te mandei o link do lançamento deles em março. Dá pra escalar os copilotos ainda esse ano?",
+      "fala_ceo": "O conselho me perguntou duas vezes hoje. Amanhã eu não tenho resposta nova pra dar."
     },
     "t4": {
       "manchete": "2030 — Último ano do ciclo. O conselho quer ver o Valor do Banco. O que você plantou?",
-      "fala_cfo": "Hora de colher. Nada de aventura nova no último ano.",
-      "fala_cto": "Aventura? O futuro não espera ciclo de planejamento."
+      "fala_cfo": "Último ano. Eu não assino nada novo que só dê retorno em 2032.",
+      "fala_cto": "Haroldo, o concorrente não sabe que é o último ano do nosso ciclo."
     },
     "chefaoAviso": "CHEFÃO DO ANO"
   },
@@ -202,14 +273,14 @@
     "t4c": { "titulo": "Dobrar nas pessoas", "conselheiro": "voz", "descricao": "Investir pesado em requalificação e realocação. O resultado pode vir depois de 2030." }
   },
   "tradicional": {
-    "t1": { "manchete": "2027/1 — Você assume a Diretoria de Pessoas. O diagnóstico: o maior gap de skills em décadas e um plano estratégico que depende de fechá-lo.", "conselheiro": "voz", "fala": "O time quer acreditar. Mostra que dá para crescer por dentro antes de encher o banco de gente de fora." },
-    "t2": { "manchete": "2027/2 — Bancos digitais cortam tarifas e o conselho cobra o índice de eficiência.", "conselheiro": "cfo", "fala": "Cada ponto de eficiência vale ouro. Treinamento é o primeiro corte — sempre foi." },
-    "t3": { "manchete": "2028/1 — CHEFÃO: A ONDA DA IA. Um concorrente digital lança atendimento 100% IA e nosso NPS começa a derreter.", "conselheiro": "cto", "fala": "Ou a gente escala IA agora, ou daqui a dois anos seremos o estudo de caso que ninguém quer ser." },
-    "t4": { "manchete": "2028/2 — Ressaca da onda: todo comitê quer 'fazer algo com IA'. Poucos sabem o quê.", "conselheiro": "ceo", "fala": "Receita. É a única palavra que eu quero ouvir nesse comitê." },
-    "t5": { "manchete": "2029/1 — CHEFÃO: O CAÇA-TALENTOS. Uma fintech oferece o dobro de salário ao seu time de dados.", "conselheiro": "voz", "fala": "Dinheiro leva embora quem já estava com um pé fora. Carreira e propósito seguram o resto." },
-    "t6": { "manchete": "2029/2 — Penúltimo ano. Os investimentos de 2027 começam a aparecer (ou a fazer falta).", "conselheiro": "ceo", "fala": "O conselho quer ver curva subindo. O que você plantou, colhe agora." },
+    "t1": { "manchete": "2027/1 — Você assume a Diretoria de Pessoas. O diagnóstico: o maior gap de skills em décadas e um plano estratégico que depende de fechá-lo.", "conselheiro": "voz", "fala": "Ontem me perguntaram na agência se vai ter mudança. Eu disse que não sabia. Me avisa antes do e-mail, por favor." },
+    "t2": { "manchete": "2027/2 — Bancos digitais cortam tarifas e o conselho cobra o índice de eficiência.", "conselheiro": "cfo", "fala": "O conselho pediu o índice de eficiência numa linha só. Treinamento é a linha que eu sei cortar sem ninguém gritar hoje." },
+    "t3": { "manchete": "2028/1 — CHEFÃO: A ONDA DA IA. Um concorrente digital lança atendimento 100% IA e nosso NPS começa a derreter.", "conselheiro": "cto", "fala": "Testei o app deles ontem à noite. Respondeu em quatro segundos. O nosso chat ainda pede o CPF duas vezes." },
+    "t4": { "manchete": "2028/2 — Ressaca da onda: todo comitê quer 'fazer algo com IA'. Poucos sabem o quê.", "conselheiro": "ceo", "fala": "Me chamaram em três comitês essa semana pra falar de IA. Ninguém levou um número. Leva você." },
+    "t5": { "manchete": "2029/1 — CHEFÃO: O CAÇA-TALENTOS. Uma fintech oferece o dobro de salário ao seu time de dados.", "conselheiro": "voz", "fala": "Duas pessoas do time de dados já foram. A terceira me mandou mensagem perguntando o que a gente vai fazer. Ainda não respondi." },
+    "t6": { "manchete": "2029/2 — Penúltimo ano. Os investimentos de 2027 começam a aparecer (ou a fazer falta).", "conselheiro": "ceo", "fala": "Estamos em 2029. O que você aprovou em 2027 ou aparece agora, ou eu vou ter que explicar por quê." },
     "t7": { "manchete": "2030/1 — CHEFÃO: A AUDITORIA. O regulador exige governança dos modelos de IA usados no crédito.", "conselheiro": "cfo", "fala": "Multa e provisão eu sei calcular. Governança improvisada, não." },
-    "t8": { "manchete": "2030/2 — Último semestre. Em dezembro, o conselho avalia o Valor do Banco — e o seu legado.", "conselheiro": "cto", "fala": "O futuro não termina em 2030. O que fica de pé depois do seu mandato?" },
+    "t8": { "manchete": "2030/2 — Último semestre. Em dezembro, o conselho avalia o Valor do Banco — e o seu legado.", "conselheiro": "cto", "fala": "Em janeiro alguém senta nessa cadeira. Eu queria poder dizer que o que a gente montou roda sem você." },
     "chefaoAviso": "CHEFÃO DO SEMESTRE",
     "semestre": "Semestre"
   },

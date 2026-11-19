@@ -2,7 +2,6 @@ import { t, tf } from "../../i18n";
 import type { CampoNevoa, PartidaTrad } from "../../game/tradicional";
 import {
   CAMPOS_NEVOA,
-  ehTurnoChefao,
   preverTurnover,
   recorrenteAtivo,
   revelarIndicador,
@@ -10,8 +9,11 @@ import {
   TOTAL_TURNOS,
   turnoAtual,
 } from "../../game/tradicional";
+import { faseDoTurno } from "../../game/fases";
 import { p } from "../../model/simulate";
-import { caixaDialogo } from "../components/dialog";
+import { caixaDialogo, nomeConselheiro } from "../components/dialog";
+import { chefaoDoTurno, faixaChefao, tremor } from "../components/chefaoFaixa";
+import { cenaEscritorio } from "../components/escritorio";
 import { painelIndicadores } from "../components/indicadores";
 import { el, limpar } from "../dom";
 import { tocar } from "../som";
@@ -45,9 +47,14 @@ export function telaBriefingTrad(raiz: HTMLElement, part: PartidaTrad, aoDecidir
     });
   }
 
+  const fase = faseDoTurno(turno);
+  const idChefao = chefaoDoTurno(turno);
+
   const render = () => {
     limpar(raiz);
+    raiz.classList.add(`fase-${fase}`);
     raiz.append(el("p", "tag-turno", `${t("tradicional.semestre")} ${turno} ${t("comum.de")} ${TOTAL_TURNOS}`));
+    raiz.append(cenaEscritorio(part.estado, fase));
 
     // ── Dados revelados: sempre no topo, com destaque ──
     for (const d of destaques) {
@@ -58,10 +65,10 @@ export function telaBriefingTrad(raiz: HTMLElement, part: PartidaTrad, aoDecidir
       raiz.append(card);
     }
 
-    if (ehTurnoChefao(part)) raiz.append(el("h2", "centro", `⚠ ${t("tradicional.chefaoAviso")} ⚠`));
+    if (idChefao) raiz.append(faixaChefao(idChefao));
     raiz.append(el("div", "manchete", t(`tradicional.t${turno}.manchete`)));
     const conselheiro = t(`tradicional.t${turno}.conselheiro`);
-    raiz.append(caixaDialogo(t(`conselheiros.${conselheiro}`), t(`tradicional.t${turno}.fala`), conselheiro));
+    raiz.append(caixaDialogo(nomeConselheiro(conselheiro), t(`tradicional.t${turno}.fala`), conselheiro));
 
     const ocultos = CAMPOS_NEVOA.filter((c) => part.reveladas[c] === 0);
     const motivos = Object.fromEntries(ocultos.map((c) => [c, motivoNevoa(turno, c)]));
@@ -148,6 +155,7 @@ export function telaBriefingTrad(raiz: HTMLElement, part: PartidaTrad, aoDecidir
   };
 
   render();
+  if (idChefao) tremor(raiz);
 }
 
 export function fmtMoedas(v: number): string {

@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { anoDoTurno, viraOAno } from "../src/game/fases";
 import {
   acabou,
   aplicarEvento,
@@ -10,6 +11,7 @@ import {
   novaPartidaTrad,
   relacoesFortes,
   revelarIndicador,
+  turnoAtual,
   resumoTrad,
   TOTAL_TURNOS,
   TURNOS_CHEFAO,
@@ -184,5 +186,21 @@ describe("composição do Valor do Banco", () => {
       "nps",
       "risco",
     ]);
+  });
+});
+
+describe("virada de ano", () => {
+  it("acontece três vezes: 2027→2028, 2028→2029 e 2029→2030", () => {
+    // reproduz a ordem do main.ts: o turno jogado já está no estado quando a
+    // tela de resultado chama fecharTurno
+    const part = novaPartidaTrad(11);
+    const anos: number[] = [];
+    while (!acabou(part)) {
+      jogarTurnoTrad(part, DECISAO_EQUILIBRADA);
+      const jogado = part.estado.turno;
+      fecharTurno(part);
+      if (!acabou(part) && viraOAno(jogado, turnoAtual(part))) anos.push(anoDoTurno(turnoAtual(part)));
+    }
+    expect(anos).toEqual([2028, 2029, 2030]);
   });
 });
