@@ -6,7 +6,10 @@
     "expressBotao": "Jogar Express (~5 min)",
     "tradicionalBotao": "Modo Tradicional (~15 min)",
     "tradicionalBloqueado": "Complete o Express para desbloquear",
-    "dica": "Cada decisão de pessoas mexe no negócio — só que não na hora."
+    "dica": "Cada decisão de pessoas mexe no negócio — só que não na hora.",
+    "escolhaAvatar": "Quem assina as decisões?",
+    "diretora": "Diretora de Pessoas",
+    "diretor": "Diretor de Pessoas"
   },
   "comum": {
     "continuar": "Continuar",
@@ -34,7 +37,110 @@
     "risco0": "Baixo",
     "risco1": "Médio",
     "risco2": "Alto",
-    "eficienciaDica": "menor é melhor"
+    "eficienciaDica": "menor é melhor",
+    "ajudaSobre": "Sobre {nome}",
+    "referencia": "Média do mercado no jogo: {valor}.",
+    "ajuda": {
+      "engajamento": "Quanto o time se sente envolvido com o trabalho e com o banco, de 0 a 100. Engajamento alto puxa receita e NPS; baixo antecipa pedidos de demissão.",
+      "turnover": "Percentual de pessoas que pedem demissão por ano. Cada saída custa de 0,5 a 2 salários anuais para repor.",
+      "prontidao": "Quanto das skills que a estratégia exige o banco já tem, de 0 a 100. É a sua capacidade de executar o plano.",
+      "custoPessoal": "Folha total do banco no índice do jogo. Sobe com contratação externa e flexíveis; cai com automação.",
+      "receita": "Receita do banco no índice do jogo. Responde a engajamento, prontidão e copilotos de IA — com atraso.",
+      "eficiencia": "Custo de pessoal dividido pela receita, em pontos. Quanto menor, mais receita por real de folha.",
+      "nps": "O quanto os clientes recomendam o banco, de -100 a 100. Sobe com time engajado e atendimento preparado.",
+      "risco": "Exposição regulatória dos modelos de IA em uso. Sem governança e sem evidência, a Auditoria cobra a conta."
+    }
+  },
+  "abordagens": {
+    "build": "Build — formar quem já está aqui",
+    "buy": "Buy — contratar no mercado",
+    "borrow": "Borrow — temporários e freelancers",
+    "bot": "Bot — resolver com IA"
+  },
+  "etiquetas": {
+    "rapido": "rápido",
+    "rapidoDica": "O efeito principal aparece já neste semestre.",
+    "lento": "lento",
+    "lentoDica": "O efeito principal só aparece em 2 ou 3 semestres.",
+    "caro": "caro",
+    "arriscadoDica": "Pode sair diferente do previsto: depende de gente de fora ou de modelo sem supervisão.",
+    "caroDica": "Pesa no orçamento agora ou todo semestre.",
+    "arriscado": "arriscado"
+  },
+  "gaps": {
+    "atendimentoIA": {
+      "titulo": "Atendimento despreparado para IA",
+      "contexto": "6 mil pessoas no atendimento, nenhum copiloto em produção. Os clientes já comparam com o concorrente digital.",
+      "build": "Requalificar ~{n} atendentes no próprio cargo, com trilha de IA aplicada ao dia a dia.",
+      "buy": "Contratar ~{n} especialistas de atendimento digital já prontos, pagando prêmio de mercado.",
+      "borrow": "Contratar ~{n} temporários e freelancers para segurar o volume enquanto o time aprende.",
+      "bot": "Licenciar copiloto de IA para {f} das {tot} famílias de funções, começando pelo atendimento."
+    },
+    "dadosSaida": {
+      "titulo": "Time de dados saindo pela porta",
+      "contexto": "As fintechs estão assediando seus engenheiros de dados. Quem sai leva o conhecimento dos pipelines.",
+      "build": "Abrir ~{n} vagas internas e trilhas de carreira em dados para quem já está no banco.",
+      "buy": "Repor com ~{n} contratações de mercado, a preço de disputa por talento.",
+      "borrow": "Fechar ~{n} posições com consultoria e freelancers até estabilizar o time."
+    },
+    "legadoCredito": {
+      "titulo": "Sistema legado de crédito sem sucessor",
+      "contexto": "O motor de crédito roda em COBOL e só três pessoas sabem mexer nele. Duas se aposentam em 2028.",
+      "build": "Requalificar e realocar ~{n} pessoas para o núcleo de crédito, com mentoria dos veteranos.",
+      "buy": "Contratar ~{n} especialistas em modernização de legado no mercado.",
+      "bot": "Automatizar os fluxos de crédito que hoje ocupam ~{n} pessoas."
+    },
+    "backoffice": {
+      "titulo": "Back-office com retrabalho manual",
+      "contexto": "Conciliações feitas à mão, planilhas por toda parte e um índice de eficiência que o conselho cobra todo trimestre.",
+      "build": "Requalificar e realocar ~{n} pessoas do back-office para funções de maior valor.",
+      "borrow": "Cobrir o pico com ~{n} temporários enquanto os processos são redesenhados.",
+      "bot": "Automatizar as rotinas que hoje consomem ~{n} pessoas."
+    },
+    "squadIA": {
+      "titulo": "Nenhum squad próprio de IA",
+      "contexto": "Todo comitê quer 'fazer algo com IA' e não existe um time responsável por isso dentro de casa.",
+      "build": "Formar ~{n} pessoas do time atual para compor o squad de IA.",
+      "buy": "Contratar ~{n} especialistas de IA no mercado, a preço de leilão.",
+      "borrow": "Montar o squad com ~{n} freelancers e parceiros, sem vínculo de longo prazo.",
+      "bot": "Equipar {f} das {tot} famílias de funções com copiloto de IA e aprender usando."
+    },
+    "comercialDigital": {
+      "titulo": "Comercial sem repertório digital",
+      "contexto": "A rede vende como em 2015. O cliente chega pelo app e encontra um processo de papel.",
+      "build": "Requalificar ~{n} pessoas da rede comercial no próprio cargo.",
+      "buy": "Contratar ~{n} especialistas em vendas digitais já formados.",
+      "bot": "Dar copiloto de IA a {f} das {tot} famílias de funções, começando pelo comercial."
+    },
+    "governancaModelos": {
+      "titulo": "Modelos de IA sem governança",
+      "contexto": "Há modelos decidindo crédito sem documentação, sem grupo de controle e sem ninguém responsável pela explicação.",
+      "build": "Requalificar e realocar ~{n} pessoas de risco e compliance para governança de modelos.",
+      "buy": "Contratar ~{n} especialistas em risco de modelos no mercado.",
+      "borrow": "Trazer ~{n} auditores e consultores externos para montar a governança."
+    },
+    "lideranca": {
+      "titulo": "Liderança despreparada para o híbrido",
+      "contexto": "Gestores formados para controlar presença agora precisam avaliar entrega — e ninguém os ensinou.",
+      "build": "Promover e formar ~{n} líderes vindos de dentro do banco.",
+      "buy": "Contratar ~{n} líderes de fora, com prêmio salarial e dois anos de curva.",
+      "bot": "Dar copiloto de IA a {f} das {tot} famílias de funções, apoiando gestão e feedback."
+    },
+    "sucessao": {
+      "titulo": "Sucessão em aberto nas áreas críticas",
+      "contexto": "Metade das posições críticas não tem nenhum sucessor mapeado. O conselho vai perguntar.",
+      "build": "Preparar ~{n} sucessores internos com plano de carreira e mentoria.",
+      "buy": "Contratar ~{n} pessoas prontas de fora para as posições críticas.",
+      "borrow": "Cobrir as posições com ~{n} interinos e consultores enquanto nada se decide."
+    }
+  },
+  "politicas": {
+    "hibrido": "Trabalho híbrido (2 dias em casa)",
+    "hibridoAjuda": "Formaliza 2 dias de trabalho em casa por semana. Reduz as saídas em cerca de um terço, sem perda de desempenho (Bloom, Han & Liang, Nature 2024). Sem metas claras, porém, vira confusão e derruba o engajamento.",
+    "gpr": "Híbrido + avaliar por entregas, não por horas",
+    "gprAjuda": "O mesmo híbrido, mas com metas e avaliação por resultado em vez de presença. Custa mais para implantar e evita a confusão de gestão que o híbrido solto provoca.",
+    "painel": "Painel de people analytics",
+    "painelAjuda": "Compra dados de pessoas de forma permanente: tira indicadores da névoa com mais frequência e deixa a previsão do semestre mais precisa. Também serve de evidência quando o regulador pergunta."
   },
   "conselheiros": {
     "ceo": "CEO",
@@ -122,19 +228,48 @@
     "revelar": "Revelar por 2 semestres",
     "previsao": "Prever turnover do próximo semestre",
     "previsaoResultado": "Se nada mudar, o turnover deve ficar em ~{v}% ao ano.",
-    "piloto": "Rodar um piloto antes de escalar",
-    "pilotoResultado": "Piloto registrado: sua base de evidências cresceu (ajuda na Auditoria).",
+    "piloto": "Testar o copiloto de IA em 1 agência",
+    "pilotoResultado": "Piloto contratado: o resultado real chega no próximo semestre, antes de você decidir escalar.",
+    "pilotoContratado": "Piloto em 1 agência contratado",
+    "pilotoTitulo": "Resultado do piloto na agência",
+    "pilotoFala": "Foi isso que o copiloto de IA fez na receita de UMA agência, em um semestre. Multiplicar por todas as agências é uma aposta — mas agora é uma aposta com número.",
     "moedas": "moedas",
     "saldo": "Orçamento do semestre",
-    "irDecisao": "Ir para a decisão"
+    "irDecisao": "Ir para a decisão",
+    "reveladoTitulo": "{campo} revelado",
+    "revelado": {
+      "engajamento": "O engajamento está em {v} — a média do mercado no jogo é {media}.",
+      "turnover": "O turnover voluntário está em {v}% ao ano — a média do mercado no jogo é {media}%.",
+      "prontidao": "A prontidão de skills está em {v} — a média do mercado no jogo é {media}."
+    },
+    "previsaoTitulo": "Previsão de turnover contratada",
+    "compromissos": "Compromissos de semestres anteriores já consumiram {v} das {base} moedas deste semestre."
   },
   "decisao": {
     "titulo": "Decisão do semestre",
+    "subtitulo": "Escolha como fechar cada gap — e assine.",
     "orcamentoRestante": "Moedas restantes",
     "iniciativas": "Iniciativas ativas",
-    "avisoCapacidade": "Mais de 3 iniciativas ao mesmo tempo derruba o engajamento!",
+    "avisoCapacidade": "Mais de {max} iniciativas ao mesmo tempo derruba o engajamento!",
     "gpr": "Com gestão por resultados",
-    "confirmar": "Confirmar decisão"
+    "confirmar": "Confirmar decisão",
+    "gapsTitulo": "Gaps deste semestre",
+    "politicasTitulo": "Políticas de futuro do trabalho",
+    "escolhaTamanho": "Qual o tamanho do pacote?",
+    "naoAgir": "Não agir agora",
+    "custoUnico": "Custo único: sai do orçamento deste semestre.",
+    "custoRecorrente": "Assinatura: volta a pesar no orçamento dos próximos semestres.",
+    "porSemestre": "/sem",
+    "compromissosDica": "Soma dos compromissos recorrentes já assumidos. Sai automaticamente do orçamento dos próximos semestres.",
+    "reguaTitulo": "Onde cada escolha deposita o efeito",
+    "reguaNota": "⚡ efeito já neste semestre · 🌱 semente: o efeito principal brota no semestre marcado. Passe o mouse para ver qual escolha é qual.",
+    "previsaoTitulo": "Previsão antes de assinar",
+    "previsaoCega": "Sem dados de people analytics, você está decidindo no escuro: compre dados no briefing para ver as setas.",
+    "previsaoDirecao": "Com os dados que você tem, dá para ver a direção — mas a faixa de incerteza é larga.",
+    "previsaoPrecisa": "Com o histórico de people analytics acumulado, a faixa de incerteza ficou estreita.",
+    "previsaoEstavel": "praticamente estável",
+    "assinar": "Assinar decisão",
+    "assinando": "Assinando a decisão do semestre…"
   },
   "eventos": {
     "titulo": "Evento do semestre",
@@ -155,7 +290,11 @@
   },
   "nevoa": {
     "oculto": "na névoa",
-    "enganoso": "(dado possivelmente enganoso — ver debrief)"
+    "enganoso": "(dado possivelmente enganoso — ver debrief)",
+    "motivo0": "O time de Risco não conseguiu disponibilizar os dados deste semestre.",
+    "motivo1": "A pesquisa de clima atrasou: o campo fecha só no fim do semestre.",
+    "motivo2": "A migração do sistema de RH deixou a base inconsistente neste período.",
+    "motivo3": "O relatório existe, mas está preso na fila de aprovação da Auditoria."
   },
   "feedback": {
     "botao": "Enviar meus resultados e feedback",
@@ -207,6 +346,7 @@
     "hibrido.semGPR": "Híbrido sem gestão por resultados: confusão e queda de engajamento.",
     "flex.prontidao": "Temporários e parceiros cobriram gaps no curto prazo.",
     "flex.custo": "A força de trabalho flexível tem seu preço.",
+    "flex.fimContrato": "Os contratos temporários terminaram e levaram a capacidade embora: borrow cobre o gap, não constrói skill.",
     "pressao.receita": "Bancos digitais seguem mordendo a receita.",
     "pressao.nps": "A régua dos clientes sobe todo ano; parado, o NPS cai.",
     "encadeamento.engajamentoReceita": "Times mais engajados venderam mais (Gallup: correlação de +18% em produtividade).",

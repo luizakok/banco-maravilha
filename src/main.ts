@@ -6,8 +6,10 @@ import {
   fecharTurno,
   jogarTurnoTrad,
   novaPartidaTrad,
+  registrarEscolhas,
   type PartidaTrad,
 } from "./game/tradicional";
+import { montarDecisao, politicasDisponiveis } from "./game/gaps";
 import { tocar } from "./ui/som";
 import { telaTitulo } from "./ui/screens/titulo";
 import { telaTurnoExpress } from "./ui/screens/turnoExpress";
@@ -61,7 +63,10 @@ function iniciarTradicional() {
 function mostrarSemestre(part: PartidaTrad) {
   if (ehTurnoChefao(part)) tocar("chefao");
   telaBriefingTrad(app, part, () => {
-    telaDecisaoTrad(app, part, (d) => {
+    telaDecisaoTrad(app, part, (esc) => {
+      const politicas = politicasDisponiveis(part.estado.hibridoAtivo);
+      const d = montarDecisao(esc, politicas, part.copilotosAtivos);
+      registrarEscolhas(part, esc);
       const evento = jogarTurnoTrad(part, d);
       const aoResultado = () =>
         telaResultadoTrad(app, part, () => {

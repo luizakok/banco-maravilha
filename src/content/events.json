@@ -3,7 +3,7 @@
     {
       "id": "corte",
       "opcoes": [
-        { "efeitos": [{ "campo": "custoPessoal", "delta": -2, "percentual": true }], "orcamentoDelta": -2 },
+        { "efeitos": [{ "campo": "custoPessoal", "delta": -2, "percentual": true }], "orcamentoDelta": -20 },
         { "efeitos": [{ "campo": "engajamento", "delta": 2 }, { "campo": "custoPessoal", "delta": 1, "percentual": true }] }
       ]
     },
@@ -25,7 +25,7 @@
       "id": "pilotoIA",
       "opcoes": [
         { "efeitos": [{ "campo": "receita", "delta": 1, "percentual": true }, { "riscoDelta": 1 }] },
-        { "efeitos": [{ "analyticsDelta": 1 }], "orcamentoDelta": -1 }
+        { "efeitos": [{ "analyticsDelta": 1 }], "orcamentoDelta": -10 }
       ]
     }
   ]

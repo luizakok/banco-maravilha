@@ -6,7 +6,10 @@
     "expressBotao": "Play Express (~5 min)",
     "tradicionalBotao": "Traditional Mode (~15 min)",
     "tradicionalBloqueado": "Finish Express to unlock",
-    "dica": "Every people decision moves the business — just not right away."
+    "dica": "Every people decision moves the business — just not right away.",
+    "escolhaAvatar": "Who signs the decisions?",
+    "diretora": "Chief People Officer (she)",
+    "diretor": "Chief People Officer (he)"
   },
   "comum": {
     "continuar": "Continue",
@@ -34,7 +37,110 @@
     "risco0": "Low",
     "risco1": "Medium",
     "risco2": "High",
-    "eficienciaDica": "lower is better"
+    "eficienciaDica": "lower is better",
+    "ajudaSobre": "About {nome}",
+    "referencia": "In-game market average: {valor}.",
+    "ajuda": {
+      "engajamento": "How involved the team feels with the work and the bank, from 0 to 100. High engagement pulls revenue and NPS up; low engagement predicts resignations.",
+      "turnover": "Share of people who resign each year. Replacing someone costs 0.5 to 2 annual salaries.",
+      "prontidao": "How much of the skills the strategy demands the bank already has, from 0 to 100. It is your capacity to execute the plan.",
+      "custoPessoal": "Total payroll on the game's index. Rises with external hiring and contingent workers; falls with automation.",
+      "receita": "Bank revenue on the game's index. Responds to engagement, readiness and AI copilots — with a lag.",
+      "eficiencia": "People cost divided by revenue, in points. The lower it is, the more revenue per unit of payroll.",
+      "nps": "How much customers recommend the bank, from -100 to 100. Rises with an engaged, prepared front line.",
+      "risco": "Regulatory exposure of the AI models in use. With no governance and no evidence, the Audit sends the bill."
+    }
+  },
+  "abordagens": {
+    "build": "Build — grow the people already here",
+    "buy": "Buy — hire from the market",
+    "borrow": "Borrow — temps and freelancers",
+    "bot": "Bot — solve it with AI"
+  },
+  "etiquetas": {
+    "rapido": "fast",
+    "rapidoDica": "The main effect lands this very semester.",
+    "lento": "slow",
+    "lentoDica": "The main effect only lands 2 or 3 semesters from now.",
+    "caro": "expensive",
+    "caroDica": "Weighs on the budget now or every semester.",
+    "arriscado": "risky",
+    "arriscadoDica": "It may turn out differently than forecast: it depends on outsiders or on an unsupervised model."
+  },
+  "gaps": {
+    "atendimentoIA": {
+      "titulo": "Front line unprepared for AI",
+      "contexto": "6,000 people in customer service, no copilot in production. Customers already compare you to the digital challenger.",
+      "build": "Reskill ~{n} service reps in their current roles, with an AI track applied to daily work.",
+      "buy": "Hire ~{n} ready-made digital service specialists, paying the market premium.",
+      "borrow": "Bring in ~{n} temps and freelancers to hold the volume while the team learns.",
+      "bot": "License an AI copilot for {f} of the {tot} job families, starting with customer service."
+    },
+    "dadosSaida": {
+      "titulo": "Data team walking out the door",
+      "contexto": "Fintechs are poaching your data engineers. Whoever leaves takes the pipeline knowledge along.",
+      "build": "Open ~{n} internal roles and data career tracks for people already in the bank.",
+      "buy": "Backfill with ~{n} market hires, at talent-war prices.",
+      "borrow": "Cover ~{n} positions with consultants and freelancers until the team stabilizes."
+    },
+    "legadoCredito": {
+      "titulo": "Legacy credit system with no successor",
+      "contexto": "The credit engine runs on COBOL and only three people can touch it. Two retire in 2028.",
+      "build": "Reskill and redeploy ~{n} people into the credit core, mentored by the veterans.",
+      "buy": "Hire ~{n} legacy-modernization specialists from the market.",
+      "bot": "Automate the credit workflows that today take ~{n} people."
+    },
+    "backoffice": {
+      "titulo": "Back office full of manual rework",
+      "contexto": "Reconciliations done by hand, spreadsheets everywhere, and an efficiency ratio the board asks about every quarter.",
+      "build": "Reskill and redeploy ~{n} back-office people into higher-value work.",
+      "borrow": "Cover the peak with ~{n} temps while the processes are redesigned.",
+      "bot": "Automate the routines that today consume ~{n} people."
+    },
+    "squadIA": {
+      "titulo": "No in-house AI squad",
+      "contexto": "Every committee wants to 'do something with AI' and nobody inside the bank owns it.",
+      "build": "Train ~{n} people from the current team to staff the AI squad.",
+      "buy": "Hire ~{n} AI specialists on the market, at auction prices.",
+      "borrow": "Staff the squad with ~{n} freelancers and partners, with no long-term commitment.",
+      "bot": "Equip {f} of the {tot} job families with an AI copilot and learn by using it."
+    },
+    "comercialDigital": {
+      "titulo": "Sales force with no digital repertoire",
+      "contexto": "The branch network sells like it's 2015. The customer arrives through the app and finds a paper process.",
+      "build": "Reskill ~{n} people in the sales network, in their current roles.",
+      "buy": "Hire ~{n} ready-made digital sales specialists.",
+      "bot": "Give an AI copilot to {f} of the {tot} job families, starting with sales."
+    },
+    "governancaModelos": {
+      "titulo": "AI models with no governance",
+      "contexto": "Models are deciding credit with no documentation, no control group and nobody accountable for the explanation.",
+      "build": "Reskill and redeploy ~{n} risk and compliance people into model governance.",
+      "buy": "Hire ~{n} model-risk specialists from the market.",
+      "borrow": "Bring in ~{n} external auditors and consultants to set the governance up."
+    },
+    "lideranca": {
+      "titulo": "Leaders unprepared for hybrid",
+      "contexto": "Managers trained to monitor attendance now have to assess delivery — and nobody taught them how.",
+      "build": "Promote and develop ~{n} leaders from inside the bank.",
+      "buy": "Hire ~{n} leaders from outside, with a salary premium and a two-year ramp.",
+      "bot": "Give an AI copilot to {f} of the {tot} job families, supporting management and feedback."
+    },
+    "sucessao": {
+      "titulo": "Succession wide open in critical roles",
+      "contexto": "Half of the critical positions have no successor mapped. The board will ask.",
+      "build": "Prepare ~{n} internal successors with career plans and mentoring.",
+      "buy": "Hire ~{n} ready people from outside for the critical positions.",
+      "borrow": "Cover the roles with ~{n} interim leaders and consultants while nothing gets decided."
+    }
+  },
+  "politicas": {
+    "hibrido": "Hybrid work (2 days from home)",
+    "hibridoAjuda": "Formalizes 2 work-from-home days per week. Cuts resignations by about a third with no loss of performance (Bloom, Han & Liang, Nature 2024). Without clear goals, though, it turns into confusion and drags engagement down.",
+    "gpr": "Hybrid + assess by delivery, not by hours",
+    "gprAjuda": "The same hybrid setup, but with goals and outcome-based assessment instead of presence. It costs more to roll out and avoids the management confusion loose hybrid creates.",
+    "painel": "People analytics dashboard",
+    "painelAjuda": "Buys people data permanently: pulls indicators out of the fog more often and makes the semester forecast sharper. It also serves as evidence when the regulator asks."
   },
   "conselheiros": {
     "ceo": "CEO",
@@ -122,19 +228,48 @@
     "revelar": "Reveal for 2 semesters",
     "previsao": "Forecast next semester's turnover",
     "previsaoResultado": "If nothing changes, turnover should land at ~{v}% a year.",
-    "piloto": "Run a pilot before scaling",
-    "pilotoResultado": "Pilot logged: your evidence base grew (helps in the Audit).",
+    "piloto": "Test the AI copilot in 1 branch",
+    "pilotoResultado": "Pilot commissioned: the real result lands next semester, before you decide to scale.",
+    "pilotoContratado": "Pilot in 1 branch commissioned",
+    "pilotoTitulo": "Pilot result in the branch",
+    "pilotoFala": "That is what the AI copilot did to the revenue of ONE branch, in one semester. Multiplying it by every branch is a bet — but now it is a bet with a number on it.",
     "moedas": "coins",
     "saldo": "Semester budget",
-    "irDecisao": "Go to the decision"
+    "irDecisao": "Go to the decision",
+    "reveladoTitulo": "{campo} revealed",
+    "revelado": {
+      "engajamento": "Engagement is at {v} — the in-game market average is {media}.",
+      "turnover": "Voluntary turnover is at {v}% a year — the in-game market average is {media}%.",
+      "prontidao": "Skills readiness is at {v} — the in-game market average is {media}."
+    },
+    "previsaoTitulo": "Turnover forecast commissioned",
+    "compromissos": "Commitments from earlier semesters already took {v} of this semester's {base} coins."
   },
   "decisao": {
     "titulo": "Semester decision",
+    "subtitulo": "Choose how to close each gap — then sign.",
     "orcamentoRestante": "Coins remaining",
     "iniciativas": "Active initiatives",
-    "avisoCapacidade": "More than 3 initiatives at once drags engagement down!",
+    "avisoCapacidade": "More than {max} initiatives at once drags engagement down!",
     "gpr": "With results-based management",
-    "confirmar": "Confirm decision"
+    "confirmar": "Confirm decision",
+    "gapsTitulo": "This semester's gaps",
+    "politicasTitulo": "Future-of-work policies",
+    "escolhaTamanho": "How big should the package be?",
+    "naoAgir": "Do nothing for now",
+    "custoUnico": "One-off cost: comes out of this semester's budget.",
+    "custoRecorrente": "Subscription: keeps weighing on the budget of the coming semesters.",
+    "porSemestre": "/sem",
+    "compromissosDica": "Sum of the recurring commitments already made. It comes out of the coming semesters' budgets automatically.",
+    "reguaTitulo": "Where each choice lands its effect",
+    "reguaNota": "⚡ effect right this semester · 🌱 a seed: the main effect sprouts in the semester marked. Hover to see which choice is which.",
+    "previsaoTitulo": "Forecast before signing",
+    "previsaoCega": "With no people analytics, you are deciding in the dark: buy data in the briefing to see the arrows.",
+    "previsaoDirecao": "With the data you have, you can see the direction — but the uncertainty band is wide.",
+    "previsaoPrecisa": "With the people analytics history you built up, the uncertainty band got narrow.",
+    "previsaoEstavel": "practically flat",
+    "assinar": "Sign the decision",
+    "assinando": "Signing the semester's decision…"
   },
   "eventos": {
     "titulo": "Event of the semester",
@@ -155,7 +290,11 @@
   },
   "nevoa": {
     "oculto": "in the fog",
-    "enganoso": "(data possibly misleading — see the debrief)"
+    "enganoso": "(data possibly misleading — see the debrief)",
+    "motivo0": "The Risk team could not release this semester's data.",
+    "motivo1": "The engagement survey slipped: the field only closes at the end of the semester.",
+    "motivo2": "The HR system migration left the database inconsistent this period.",
+    "motivo3": "The report exists, but it is stuck in the Audit approval queue."
   },
   "feedback": {
     "botao": "Send my results and feedback",
@@ -207,6 +346,7 @@
     "hibrido.semGPR": "Hybrid without results-based management: confusion and falling engagement.",
     "flex.prontidao": "Temps and partners covered gaps in the short term.",
     "flex.custo": "The flexible workforce has its price.",
+    "flex.fimContrato": "The temporary contracts ended and took the capacity with them: borrowing covers the gap, it does not build the skill.",
     "pressao.receita": "Digital banks keep biting into revenue.",
     "pressao.nps": "The customer bar rises every year; stand still and NPS falls.",
     "encadeamento.engajamentoReceita": "More engaged teams sold more (Gallup: +18% productivity correlation).",

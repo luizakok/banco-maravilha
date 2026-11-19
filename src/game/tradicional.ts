@@ -1,4 +1,5 @@
 import eventosJson from "../content/events.json";
+import { copilotosDaDecisao, opcaoPorId, type Escolhas } from "./gaps";
 import type { CampoNum, Decisao, Estado, Explicacao } from "../model/types";
 import { criarRng, type Rng } from "../model/rng";
 import { estadoInicial, p, simularTurno } from "../model/simulate";
@@ -40,6 +41,14 @@ export interface EscolhaEvento {
   opcao: 0 | 1;
 }
 
+export interface Compromisso {
+  /** moedas que voltam a ser cobradas todo semestre */
+  moedas: number;
+  /** 999 = permanente (folha) */
+  turnosRestantes: number;
+  rotulo: string;
+}
+
 export interface PartidaTrad {
   seed: number;
   rngTurno: Rng;
@@ -48,14 +57,22 @@ export interface PartidaTrad {
   historico: Estado[];
   explicacoesPorTurno: Explicacao[][];
   decisoes: Decisao[];
+  escolhasPorTurno: Escolhas[];
   eventosEscolhidos: EscolhaEvento[];
   agendaEventos: Map<number, EventoDef>;
   /** orçamento disponível para o turno em curso */
   orcamento: number;
   /** delta de orçamento acumulado para o próximo turno (eventos/intel) */
   orcamentoDeltaProximo: number;
+  /** custos recorrentes já assumidos (assinaturas, folha, contratos) */
+  compromissos: Compromisso[];
+  /** famílias com licença de copiloto que seguem ativas */
+  copilotosAtivos: number;
   reveladas: Record<CampoNevoa, number>;
   insightsEnganosos: InsightEnganoso[];
+  /** piloto contratado neste semestre; o resultado medido aparece no próximo */
+  pilotoPendente: boolean;
+  pilotoResultado: number | null;
 }
 
 function montarAgenda(seed: number): Map<number, EventoDef> {
@@ -83,13 +100,39 @@ export function novaPartidaTrad(seed = Date.now() >>> 0): PartidaTrad {
     historico: [e],
     explicacoesPorTurno: [],
     decisoes: [],
+    escolhasPorTurno: [],
     eventosEscolhidos: [],
     agendaEventos: montarAgenda(seed),
     orcamento: p("orcamentoPorTurno"),
     orcamentoDeltaProximo: 0,
+    compromissos: [],
+    copilotosAtivos: 0,
     reveladas: { engajamento: 0, turnover: 0, prontidao: 0 },
     insightsEnganosos: [],
+    pilotoPendente: false,
+    pilotoResultado: null,
   };
+}
+
+/** Soma dos custos recorrentes, limitada pelo teto para o orçamento nunca travar. */
+export function recorrenteAtivo(part: PartidaTrad): number {
+  const soma = part.compromissos.reduce((s, c) => s + c.moedas, 0);
+  return Math.min(soma, p("economia.tetoRecorrente"));
+}
+
+/** Registra as escolhas do semestre: compromissos recorrentes e licenças de copiloto. */
+export function registrarEscolhas(part: PartidaTrad, esc: Escolhas) {
+  part.escolhasPorTurno.push(esc);
+  for (const id of Object.values(esc.porGap)) {
+    const o = opcaoPorId(id);
+    if (!o || o.recorrente <= 0) continue;
+    part.compromissos.push({
+      moedas: o.recorrente,
+      turnosRestantes: o.abordagem === "borrow" ? p("economia.duracaoRecorrenteBorrow") + 1 : 999,
+      rotulo: o.id,
+    });
+  }
+  part.copilotosAtivos += copilotosDaDecisao(esc);
 }
 
 export function turnoAtual(part: PartidaTrad): number {
@@ -100,12 +143,18 @@ export function ehTurnoChefao(part: PartidaTrad): boolean {
   return TURNOS_CHEFAO.includes(turnoAtual(part));
 }
 
+/** Toda compra de inteligência vira base de evidência: estreita a previsão e ajuda na Auditoria. */
+function acumularAnalytics(part: PartidaTrad) {
+  part.estado = { ...part.estado, analyticsAcumulado: part.estado.analyticsAcumulado + 1 };
+}
+
 /** Compra de inteligência. Devolve o valor a exibir (pode ser enganoso) ou null se não há saldo. */
 export function revelarIndicador(part: PartidaTrad, campo: CampoNevoa): number | null {
   const custo = p("analytics.custoRevelarIndicador");
   if (part.orcamento < custo) return null;
   part.orcamento -= custo;
   part.reveladas[campo] = 2;
+  acumularAnalytics(part);
   const real = part.estado[campo];
   if (part.rngIntel() < p("analytics.chanceInsightEnganoso")) {
     const distorcao = 1 + (part.rngIntel() < 0.5 ? -0.15 : 0.15);
@@ -120,6 +169,7 @@ export function preverTurnover(part: PartidaTrad): number | null {
   const custo = p("analytics.custoPrevisaoTurnover");
   if (part.orcamento < custo) return null;
   part.orcamento -= custo;
+  acumularAnalytics(part);
   // projeção: um turno sem decisões, sem chefão (não altera a partida)
   const proj = simularTurno(part.estado, { alocacao: {} }, criarRng(1), false).estado;
   const real = Math.round(proj.turnover * 10) / 10;
@@ -133,10 +183,21 @@ export function preverTurnover(part: PartidaTrad): number | null {
 
 export function rodarPiloto(part: PartidaTrad): boolean {
   const custo = p("analytics.custoPiloto");
-  if (part.orcamento < custo) return false;
+  if (part.orcamento < custo || part.pilotoPendente) return false;
   part.orcamento -= custo;
-  part.estado = { ...part.estado, analyticsAcumulado: part.estado.analyticsAcumulado + 1 };
+  acumularAnalytics(part);
+  part.pilotoPendente = true;
   return true;
+}
+
+/**
+ * Efeito medido do copiloto em 1 família, no banco de verdade, sem chefão.
+ * É o número que o piloto do semestre anterior entrega antes de escalar.
+ */
+function medirPiloto(e: Estado): number {
+  const base = simularTurno(e, { alocacao: {} }, criarRng(7), false).estado;
+  const com = simularTurno(e, { alocacao: { ia_copiloto: 1 } }, criarRng(7), false).estado;
+  return Math.round((com.receita - base.receita) * 100) / 100;
 }
 
 const clamp = (v: number, min: number, max: number) => Math.min(max, Math.max(min, v));
@@ -182,7 +243,18 @@ export function aplicarEvento(part: PartidaTrad, ev: EventoDef, opcao: 0 | 1) {
 export function fecharTurno(part: PartidaTrad) {
   part.historico.push(part.estado);
   for (const c of CAMPOS_NEVOA) part.reveladas[c] = Math.max(0, part.reveladas[c] - 1);
-  part.orcamento = Math.max(0, p("orcamentoPorTurno") + part.orcamentoDeltaProximo);
+
+  part.pilotoResultado = part.pilotoPendente ? medirPiloto(part.estado) : null;
+  part.pilotoPendente = false;
+
+  part.compromissos = part.compromissos
+    .map((c) => ({ ...c, turnosRestantes: c.turnosRestantes - 1 }))
+    .filter((c) => c.turnosRestantes > 0);
+
+  part.orcamento = Math.max(
+    0,
+    p("orcamentoPorTurno") - recorrenteAtivo(part) + part.orcamentoDeltaProximo
+  );
   part.orcamentoDeltaProximo = 0;
 }
 

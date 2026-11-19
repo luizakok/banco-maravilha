@@ -16,7 +16,7 @@ import {
 } from "../src/game/tradicional";
 import { construirUrlFeedback, resumirDecisoes } from "../src/feedback";
 import { FEEDBACK_FIELDS } from "../src/config";
-import { estadoInicial } from "../src/model/simulate";
+import { estadoInicial, p } from "../src/model/simulate";
 import type { Decisao } from "../src/model/types";
 
 function jogarPartida(seed: number, decisao: Decisao = DECISAO_EQUILIBRADA): PartidaTrad {
@@ -65,7 +65,7 @@ describe("modo Tradicional", () => {
     const antes = part.orcamento;
     const v = revelarIndicador(part, "engajamento");
     expect(v).not.toBeNull();
-    expect(part.orcamento).toBeCloseTo(antes - 0.5, 6);
+    expect(part.orcamento).toBe(antes - p("analytics.custoRevelarIndicador"));
     expect(part.reveladas.engajamento).toBe(2);
     jogarTurnoTrad(part, DECISAO_EQUILIBRADA);
     fecharTurno(part);

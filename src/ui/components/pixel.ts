@@ -1,9 +1,13 @@
 /**
  * Arte pixel 100% gerada por código (nenhum asset externo).
- * Cada retrato é uma matriz 12x12 de índices numa paleta.
+ * Cada sprite é uma matriz quadrada de caracteres indexando uma paleta.
  */
 
 type Paleta = Record<string, string>;
+interface Sprite {
+  paleta: Paleta;
+  linhas: string[];
+}
 
 const BASE: Paleta = {
   ".": "transparent",
@@ -14,8 +18,21 @@ const BASE: Paleta = {
   o: "#23253f", // pupila
 };
 
-// 12 colunas x 12 linhas; letras extras definidas por retrato
-const RETRATOS: Record<string, { paleta: Paleta; linhas: string[] }> = {
+// Cores de interface reaproveitadas pelos ícones
+const UI: Paleta = {
+  ".": "transparent",
+  "#": "#1a1c33",
+  a: "#ffd24a", // âmbar
+  z: "#7ab8ff", // azul
+  v: "#6fe08a", // verde
+  r: "#ff7a7a", // vermelho
+  c: "#8a8fa8", // cinza
+  b: "#f0eef8",
+  m: "#b98cff", // roxo
+};
+
+// 12x12
+const RETRATOS: Record<string, Sprite> = {
   ceo: {
     paleta: { ...BASE, c: "#8a8fa8", t: "#2d3561", g: "#ffd24a" },
     linhas: [
@@ -84,38 +101,276 @@ const RETRATOS: Record<string, { paleta: Paleta; linhas: string[] }> = {
       "#ttt#..#ttt#",
     ],
   },
+  diretora: {
+    paleta: { ...BASE, c: "#6b3f8f", t: "#2a3f7a", g: "#ffd24a" },
+    linhas: [
+      "...######...",
+      "..#cccccc#..",
+      ".#cccccccc#.",
+      ".#cppppppc#.",
+      ".#cpbopboc#.",
+      ".#cppppppc#.",
+      ".#cp####pc#.",
+      "..#cppppc#..",
+      "..##tttt##..",
+      ".#tgttttgt#.",
+      "#tttt##tttt#",
+      "#ttt#..#ttt#",
+    ],
+  },
+  diretor: {
+    paleta: { ...BASE, c: "#3f3a66", t: "#2a3f7a", g: "#ffd24a" },
+    linhas: [
+      "....####....",
+      "...#cccc#...",
+      "..#cccccc#..",
+      "..#pppppp#..",
+      "..#pbopbo#..",
+      "..#pppppp#..",
+      "..#p####p#..",
+      "...#pppp#...",
+      "..##tttt##..",
+      ".#ttgttgtt#.",
+      "#tttt##tttt#",
+      "#ttt#..#ttt#",
+    ],
+  },
+};
+
+// 8x8 — ícones de abordagem e de área
+const ICONES: Record<string, Sprite> = {
+  // abordagens
+  build: {
+    paleta: UI,
+    linhas: [
+      "...##...",
+      "..#aa#..",
+      ".#aaaa#.",
+      "#aaaaaa#",
+      "..#zz#..",
+      "..#zz#..",
+      ".#zzzz#.",
+      "..####..",
+    ],
+  },
+  buy: {
+    paleta: UI,
+    linhas: [
+      "..####..",
+      ".#cccc#.",
+      "########",
+      "#aaaaaa#",
+      "#aa##aa#",
+      "#aaaaaa#",
+      "#aaaaaa#",
+      "########",
+    ],
+  },
+  borrow: {
+    paleta: UI,
+    linhas: [
+      "..####..",
+      ".#vvvv#.",
+      "#vv##vv#",
+      "#vv#cvv#",
+      "#vv#cvv#",
+      "#vvccvv#",
+      ".#vvvv#.",
+      "..####..",
+    ],
+  },
+  bot: {
+    paleta: UI,
+    linhas: [
+      "...##...",
+      "..#zz#..",
+      ".######.",
+      "#zbzzbz#",
+      "#zzzzzz#",
+      "#z####z#",
+      ".######.",
+      "..#..#..",
+    ],
+  },
+  // áreas
+  atendimento: {
+    paleta: UI,
+    linhas: [
+      "..####..",
+      ".#cccc#.",
+      "#cc##cc#",
+      "#c#..#c#",
+      "#c#..#c#",
+      "#c#..#c#",
+      ".#....#.",
+      "..#aa#..",
+    ],
+  },
+  dados: {
+    paleta: UI,
+    linhas: [
+      "#......#",
+      "#.....z#",
+      "#...zzz#",
+      "#..vzzz#",
+      "#.avzzz#",
+      "#.avzzz#",
+      "#aavzzz#",
+      "########",
+    ],
+  },
+  credito: {
+    paleta: UI,
+    linhas: [
+      "########",
+      "#cccccc#",
+      "#c#aa#c#",
+      "#ca##ac#",
+      "#c#aa#c#",
+      "#cccccc#",
+      "#c#..#c#",
+      "########",
+    ],
+  },
+  backoffice: {
+    paleta: UI,
+    linhas: [
+      ".######.",
+      ".#bbbb#.",
+      ".#cccb#.",
+      ".#bbbb#.",
+      ".#cccb#.",
+      ".#bbbb#.",
+      ".#ccbb#.",
+      ".######.",
+    ],
+  },
+  tecnologia: {
+    paleta: UI,
+    linhas: [
+      "..#..#..",
+      ".######.",
+      "#mmmmmm#",
+      "#mm##mm#",
+      "#m#zz#m#",
+      "#mm##mm#",
+      ".######.",
+      "..#..#..",
+    ],
+  },
+  comercial: {
+    paleta: UI,
+    linhas: [
+      "#......#",
+      "#....vv#",
+      "#...vv.#",
+      "#..vv..#",
+      "#.vv.a.#",
+      "#vv..aa#",
+      "#...aaa#",
+      "########",
+    ],
+  },
+  risco: {
+    paleta: UI,
+    linhas: [
+      "..####..",
+      ".#zzzz#.",
+      "#zzzzzz#",
+      "#zz##zz#",
+      "#z#aa#z#",
+      "#zz##zz#",
+      ".#zzzz#.",
+      "..####..",
+    ],
+  },
+  lideranca: {
+    paleta: UI,
+    linhas: [
+      "#..##..#",
+      "#a.##.a#",
+      "#aa##aa#",
+      "#aaaaaa#",
+      "#a#aa#a#",
+      "#aaaaaa#",
+      "########",
+      "..####..",
+    ],
+  },
+  sucessao: {
+    paleta: UI,
+    linhas: [
+      "########",
+      ".#aaaa#.",
+      "..#aa#..",
+      "...##...",
+      "...##...",
+      "..#aa#..",
+      ".#aaaa#.",
+      "########",
+    ],
+  },
+  caneta: {
+    paleta: UI,
+    linhas: [
+      ".....##.",
+      "....#a#.",
+      "...#aa#.",
+      "..#aa#..",
+      ".#aa#...",
+      "#aa#....",
+      "#b#.....",
+      "##......",
+    ],
+  },
 };
 
 const cache = new Map<string, string>();
 
-/** Devolve um data: URL SVG com o retrato pixelado do conselheiro. */
-export function retratoUrl(conselheiro: string): string {
-  const def = RETRATOS[conselheiro];
-  if (!def) return "";
-  const memo = cache.get(conselheiro);
+function urlDe(chave: string, sprite: Sprite | undefined): string {
+  if (!sprite) return "";
+  const memo = cache.get(chave);
   if (memo) return memo;
+  const n = sprite.linhas.length;
   let rects = "";
-  def.linhas.forEach((linha, y) => {
+  sprite.linhas.forEach((linha, y) => {
     [...linha].forEach((ch, x) => {
-      const cor = def.paleta[ch];
+      const cor = sprite.paleta[ch];
       if (!cor || cor === "transparent") return;
       rects += `<rect x="${x}" y="${y}" width="1" height="1" fill="${cor}"/>`;
     });
   });
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" shape-rendering="crispEdges">${rects}</svg>`;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${n} ${n}" shape-rendering="crispEdges">${rects}</svg>`;
   const url = `data:image/svg+xml,${encodeURIComponent(svg)}`;
-  cache.set(conselheiro, url);
+  cache.set(chave, url);
   return url;
 }
 
-/** Cria o <img> do retrato (decorativo; o nome do falante está ao lado). */
-export function retrato(conselheiro: string): HTMLImageElement | null {
-  const url = retratoUrl(conselheiro);
+/** Devolve um data: URL SVG com o retrato pixelado (conselheiros e avatares). */
+export function retratoUrl(nome: string): string {
+  return urlDe(`r:${nome}`, RETRATOS[nome]);
+}
+
+export function iconeUrl(nome: string): string {
+  return urlDe(`i:${nome}`, ICONES[nome]);
+}
+
+function imagem(url: string, classe: string): HTMLImageElement | null {
   if (!url) return null;
   const img = document.createElement("img");
   img.src = url;
   img.alt = "";
   img.setAttribute("aria-hidden", "true");
-  img.className = "retrato";
+  img.className = classe;
   return img;
+}
+
+/** Cria o <img> do retrato (decorativo; o nome do falante está ao lado). */
+export function retrato(nome: string): HTMLImageElement | null {
+  return imagem(retratoUrl(nome), "retrato");
+}
+
+/** Ícone pixel decorativo (o rótulo em texto acompanha). */
+export function icone(nome: string, classe = "icone-pixel"): HTMLImageElement | null {
+  return imagem(iconeUrl(nome), classe);
 }

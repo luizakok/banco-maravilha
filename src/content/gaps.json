@@ -1,0 +1,59 @@
+{
+  "catalogo": [
+    {
+      "id": "atendimentoIA",
+      "escala": 1.2,
+      "alavancas": { "build": "ld_cargo", "buy": "contratar", "borrow": "flex", "bot": "ia_copiloto" }
+    },
+    {
+      "id": "dadosSaida",
+      "escala": 0.8,
+      "alavancas": { "build": "interno", "buy": "contratar", "borrow": "flex" }
+    },
+    {
+      "id": "legadoCredito",
+      "escala": 1,
+      "alavancas": { "build": "ld_realocar", "buy": "contratar", "bot": "ia_auto" }
+    },
+    {
+      "id": "backoffice",
+      "escala": 1.1,
+      "alavancas": { "build": "ld_realocar", "borrow": "flex", "bot": "ia_auto" }
+    },
+    {
+      "id": "squadIA",
+      "escala": 0.9,
+      "alavancas": { "build": "ld_cargo", "buy": "contratar", "borrow": "flex", "bot": "ia_copiloto" }
+    },
+    {
+      "id": "comercialDigital",
+      "escala": 1,
+      "alavancas": { "build": "ld_cargo", "buy": "contratar", "bot": "ia_copiloto" }
+    },
+    {
+      "id": "governancaModelos",
+      "escala": 0.9,
+      "alavancas": { "build": "ld_realocar", "buy": "contratar", "borrow": "flex" }
+    },
+    {
+      "id": "lideranca",
+      "escala": 1,
+      "alavancas": { "build": "interno", "buy": "contratar", "bot": "ia_copiloto" }
+    },
+    {
+      "id": "sucessao",
+      "escala": 0.8,
+      "alavancas": { "build": "interno", "buy": "contratar", "borrow": "flex" }
+    }
+  ],
+  "porTurno": {
+    "1": ["atendimentoIA", "dadosSaida"],
+    "2": ["atendimentoIA", "legadoCredito", "backoffice"],
+    "3": ["atendimentoIA", "squadIA"],
+    "4": ["squadIA", "comercialDigital", "legadoCredito"],
+    "5": ["dadosSaida", "governancaModelos"],
+    "6": ["comercialDigital", "backoffice", "lideranca"],
+    "7": ["governancaModelos", "atendimentoIA"],
+    "8": ["lideranca", "sucessao"]
+  }
+}

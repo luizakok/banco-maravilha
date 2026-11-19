@@ -1,4 +1,5 @@
 {
+  "versaoModelo": { "valor": 2, "fonte": "v2: orçamento em 100 moedas, pacotes P/M/G por gap, custos recorrentes e previsão com incerteza" },
   "inicial": {
     "engajamento": { "valor": 62, "fonte": "premissa de design" },
     "turnover": { "valor": 12, "fonte": "premissa de design" },
@@ -8,8 +9,40 @@
     "nps": { "valor": 30, "fonte": "premissa de design" },
     "risco": { "valor": 1, "fonte": "premissa de design (0 baixo, 1 médio, 2 alto)" }
   },
-  "orcamentoPorTurno": { "valor": 10, "fonte": "premissa de design" },
+  "orcamentoPorTurno": { "valor": 100, "fonte": "premissa de design (moedas inteiras por semestre)" },
   "turnos": { "valor": 8, "fonte": "premissa de design (8 semestres, 2027-2030)" },
+  "economia": {
+    "moedasPorEsforco": { "valor": 10, "fonte": "conversão de design: 10 moedas = 1 unidade de esforço do modelo" },
+    "esforcoP": { "valor": 1, "fonte": "premissa de design (pacote pequeno)" },
+    "esforcoM": { "valor": 2, "fonte": "premissa de design (pacote médio)" },
+    "esforcoG": { "valor": 3.5, "fonte": "premissa de design (pacote grande; ganho decrescente por moeda)" },
+    "precoBuild": { "valor": 1, "fonte": "referência de preço: requalificar é a opção base" },
+    "precoBuy": { "valor": 1.4, "fonte": "Bidwell/Wharton: prêmio salarial de 18-20% + custo de busca" },
+    "precoBorrow": { "valor": 0.8, "fonte": "premissa de design: barato para entrar, caro para manter" },
+    "precoBot": { "valor": 1.1, "fonte": "premissa de design: implantação + licenças" },
+    "recorrenteBuild": { "valor": 0, "fonte": "premissa de design: treinamento é custo único" },
+    "recorrenteBuy": { "valor": 0.25, "fonte": "premissa de design: folha continua todo semestre" },
+    "recorrenteBorrow": { "valor": 0.3, "fonte": "premissa de design: contrato enquanto durar" },
+    "recorrenteBot": { "valor": 0.2, "fonte": "premissa de design: licença por semestre" },
+    "duracaoRecorrenteBorrow": { "valor": 2, "fonte": "premissa de design (contrato de 1 ano)" },
+    "tetoRecorrente": { "valor": 45, "fonte": "premissa de design: o orçamento do semestre nunca cai abaixo de 55 moedas" },
+    "limiarCaro": { "valor": 30, "fonte": "premissa de design: etiqueta 💰 a partir de 30 moedas" }
+  },
+  "benchmark": {
+    "engajamento": { "valor": 60, "fonte": "economia fictícia do jogo (não é benchmark real de mercado)" },
+    "turnover": { "valor": 15, "fonte": "economia fictícia do jogo (não é benchmark real de mercado)" },
+    "prontidao": { "valor": 50, "fonte": "economia fictícia do jogo (não é benchmark real de mercado)" },
+    "custoPessoal": { "valor": 100, "fonte": "economia fictícia do jogo (não é benchmark real de mercado)" },
+    "receita": { "valor": 100, "fonte": "economia fictícia do jogo (não é benchmark real de mercado)" },
+    "eficiencia": { "valor": 64, "fonte": "economia fictícia do jogo (não é benchmark real de mercado)" },
+    "nps": { "valor": 25, "fonte": "economia fictícia do jogo (não é benchmark real de mercado)" }
+  },
+  "previsao": {
+    "analyticsParaDirecao": { "valor": 1, "fonte": "premissa de design: com 1 investimento em dados, vê a direção" },
+    "analyticsParaPrecisao": { "valor": 3, "fonte": "premissa de design: com 3, vê a faixa estreita" },
+    "bandaLarga": { "valor": 0.6, "fonte": "premissa de design (±60% em torno da projeção)" },
+    "bandaEstreita": { "valor": 0.15, "fonte": "premissa de design (±15%)" }
+  },
   "pressao": {
     "receitaPorTurno": { "valor": -0.5, "fonte": "premissa de design (bancos digitais)" },
     "npsPorTurno": { "valor": -1, "fonte": "premissa de design" }
@@ -65,12 +98,16 @@
     "hibridoSemGPREngajamentoPorTurno": { "valor": -3, "fonte": "premissa de design" },
     "hibridoSemGPRAtenuacao": { "valor": 0.5, "fonte": "premissa de design" },
     "flexProntidaoPorMoeda": { "valor": 2, "fonte": "premissa de design (borrow)" },
-    "flexCustoPorMoeda": { "valor": 1, "fonte": "premissa de design" }
+    "flexCustoPorMoeda": { "valor": 1, "fonte": "premissa de design" },
+    "flexReverteLag": { "valor": 2, "fonte": "premissa de design: contrato acaba e a capacidade vai embora (borrow não constrói capacidade)" },
+    "flexReverteFracao": { "valor": 0.8, "fonte": "premissa de design: 80% da prontidão emprestada volta ao fim do contrato" }
   },
   "analytics": {
-    "custoRevelarIndicador": { "valor": 0.5, "fonte": "premissa de design (2 turnos)" },
-    "custoPrevisaoTurnover": { "valor": 1, "fonte": "premissa de design" },
-    "custoPiloto": { "valor": 1, "fonte": "premissa de design" },
+    "custoRevelarIndicador": { "valor": 5, "fonte": "premissa de design (moedas; revela por 2 semestres)" },
+    "custoPrevisaoTurnover": { "valor": 8, "fonte": "premissa de design (moedas)" },
+    "custoPiloto": { "valor": 10, "fonte": "premissa de design (moedas; piloto em 1 agência)" },
+    "custoPainel": { "valor": 15, "fonte": "premissa de design (moedas; painel de people analytics)" },
+    "esforcoPainel": { "valor": 2, "fonte": "premissa de design (unidades de esforço em analytics)" },
     "chanceInsightEnganoso": { "valor": 0.2, "fonte": "premissa de design (correlação não é causa)" },
     "limiarMitigaAuditoria": { "valor": 2, "fonte": "premissa de design (moedas acumuladas)" }
   },
@@ -91,7 +128,7 @@
     "eficienciaBase": { "valor": 62, "fonte": "definição: 62 x custo / receita" }
   },
   "capacidade": {
-    "maxIniciativas": { "valor": 3, "fonte": "premissa de design" },
+    "maxIniciativas": { "valor": 4, "fonte": "premissa de design (com 2-3 gaps por semestre + políticas, 4 frentes é o teto saudável)" },
     "penalidadeEngajamentoPorExcesso": { "valor": -5, "fonte": "premissa de design" }
   },
   "divida": {

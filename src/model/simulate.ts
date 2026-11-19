@@ -215,8 +215,16 @@ export function simularTurno(entrada: Estado, d: Decisao, rng: Rng, chefao = tru
   // Flex (borrow)
   const mFlex = moedas(d, "flex");
   if (mFlex > 0) {
-    aplicar(ctx, "prontidao", mFlex * p("futuroTrabalho.flexProntidaoPorMoeda"), "flex.prontidao");
+    const ganho = mFlex * p("futuroTrabalho.flexProntidaoPorMoeda");
+    aplicar(ctx, "prontidao", ganho, "flex.prontidao");
     aplicar(ctx, "custoPessoal", mFlex * p("futuroTrabalho.flexCustoPorMoeda"), "flex.custo", true);
+    agendar(
+      ctx,
+      p("futuroTrabalho.flexReverteLag"),
+      "prontidao",
+      -ganho * p("futuroTrabalho.flexReverteFracao"),
+      "flex.fimContrato"
+    );
   }
 
   // Analytics (efeito de informação na UI; aqui só o acúmulo que mitiga a Auditoria)

@@ -1,5 +1,7 @@
 import { getIdioma, setIdioma, t, type Idioma } from "../../i18n";
 import { expressConcluido } from "../../game/state";
+import { avatarAtual, setAvatar } from "../../game/avatar";
+import { retratoUrl } from "../components/pixel";
 import { el, limpar } from "../dom";
 import { botaoSom } from "../som";
 
@@ -36,6 +38,31 @@ export function telaTitulo(raiz: HTMLElement, aoJogarExpress: () => void, aoJoga
   intro.style.maxWidth = "560px";
   intro.style.margin = "12px auto";
   raiz.append(intro);
+
+  // escolha do avatar da Diretoria
+  const escolhaAvatar = el("div", "escolha-avatar");
+  escolhaAvatar.append(el("p", "centro relogio", t("titulo.escolhaAvatar")));
+  const linha = el("div", "avatares");
+  for (const op of ["diretora", "diretor"] as const) {
+    const b = el("button", "avatar-op");
+    b.type = "button";
+    const img = document.createElement("img");
+    img.src = retratoUrl(op);
+    img.alt = "";
+    img.setAttribute("aria-hidden", "true");
+    img.className = "retrato retrato-diretoria";
+    b.append(img, el("span", undefined, t(`titulo.${op}`)));
+    const ativo = avatarAtual() === op;
+    if (ativo) b.classList.add("escolhida");
+    b.setAttribute("aria-pressed", String(ativo));
+    b.addEventListener("click", () => {
+      setAvatar(op);
+      telaTitulo(raiz, aoJogarExpress, aoJogarTradicional);
+    });
+    linha.append(b);
+  }
+  escolhaAvatar.append(linha);
+  raiz.append(escolhaAvatar);
 
   const acoes = el("div", "acoes");
   const btnExpress = el("button", "primario", t("titulo.expressBotao"));
