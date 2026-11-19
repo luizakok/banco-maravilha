@@ -17,10 +17,10 @@ import {
   TURNOS_CHEFAO,
   type PartidaTrad,
 } from "../src/game/tradicional";
-import { construirUrlFeedback, resumirDecisoes } from "../src/feedback";
+import { camposFeedback, construirUrlFeedback, resumirDecisoes } from "../src/feedback";
 import pt from "../src/content/i18n/pt.json";
 import en from "../src/content/i18n/en.json";
-import { FEEDBACK_FIELDS } from "../src/config";
+import { FEEDBACK_FIELDS, FEEDBACK_FORM_URL } from "../src/config";
 import { estadoInicial, p } from "../src/model/simulate";
 import { composicaoValor, valorDoBanco } from "../src/model/scoring";
 import type { Decisao } from "../src/model/types";
@@ -152,15 +152,51 @@ describe("feedback", () => {
   });
 
   it("URL fica abaixo de 2000 caracteres mesmo com dados longos", () => {
-    // simula a URL com um formulário configurado
-    const params = new URLSearchParams({ usp: "pp_url" });
-    const base = "https://docs.google.com/forms/d/e/1FAIpQLSexemplo-com-id-bem-comprido-1234567890/viewform";
-    const url = construirUrlFeedback(dados);
-    // sem URL configurada, deve devolver null (botão escondido)
-    expect(url).toBeNull();
-    // com URL: monta na mão e confere o tamanho usando os mesmos campos
-    for (const [campo, entry] of Object.entries(FEEDBACK_FIELDS)) params.set(entry, String(campo).repeat(5));
-    expect(`${base}?${params.toString()}`.length).toBeLessThan(2000);
+    // a partida mais longa possível: 8 semestres com todas as alavancas usadas
+    const gordo = {
+      ...dados,
+      decisoes: Array.from({ length: 8 }, () => ({
+        alocacao: {
+          contratar: 1,
+          interno: 1,
+          ld_cargo: 1,
+          ld_realocar: 1,
+          ia_auto: 1,
+          ia_copiloto: 1,
+          hibrido: 1,
+          flex: 1,
+          analytics: 2,
+        },
+        gestaoPorResultados: true,
+      })),
+    };
+    expect(construirUrlFeedback(gordo)!.length).toBeLessThan(2000);
+  });
+
+  it("o formulário está configurado e o botão de feedback aparece", () => {
+    expect(FEEDBACK_FORM_URL).toMatch(/^https:\/\/docs\.google\.com\/forms\//);
+    expect(construirUrlFeedback(dados)).not.toBeNull();
+  });
+
+  it("pré-preenche só o que o jogo sabe, e nada do que é da pessoa", () => {
+    const url = new URL(construirUrlFeedback(dados)!);
+    expect(url.searchParams.get("usp")).toBe("pp_url");
+    // todo campo do resumo chega ao formulário, com entry de verdade
+    for (const [campo, valor] of camposFeedback(dados)) {
+      const entry = FEEDBACK_FIELDS[campo];
+      expect(entry, campo).toMatch(/^entry\.\d{6,}$/);
+      expect(url.searchParams.get(entry), campo).toBe(valor);
+    }
+    // a nota de 0 a 10 e o texto aberto são da pessoa: não podem ir preenchidos
+    for (const daPessoa of ["entry.923341810", "entry.1338412416"]) {
+      expect(Object.values(FEEDBACK_FIELDS), daPessoa).not.toContain(daPessoa);
+      expect(url.searchParams.has(daPessoa), daPessoa).toBe(false);
+    }
+  });
+
+  it("cada pergunta do formulário recebe um campo diferente", () => {
+    const entries = Object.values(FEEDBACK_FIELDS);
+    expect(new Set(entries).size).toBe(entries.length);
   });
 });
 
