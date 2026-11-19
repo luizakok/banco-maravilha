@@ -11,9 +11,11 @@ import {
 } from "../../game/tradicional";
 import { faseDoTurno } from "../../game/fases";
 import { p } from "../../model/simulate";
+import { chefaoDoTurno } from "../../game/chefoes";
 import { caixaDialogo, nomeConselheiro } from "../components/dialog";
-import { chefaoDoTurno, faixaChefao, tremor } from "../components/chefaoFaixa";
+import { faixaChefao, tremor } from "../components/chefaoFaixa";
 import { cenaEscritorio } from "../components/escritorio";
+import { faixaMandato } from "../components/mandato";
 import { painelIndicadores } from "../components/indicadores";
 import { el, limpar } from "../dom";
 import { tocar } from "../som";
@@ -48,13 +50,15 @@ export function telaBriefingTrad(raiz: HTMLElement, part: PartidaTrad, aoDecidir
   }
 
   const fase = faseDoTurno(turno);
-  const idChefao = chefaoDoTurno(turno);
+  const chefao = chefaoDoTurno(turno);
+  const idChefao = chefao?.id ?? null;
 
   const render = () => {
     limpar(raiz);
     raiz.classList.add(`fase-${fase}`);
     raiz.append(el("p", "tag-turno", `${t("tradicional.semestre")} ${turno} ${t("comum.de")} ${TOTAL_TURNOS}`));
     raiz.append(cenaEscritorio(part.estado, fase));
+    if (part.metas.length > 0) raiz.append(faixaMandato(part.metas, part.estado, part.reveladas));
 
     // ── Dados revelados: sempre no topo, com destaque ──
     for (const d of destaques) {

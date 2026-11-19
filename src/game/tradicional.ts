@@ -1,5 +1,7 @@
 import eventosJson from "../content/events.json";
+import type { RespostaChefao } from "./chefoes";
 import { copilotosDaDecisao, opcaoPorId, type Escolhas } from "./gaps";
+import { placarMetas, type MetaId, type PlacarMetas } from "./metas";
 import type { Reacao } from "./reacoes";
 import type { CampoNum, Decisao, Estado, Explicacao } from "../model/types";
 import { criarRng, type Rng } from "../model/rng";
@@ -42,6 +44,12 @@ export interface EscolhaEvento {
   opcao: 0 | 1;
 }
 
+export interface EscolhaChefao {
+  turno: number;
+  chefaoId: string;
+  respostaId: string;
+}
+
 export interface Compromisso {
   /** moedas que voltam a ser cobradas todo semestre */
   moedas: number;
@@ -52,6 +60,8 @@ export interface Compromisso {
 
 export interface PartidaTrad {
   seed: number;
+  /** as três metas de 2030 que a CEO pediu e o jogador escolheu */
+  metas: MetaId[];
   rngTurno: Rng;
   rngIntel: Rng;
   estado: Estado;
@@ -60,6 +70,7 @@ export interface PartidaTrad {
   decisoes: Decisao[];
   escolhasPorTurno: Escolhas[];
   eventosEscolhidos: EscolhaEvento[];
+  respostasChefao: EscolhaChefao[];
   agendaEventos: Map<number, EventoDef>;
   /** orçamento disponível para o turno em curso */
   orcamento: number;
@@ -93,10 +104,11 @@ function montarAgenda(seed: number): Map<number, EventoDef> {
   return agenda;
 }
 
-export function novaPartidaTrad(seed = Date.now() >>> 0): PartidaTrad {
+export function novaPartidaTrad(seed = Date.now() >>> 0, metas: MetaId[] = []): PartidaTrad {
   const e = estadoInicial();
   return {
     seed,
+    metas,
     rngTurno: criarRng(seed),
     rngIntel: criarRng((seed ^ 0x55555555) >>> 0),
     estado: e,
@@ -105,6 +117,7 @@ export function novaPartidaTrad(seed = Date.now() >>> 0): PartidaTrad {
     decisoes: [],
     escolhasPorTurno: [],
     eventosEscolhidos: [],
+    respostasChefao: [],
     agendaEventos: montarAgenda(seed),
     orcamento: p("orcamentoPorTurno"),
     orcamentoDeltaProximo: 0,
@@ -206,14 +219,17 @@ function medirPiloto(e: Estado): number {
 
 const clamp = (v: number, min: number, max: number) => Math.min(max, Math.max(min, v));
 
-function aplicarOpcaoEvento(e: Estado, ev: EventoDef, opcao: 0 | 1, exps: Explicacao[]): Estado {
+/**
+ * Aplica uma lista de efeitos fora do turno simulado (eventos menores e
+ * respostas a chefão) e refaz os limites e a eficiência.
+ */
+function aplicarEfeitos(e: Estado, efeitos: EfeitoEvento[], motivo: string, exps: Explicacao[]): Estado {
   const novo = structuredClone(e);
-  const motivo = `${ev.id}.${opcao === 0 ? "a" : "b"}`;
-  for (const ef of ev.opcoes[opcao].efeitos) {
+  for (const ef of efeitos) {
     if (ef.campo && ef.delta !== undefined) {
       const real = ef.percentual ? (novo[ef.campo] * ef.delta) / 100 : ef.delta;
       novo[ef.campo] += real;
-      exps.push({ campo: ef.campo, delta: real, motivo: `evento.${motivo}` });
+      exps.push({ campo: ef.campo, delta: real, motivo });
     }
     if (ef.riscoDelta) novo.risco = clamp(novo.risco + ef.riscoDelta, 0, 2) as 0 | 1 | 2;
     if (ef.analyticsDelta) novo.analyticsAcumulado += ef.analyticsDelta;
@@ -225,6 +241,11 @@ function aplicarOpcaoEvento(e: Estado, ev: EventoDef, opcao: 0 | 1, exps: Explic
   novo.custoPessoal = Math.max(20, novo.custoPessoal);
   novo.eficiencia = (p("encadeamento.eficienciaBase") * novo.custoPessoal) / novo.receita;
   return novo;
+}
+
+function aplicarOpcaoEvento(e: Estado, ev: EventoDef, opcao: 0 | 1, exps: Explicacao[]): Estado {
+  const motivo = `evento.${ev.id}.${opcao === 0 ? "a" : "b"}`;
+  return aplicarEfeitos(e, ev.opcoes[opcao].efeitos, motivo, exps);
 }
 
 /** Joga o turno: simula, e se houver evento no turno, retorna a definição para a UI escolher. */
@@ -241,6 +262,14 @@ export function aplicarEvento(part: PartidaTrad, ev: EventoDef, opcao: 0 | 1) {
   part.estado = aplicarOpcaoEvento(part.estado, ev, opcao, exps);
   part.orcamentoDeltaProximo += ev.opcoes[opcao].orcamentoDelta ?? 0;
   part.eventosEscolhidos.push({ turno: part.estado.turno, eventoId: ev.id, opcao });
+}
+
+/** Aplica a resposta que o jogador deu ao chefão do semestre. */
+export function aplicarRespostaChefao(part: PartidaTrad, chefaoId: string, resposta: RespostaChefao) {
+  const exps = part.explicacoesPorTurno[part.explicacoesPorTurno.length - 1];
+  part.estado = aplicarEfeitos(part.estado, resposta.efeitos, `chefaoResposta.${chefaoId}.${resposta.id}`, exps);
+  part.orcamentoDeltaProximo += resposta.orcamentoDelta ?? 0;
+  part.respostasChefao.push({ turno: part.estado.turno, chefaoId, respostaId: resposta.id });
 }
 
 /** Fecha o turno: registra histórico, decrementa a névoa e prepara o orçamento seguinte. */
@@ -266,11 +295,26 @@ export function acabou(part: PartidaTrad): boolean {
   return part.estado.turno >= TOTAL_TURNOS;
 }
 
-export function resumoTrad(part: PartidaTrad) {
+export interface ResumoTrad {
+  /** Valor do Banco medido pelos indicadores, sem o mandato */
+  valorBase: number;
+  /** o que o mandato de 2030 somou */
+  metas: PlacarMetas;
+  /** valorBase + bônus do mandato: é este que o debrief mostra */
+  valor: number;
+  notas: { curto: string; medio: string; longo: string };
+  final: ReturnType<typeof classificarFinal>;
+}
+
+export function resumoTrad(part: PartidaTrad): ResumoTrad {
+  const valorBase = valorDoBanco(part.estado);
+  const metas = placarMetas(part.metas, part.estado);
   return {
-    valor: valorDoBanco(part.estado),
+    valorBase,
+    metas,
+    valor: valorBase + metas.bonus,
     notas: notasPorHorizonte(part.historico),
-    final: classificarFinal(part.historico),
+    final: classificarFinal(part.historico, undefined, metas.bonus),
   };
 }
 

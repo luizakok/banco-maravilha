@@ -47,10 +47,18 @@ export function notasPorHorizonte(historico: Estado[]): { curto: string; medio: 
   };
 }
 
-export function classificarFinal(historico: Estado[], limiarArquiteto = p("placar.limiarArquiteto")): Final {
+/**
+ * `bonusMetas` é o que o mandato de 2030 somou: cumprir as metas que a CEO
+ * pediu pode ser o que leva a partida ao final de arquiteto.
+ */
+export function classificarFinal(
+  historico: Estado[],
+  limiarArquiteto = p("placar.limiarArquiteto"),
+  bonusMetas = 0
+): Final {
   const fim = historico[historico.length - 1];
   if (fim.apostadorMarcado) return "apostador";
-  if (valorDoBanco(fim) >= limiarArquiteto && !fim.dividaAtiva) return "arquiteto";
+  if (valorDoBanco(fim) + bonusMetas >= limiarArquiteto && !fim.dividaAtiva) return "arquiteto";
   if (
     (fim.engajamento >= p("placar.jardineiroEngajamento") ||
       fim.prontidao >= p("placar.jardineiroProntidao")) &&

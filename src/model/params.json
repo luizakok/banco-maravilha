@@ -175,5 +175,14 @@
     "jardineiroReceita": { "valor": 100, "fonte": "premissa de design" },
     "apostadorFamilias": { "valor": 3, "fonte": "premissa de design" },
     "apostadorProntidao": { "valor": 50, "fonte": "premissa de design" }
+  },
+  "metas": {
+    "quantas": { "valor": 3, "fonte": "premissa de design (a CEO pede 3 de 6)" },
+    "bonusPorMeta": { "valor": 4, "fonte": "premissa de design (3 metas = até +12 no Valor do Banco, contra limiar 80)" },
+    "alvoEficiencia": { "valor": 52, "fonte": "premissa de design (calibrado: só o caminho equilibrado chega, ~46)" },
+    "alvoEngajamento": { "valor": 80, "fonte": "premissa de design (calibrado: 62 é a inércia, 80 exige investir)" },
+    "alvoProntidao": { "valor": 90, "fonte": "premissa de design (calibrado: caminhos aleatórios param em ~88)" },
+    "alvoTurnover": { "valor": 10, "fonte": "premissa de design (calibrado: a inércia fica em 12)" },
+    "alvoNps": { "valor": 32, "fonte": "premissa de design (calibrado: começa em 30 e cai sem cuidado)" }
   }
 }

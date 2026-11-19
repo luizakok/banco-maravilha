@@ -1,6 +1,7 @@
 import { getIdioma, t, tf } from "../../i18n";
 import type { PartidaTrad } from "../../game/tradicional";
 import { DECISAO_EQUILIBRADA, decisoesChave, eSe, resumoTrad } from "../../game/tradicional";
+import { valorAtual } from "../../game/metas";
 import { valorDoBanco } from "../../model/scoring";
 import { camposFeedback, construirUrlFeedback, type DadosFeedback } from "../../feedback";
 import { painelIndicadores } from "../components/indicadores";
@@ -8,6 +9,7 @@ import { listaFontes, rodapeFontes } from "../components/fontes";
 import { barraValorDoBanco, dashboardLinhas } from "../components/graficos";
 import { persona } from "../components/pixel";
 import { el, limpar } from "../dom";
+import { alvoEmPalavras } from "./metasTrad";
 import { marcasDaPartida, rotuloMotivo } from "./resultadoTrad";
 
 const fmt1 = (v: number) => v.toFixed(1).replace(".", ",");
@@ -30,7 +32,43 @@ export function telaDebriefTrad(
   card.append(el("p", undefined, t(`finais.${r.final}.texto`)));
   card.append(el("div", "valorzao", r.valor.toFixed(0)));
   card.append(el("p", "tag-turno", t("resultado.valorBanco") + " — 2030"));
+  if (r.metas.bonus > 0)
+    card.append(
+      el(
+        "p",
+        "relogio",
+        tf("metas.somaNoValor", { base: r.valorBase.toFixed(0), bonus: r.metas.bonus.toFixed(0) })
+      )
+    );
   raiz.append(card);
+
+  // ── Mandato de 2030: o que a CEO pediu, o que o jogador entregou ──
+  if (part.metas.length > 0) {
+    raiz.append(el("h3", undefined, t("metas.mandatoTitulo")));
+    raiz.append(
+      el(
+        "p",
+        "centro manchete",
+        tf("metas.mandatoPlacar", { n: r.metas.atingidas.length, total: part.metas.length })
+      )
+    );
+    const lista = el("div", "mandato-resultado");
+    for (const id of part.metas) {
+      const bateu = r.metas.atingidas.includes(id);
+      const item = el("div", `mandato-linha ${bateu ? "ok" : "longe"}`);
+      item.append(el("span", "mandato-marca", bateu ? "✓" : "✗"));
+      const corpo = el("div");
+      corpo.append(el("p", "mandato-nome", t(`metas.${id}.nome`)));
+      const fechou =
+        id === "risco"
+          ? t(`indicadores.risco${part.estado.risco}`)
+          : fmt1(Math.round(valorAtual(id, part.estado) * 10) / 10);
+      corpo.append(el("p", "relogio", `${alvoEmPalavras(id)} · ${tf("metas.fechou", { v: fechou })}`));
+      item.append(corpo);
+      lista.append(item);
+    }
+    raiz.append(lista);
+  }
 
   raiz.append(painelIndicadores(part.estado)); // sem névoa: o debrief revela tudo
   raiz.append(barraValorDoBanco(part.estado));

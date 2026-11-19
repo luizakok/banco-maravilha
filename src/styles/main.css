@@ -736,6 +736,78 @@ a { color: var(--blue); }
   margin: 0 auto 6px;
 }
 
+/* ── Mandato de 2030: as três metas que a CEO pediu ── */
+.metas-grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+.meta-carta .meta-alvo { color: var(--blue); font-size: 0.82rem; }
+.carta.escolhida { border-color: var(--gold); background: #2b2f5e; }
+.carta:disabled { opacity: 0.45; cursor: not-allowed; }
+.meta-carta .etiqueta { align-self: flex-start; margin-top: auto; }
+
+/* faixa discreta durante a partida: lembra o mandato sem furar a névoa */
+.mandato {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  margin: 10px 0;
+  padding: 7px 10px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.mandato-rotulo {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.mandato-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.mandato-chip {
+  font-size: 0.76rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 2px 9px;
+  cursor: help;
+  white-space: nowrap;
+}
+.mandato-chip.ok { color: var(--green); border-color: var(--green); }
+.mandato-chip.longe { color: var(--text); }
+.mandato-chip.cego { color: var(--muted); font-style: italic; }
+
+/* no debrief o mandato é cobrado meta por meta */
+.mandato-resultado { display: grid; gap: 8px; margin: 10px 0; }
+.mandato-linha {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 10px 12px;
+  background: var(--bg2);
+  border-left: 5px solid var(--border);
+  border-radius: 6px;
+}
+.mandato-linha.ok { border-left-color: var(--green); }
+.mandato-linha.longe { border-left-color: var(--red); }
+.mandato-marca { font-family: var(--font-title); font-size: 1.5rem; line-height: 1; }
+.mandato-linha.ok .mandato-marca { color: var(--green); }
+.mandato-linha.longe .mandato-marca { color: var(--red); }
+.mandato-nome { margin: 0 0 2px; font-weight: 700; }
+
+/* ── Resposta ao chefão: a opção travada fica à vista, com o motivo ── */
+.carta-chefao { border-color: var(--red); }
+.carta-chefao.travada {
+  border-style: dashed;
+  border-color: var(--border);
+  opacity: 0.7;
+}
+.carta-chefao.travada .titulo { color: var(--muted); }
+.carta-chefao .motivo-cadeado { color: var(--red); margin-top: auto; font-style: italic; }
+
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }

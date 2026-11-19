@@ -6,13 +6,6 @@ import { t } from "../../i18n";
 import { chefao } from "./pixel";
 import { el } from "../dom";
 
-const POR_TURNO: Record<number, string> = { 3: "ondaIA", 5: "cacaTalentos", 7: "auditoria" };
-
-/** Qual chefão aparece neste semestre (3, 5 e 7 têm chefão). */
-export function chefaoDoTurno(turno: number): string | null {
-  return POR_TURNO[turno] ?? null;
-}
-
 export function faixaChefao(id: string): HTMLElement {
   const box = el("div", "chefao-faixa");
   box.append(el("div", "alarme"));

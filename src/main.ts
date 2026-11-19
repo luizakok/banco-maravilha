@@ -2,6 +2,7 @@ import { jogarCarta, novaPartidaExpress, TURNOS_EXPRESS, type PartidaExpress } f
 import {
   acabou,
   aplicarEvento,
+  aplicarRespostaChefao,
   ehTurnoChefao,
   fecharTurno,
   jogarTurnoTrad,
@@ -10,6 +11,7 @@ import {
   turnoAtual,
   type PartidaTrad,
 } from "./game/tradicional";
+import { chefaoDoTurno } from "./game/chefoes";
 import { montarDecisao, politicasDisponiveis } from "./game/gaps";
 import { t } from "./i18n";
 import { tocar } from "./ui/som";
@@ -20,7 +22,9 @@ import { telaTitulo } from "./ui/screens/titulo";
 import { telaTurnoExpress } from "./ui/screens/turnoExpress";
 import { telaResultadoExpress } from "./ui/screens/resultadoExpress";
 import { telaFinalExpress } from "./ui/screens/finalExpress";
+import { telaMetasTrad } from "./ui/screens/metasTrad";
 import { telaBriefingTrad } from "./ui/screens/briefingTrad";
+import { telaChefaoResposta } from "./ui/screens/chefaoResposta";
 import { telaDecisaoTrad } from "./ui/screens/decisaoTrad";
 import { telaEventoTrad } from "./ui/screens/eventoTrad";
 import { telaResultadoTrad } from "./ui/screens/resultadoTrad";
@@ -86,9 +90,15 @@ function mostrarTurno(p: PartidaExpress, indice: number) {
 }
 
 // ── Tradicional ──
+// a partida começa pelo mandato: a CEO pede três metas para 2030 antes do
+// primeiro semestre, e é por elas que o jogador será cobrado no debrief
 function iniciarTradicional() {
-  const partida = novaPartidaTrad();
-  mostrarSemestre(partida);
+  pintar(() =>
+    telaMetasTrad(app, (metas) => {
+      const partida = novaPartidaTrad(undefined, metas);
+      mostrarSemestre(partida);
+    })
+  );
 }
 
 function mostrarSemestre(part: PartidaTrad) {
@@ -116,10 +126,20 @@ function mostrarSemestre(part: PartidaTrad) {
                 } else mostrarSemestre(part);
               })
             );
+          // semestre de chefão não tem evento menor: ali o jogador responde ao
+          // chefão, e algumas respostas só existem se ele se preparou antes
+          const chefao = chefaoDoTurno(part.estado.turno);
           if (evento) {
             pintar(() =>
               telaEventoTrad(app, evento, (opcao) => {
                 aplicarEvento(part, evento, opcao);
+                aoResultado();
+              })
+            );
+          } else if (chefao) {
+            pintar(() =>
+              telaChefaoResposta(app, part, chefao, (resposta) => {
+                aplicarRespostaChefao(part, chefao.id, resposta);
                 aoResultado();
               })
             );
