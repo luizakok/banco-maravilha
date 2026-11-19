@@ -21,6 +21,8 @@ export interface OpcaoEvento {
 }
 export interface EventoDef {
   id: string;
+  /** quem traz o assunto: o evento chega pela boca de alguém, não de um narrador */
+  conselheiro: string;
   opcoes: OpcaoEvento[];
 }
 

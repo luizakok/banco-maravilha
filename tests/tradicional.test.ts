@@ -18,10 +18,17 @@ import {
   type PartidaTrad,
 } from "../src/game/tradicional";
 import { construirUrlFeedback, resumirDecisoes } from "../src/feedback";
+import pt from "../src/content/i18n/pt.json";
+import en from "../src/content/i18n/en.json";
 import { FEEDBACK_FIELDS } from "../src/config";
 import { estadoInicial, p } from "../src/model/simulate";
 import { composicaoValor, valorDoBanco } from "../src/model/scoring";
 import type { Decisao } from "../src/model/types";
+
+/** Lê uma chave pontuada do dicionário, atravessando os objetos aninhados. */
+function dic(d: unknown, chave: string): unknown {
+  return chave.split(".").reduce<unknown>((no, parte) => (no as Record<string, unknown>)?.[parte], d);
+}
 
 function jogarPartida(seed: number, decisao: Decisao = DECISAO_EQUILIBRADA): PartidaTrad {
   const part = novaPartidaTrad(seed);
@@ -103,6 +110,25 @@ describe("modo Tradicional", () => {
   it("orçamento do turno nunca fica negativo após eventos", () => {
     const part = jogarPartida(99);
     expect(part.orcamento).toBeGreaterThanOrEqual(0);
+  });
+
+  it("todo evento chega pela boca de um conselheiro que existe", () => {
+    for (const ev of EVENTOS) {
+      expect(dic(pt, `conselheiros.${ev.conselheiro}`), ev.id).toBeTruthy();
+      expect(dic(pt, `conselheiros.${ev.conselheiro}Cargo`), ev.id).toBeTruthy();
+    }
+  });
+
+  it("todo evento tem fala e os dois caminhos escritos nos dois idiomas", () => {
+    for (const ev of EVENTOS) {
+      for (const [nome, d] of [["pt", pt], ["en", en]] as const) {
+        expect(dic(d, `eventos.${ev.id}.texto`), `${nome} ${ev.id}`).toBeTruthy();
+        for (const letra of ["a", "b"]) {
+          expect(dic(d, `eventos.${ev.id}.${letra}`), `${nome} ${ev.id}.${letra}`).toBeTruthy();
+          expect(dic(d, `eventos.${ev.id}.${letra}Texto`), `${nome} ${ev.id}.${letra}Texto`).toBeTruthy();
+        }
+      }
+    }
   });
 });
 

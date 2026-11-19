@@ -2,6 +2,7 @@
   "eventos": [
     {
       "id": "corte",
+      "conselheiro": "cfo",
       "opcoes": [
         { "efeitos": [{ "campo": "custoPessoal", "delta": -2, "percentual": true }], "orcamentoDelta": -20 },
         { "efeitos": [{ "campo": "engajamento", "delta": 2 }, { "campo": "custoPessoal", "delta": 1, "percentual": true }] }
@@ -9,6 +10,7 @@
     },
     {
       "id": "aposentadoria",
+      "conselheiro": "voz",
       "opcoes": [
         { "efeitos": [{ "campo": "custoPessoal", "delta": 2, "percentual": true }] },
         { "efeitos": [{ "campo": "prontidao", "delta": -4 }, { "riscoDelta": 1 }] }
@@ -16,6 +18,7 @@
     },
     {
       "id": "voltaEscritorio",
+      "conselheiro": "ceo",
       "opcoes": [
         { "efeitos": [{ "campo": "engajamento", "delta": 2 }] },
         { "efeitos": [{ "campo": "turnover", "delta": 1.5 }, { "campo": "engajamento", "delta": -3 }, { "campo": "custoPessoal", "delta": -1, "percentual": true }] }
@@ -23,6 +26,7 @@
     },
     {
       "id": "pilotoIA",
+      "conselheiro": "cto",
       "opcoes": [
         { "efeitos": [{ "campo": "receita", "delta": 1, "percentual": true }, { "riscoDelta": 1 }] },
         { "efeitos": [{ "analyticsDelta": 1 }], "orcamentoDelta": -10 }
