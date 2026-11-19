@@ -23,7 +23,22 @@
     "emAndamento": "Efeitos ainda em andamento",
     "escolha": "Escolha 1 das 3 estratégias do ano",
     "som": "Som",
-    "idioma": "Idioma / Language"
+    "idioma": "Idioma / Language",
+    "fontes": "Fontes"
+  },
+  "pesquisaCurto": {
+    "nber": "NBER (copiloto de IA)",
+    "bidwell": "Bidwell/Wharton (contratar de fora)",
+    "bloom": "Bloom, Nature 2024 (híbrido)",
+    "wef": "WEF 2025 (skills)",
+    "gallupQ12": "Gallup Q12 (engajamento)",
+    "gallupCusto": "Gallup (custo de repor)"
+  },
+  "valorPartes": {
+    "receita": "Receita",
+    "eficiencia": "Eficiência",
+    "nps": "NPS",
+    "risco": "Risco"
   },
   "indicadores": {
     "engajamento": "Engajamento",
@@ -344,7 +359,17 @@
   "resultado": {
     "titulo": "Resultado do ano",
     "tituloSemestre": "Resultado do semestre",
-    "valorBanco": "Valor do Banco"
+    "valorBanco": "Valor do Banco",
+    "valorBancoAjuda": "O Valor do Banco é uma nota só, de 0 a 100, que junta quatro coisas com pesos diferentes: receita, eficiência (quanto custa cada real que entra), NPS de clientes e risco. A barra mostra de onde vêm os seus pontos hoje — um banco pode ganhar receita e mesmo assim perder valor se o custo e o risco subirem junto.",
+    "causasTitulo": "O que mais mexeu neste semestre",
+    "causaSemNada": "Nada de grande porte mexeu nos indicadores neste semestre.",
+    "dashboardTitulo": "Como os indicadores vêm andando",
+    "dashboardNota": "O ponto dourado marca um semestre em que você decidiu algo. Passe o mouse para ver o quê.",
+    "ano": "Ano",
+    "fase1": "2027 — agências e andares de sempre",
+    "fase2": "2028 — o escritório abre em open space",
+    "fase3": "2029 — metade do time em casa, metade no hub",
+    "fase4": "2030 — o banco na era da IA"
   },
   "finais": {
     "arquiteto": { "nome": "O Arquiteto", "texto": "Você equilibrou curto e longo prazo: pessoas prontas, negócio saudável. O banco chega a 2030 pronto para a era da IA." },

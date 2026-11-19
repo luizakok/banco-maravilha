@@ -23,7 +23,22 @@
     "emAndamento": "Effects still in motion",
     "escolha": "Pick 1 of the 3 strategies for the year",
     "som": "Sound",
-    "idioma": "Idioma / Language"
+    "idioma": "Idioma / Language",
+    "fontes": "Sources"
+  },
+  "pesquisaCurto": {
+    "nber": "NBER (AI copilot)",
+    "bidwell": "Bidwell/Wharton (external hires)",
+    "bloom": "Bloom, Nature 2024 (hybrid)",
+    "wef": "WEF 2025 (skills)",
+    "gallupQ12": "Gallup Q12 (engagement)",
+    "gallupCusto": "Gallup (cost to replace)"
+  },
+  "valorPartes": {
+    "receita": "Revenue",
+    "eficiencia": "Efficiency",
+    "nps": "NPS",
+    "risco": "Risk"
   },
   "indicadores": {
     "engajamento": "Engagement",
@@ -344,7 +359,17 @@
   "resultado": {
     "titulo": "Results of the year",
     "tituloSemestre": "Results of the semester",
-    "valorBanco": "Bank Value"
+    "valorBanco": "Bank Value",
+    "valorBancoAjuda": "Bank Value is a single 0-100 score that blends four things with different weights: revenue, efficiency (what each unit of revenue costs you), customer NPS and risk. The bar shows where your points come from today — a bank can grow revenue and still lose value if cost and risk climb alongside it.",
+    "causasTitulo": "What moved the most this semester",
+    "causaSemNada": "Nothing major moved the indicators this semester.",
+    "dashboardTitulo": "How the indicators have been trending",
+    "dashboardNota": "The gold dot marks a semester where you decided something. Hover to see what.",
+    "ano": "Year",
+    "fase1": "2027 — the same branches and floors as ever",
+    "fase2": "2028 — the office opens up into open space",
+    "fase3": "2029 — half the team at home, half at the hub",
+    "fase4": "2030 — the bank in the age of AI"
   },
   "finais": {
     "arquiteto": { "nome": "The Architect", "texto": "You balanced short and long term: people ready, business healthy. The bank reaches 2030 ready for the AI era." },

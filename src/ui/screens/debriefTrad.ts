@@ -4,20 +4,11 @@ import { DECISAO_EQUILIBRADA, decisoesChave, eSe, resumoTrad } from "../../game/
 import { valorDoBanco } from "../../model/scoring";
 import { camposFeedback, construirUrlFeedback, type DadosFeedback } from "../../feedback";
 import { painelIndicadores } from "../components/indicadores";
+import { listaFontes, rodapeFontes } from "../components/fontes";
+import { barraValorDoBanco, dashboardLinhas } from "../components/graficos";
+import { persona } from "../components/pixel";
 import { el, limpar } from "../dom";
-import { rotuloMotivo } from "./resultadoTrad";
-
-const PESQUISA: { chave: string; url: string }[] = [
-  { chave: "nber", url: "https://www.nber.org/papers/w31161" },
-  {
-    chave: "bidwell",
-    url: "https://knowledge.wharton.upenn.edu/article/why-external-hires-get-paid-more-and-perform-worse-than-internal-staff/",
-  },
-  { chave: "bloom", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11208135/" },
-  { chave: "wef", url: "https://www.weforum.org/publications/the-future-of-jobs-report-2025/digest/" },
-  { chave: "gallupQ12", url: "https://www.gallup.com/workplace/713024/employee-engagement-and-productivity.aspx" },
-  { chave: "gallupCusto", url: "https://www.gallup.com/workplace/247391/fixable-problem-costs-businesses.aspx" },
-];
+import { marcasDaPartida, rotuloMotivo } from "./resultadoTrad";
 
 const fmt1 = (v: number) => v.toFixed(1).replace(".", ",");
 
@@ -33,6 +24,8 @@ export function telaDebriefTrad(
 
   // ── Final ──
   const card = el("div", "final-card");
+  const retrato = persona(r.final);
+  if (retrato) card.append(retrato);
   card.append(el("h2", undefined, t(`finais.${r.final}.nome`)));
   card.append(el("p", undefined, t(`finais.${r.final}.texto`)));
   card.append(el("div", "valorzao", r.valor.toFixed(0)));
@@ -40,6 +33,7 @@ export function telaDebriefTrad(
   raiz.append(card);
 
   raiz.append(painelIndicadores(part.estado)); // sem névoa: o debrief revela tudo
+  raiz.append(barraValorDoBanco(part.estado));
 
   const notas = el("p", "centro");
   notas.textContent = `${t("debrief.notas")}: ${t("debrief.curto")} ${r.notas.curto} · ${t(
@@ -61,6 +55,11 @@ export function telaDebriefTrad(
     grafico.append(col);
   });
   raiz.append(grafico);
+
+  // ── Indicador por indicador, a partida inteira ──
+  raiz.append(el("h3", undefined, t("resultado.dashboardTitulo")));
+  raiz.append(dashboardLinhas(part.historico, marcasDaPartida(part)));
+  raiz.append(el("p", "relogio", t("resultado.dashboardNota")));
 
   // ── Top 3 decisões + E se? ──
   raiz.append(el("h3", undefined, t("debrief2.decisoesChave")));
@@ -114,17 +113,7 @@ export function telaDebriefTrad(
   // ── Pesquisa ──
   const detPesquisa = el("details", "porque");
   detPesquisa.append(el("summary", undefined, t("debrief2.pesquisa")));
-  const ulP = el("ul");
-  for (const item of PESQUISA) {
-    const li = el("li");
-    const a = el("a", undefined, t(`pesquisa.${item.chave}`));
-    a.href = item.url;
-    a.target = "_blank";
-    a.rel = "noopener noreferrer";
-    li.append(a);
-    ulP.append(li);
-  }
-  detPesquisa.append(ulP);
+  detPesquisa.append(listaFontes());
   raiz.append(detPesquisa);
 
   raiz.append(el("p", "centro manchete", t("debrief.pergunta")));
@@ -178,4 +167,6 @@ export function telaDebriefTrad(
   btnVoltar.addEventListener("click", aoVoltar);
   acoes.append(btnDeNovo, btnVoltar);
   raiz.append(acoes);
+
+  raiz.append(rodapeFontes());
 }

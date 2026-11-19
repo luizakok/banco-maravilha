@@ -8,6 +8,7 @@ import {
   fecharTurno,
   jogarTurnoTrad,
   novaPartidaTrad,
+  relacoesFortes,
   revelarIndicador,
   resumoTrad,
   TOTAL_TURNOS,
@@ -17,6 +18,7 @@ import {
 import { construirUrlFeedback, resumirDecisoes } from "../src/feedback";
 import { FEEDBACK_FIELDS } from "../src/config";
 import { estadoInicial, p } from "../src/model/simulate";
+import { composicaoValor, valorDoBanco } from "../src/model/scoring";
 import type { Decisao } from "../src/model/types";
 
 function jogarPartida(seed: number, decisao: Decisao = DECISAO_EQUILIBRADA): PartidaTrad {
@@ -131,5 +133,56 @@ describe("feedback", () => {
     // com URL: monta na mão e confere o tamanho usando os mesmos campos
     for (const [campo, entry] of Object.entries(FEEDBACK_FIELDS)) params.set(entry, String(campo).repeat(5));
     expect(`${base}?${params.toString()}`.length).toBeLessThan(2000);
+  });
+});
+
+describe("relações causais fortes do semestre", () => {
+  it("agrupa por motivo e ordena pelo impacto relativo ao mercado do jogo", () => {
+    // +3 de NPS (média 25) pesa mais que +3 de engajamento (média 60)
+    const fortes = relacoesFortes([
+      { motivo: "a", campo: "engajamento", delta: 3 },
+      { motivo: "b", campo: "nps", delta: 3 },
+    ]);
+    expect(fortes.map((r) => r.motivo)).toEqual(["b", "a"]);
+  });
+
+  it("soma os deltas do mesmo motivo e campo, e descarta ruído", () => {
+    const fortes = relacoesFortes([
+      { motivo: "a", campo: "nps", delta: 2 },
+      { motivo: "a", campo: "nps", delta: 1 },
+      { motivo: "a", campo: "receita", delta: 0.01 },
+    ]);
+    expect(fortes).toHaveLength(1);
+    expect(fortes[0].campos).toEqual([{ campo: "nps", delta: 3 }]);
+  });
+
+  it("devolve no máximo o número pedido e nada quando não houve efeito", () => {
+    const exps = ["a", "b", "c"].map((motivo) => ({ motivo, campo: "nps" as const, delta: 2 }));
+    expect(relacoesFortes(exps)).toHaveLength(2);
+    expect(relacoesFortes(exps, 1)).toHaveLength(1);
+    expect(relacoesFortes([])).toEqual([]);
+  });
+});
+
+describe("composição do Valor do Banco", () => {
+  it("as quatro partes somam exatamente o Valor do Banco", () => {
+    const part = novaPartidaTrad(42);
+    for (let i = 0; i < 3; i++) {
+      jogarTurnoTrad(part, DECISAO_EQUILIBRADA);
+      fecharTurno(part);
+    }
+    for (const e of part.historico) {
+      const soma = composicaoValor(e).reduce((s, x) => s + x.pontos, 0);
+      expect(soma).toBeCloseTo(valorDoBanco(e), 10);
+    }
+  });
+
+  it("tem uma parte para receita, eficiência, NPS e risco", () => {
+    expect(composicaoValor(estadoInicial()).map((x) => x.parte)).toEqual([
+      "receita",
+      "eficiencia",
+      "nps",
+      "risco",
+    ]);
   });
 });

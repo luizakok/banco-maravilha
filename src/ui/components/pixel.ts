@@ -137,6 +137,98 @@ const RETRATOS: Record<string, Sprite> = {
   },
 };
 
+// 16x16 — as quatro personas do final
+const PERSONAS: Record<string, Sprite> = {
+  // Capacete de bombeiro e faixa refletiva: quem passou a partida apagando incêndio.
+  bombeiro: {
+    paleta: { ...BASE, r: "#e04a4a", a: "#ffd24a", t: "#2b2f52" },
+    linhas: [
+      "................",
+      "....########....",
+      "...#rrrrrrrr#...",
+      "..#rrrr##rrrr#..",
+      "..#rrr#aa#rrr#..",
+      ".##############.",
+      "....#pppppp#....",
+      "....#pbopbo#....",
+      "....#pppppp#....",
+      "....#p####p#....",
+      ".....#pppp#.....",
+      "...##tttttt##...",
+      "..#ttaattaatt#..",
+      "..#tttttttttt#..",
+      "..#tttt##tttt#..",
+      "..####....####..",
+    ],
+  },
+  // Chapéu de palha e uma muda nas mãos: cuidou das pessoas, esqueceu a receita.
+  jardineiro: {
+    paleta: { ...BASE, a: "#e8c87a", v: "#6fe08a", t: "#3a5a3f" },
+    linhas: [
+      "................",
+      ".....######.....",
+      "....#aaaaaa#....",
+      "..##aaaaaaaa##..",
+      ".#aaaaaaaaaaaa#.",
+      "..############..",
+      "....#pppppp#....",
+      "....#pbopbo#....",
+      "....#pppppp#....",
+      "....#p####p#....",
+      ".....#pppp#.....",
+      "...##tttttt##...",
+      "..#tt#vvvv#tt#..",
+      "..#tt#vvvv#tt#..",
+      "..#tttt##tttt#..",
+      "..####....####..",
+    ],
+  },
+  // Capacete de obra e uma planta na mão: construiu curto e longo prazo juntos.
+  arquiteto: {
+    paleta: { ...BASE, a: "#ffd24a", z: "#7ab8ff", t: "#2a3f7a" },
+    linhas: [
+      "................",
+      ".....######.....",
+      "....#aaaaaa#....",
+      "...#aaaaaaaa#...",
+      "..############..",
+      "....#pppppp#....",
+      "....#pbopbo#....",
+      "....#pppppp#....",
+      "....#p####p#....",
+      ".....#pppp#.....",
+      "...##tttttt##...",
+      "..#tt#bbbb#tt#..",
+      "..#tt#bzzb#tt#..",
+      "..#tt#bbbb#tt#..",
+      "..#tttt##tttt#..",
+      "..####....####..",
+    ],
+  },
+  // Viseira de cassino e um dado: apostou tudo em uma carta só.
+  apostador: {
+    paleta: { ...BASE, m: "#b98cff", t: "#4a2f6e" },
+    linhas: [
+      "................",
+      "....########....",
+      "...#mmmmmmmm#...",
+      "...##########...",
+      "....#pppppp#....",
+      "....#pbopbo#....",
+      "....#pppppp#....",
+      "....#p####p#....",
+      ".....#pppp#.....",
+      "...##tttttt##...",
+      "..#tt######tt#..",
+      "..#tt#b##b#tt#..",
+      "..#tt##bb##tt#..",
+      "..#tt#b##b#tt#..",
+      "..#tttt##tttt#..",
+      "..####....####..",
+    ],
+  },
+};
+
 // 8x8 — ícones de abordagem e de área
 const ICONES: Record<string, Sprite> = {
   // abordagens
@@ -353,6 +445,15 @@ export function retratoUrl(nome: string): string {
 
 export function iconeUrl(nome: string): string {
   return urlDe(`i:${nome}`, ICONES[nome]);
+}
+
+/** Retrato grande da persona final (bombeiro, jardineiro, arquiteto, apostador). */
+export function personaUrl(nome: string): string {
+  return urlDe(`q:${nome}`, PERSONAS[nome]);
+}
+
+export function persona(nome: string): HTMLImageElement | null {
+  return imagem(personaUrl(nome), "persona-pixel");
 }
 
 function imagem(url: string, classe: string): HTMLImageElement | null {

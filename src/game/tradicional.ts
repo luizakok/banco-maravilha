@@ -270,6 +270,40 @@ export function resumoTrad(part: PartidaTrad) {
   };
 }
 
+export interface RelacaoForte {
+  motivo: string;
+  /** campos afetados por esse motivo, do maior impacto relativo para o menor */
+  campos: { campo: CampoNum; delta: number }[];
+}
+
+/**
+ * As relações causais mais fortes de um semestre.
+ * Os deltas são comparados em relação à média do mercado de cada indicador:
+ * +2 de engajamento (base 60) pesa menos que +2 de NPS (base 25).
+ */
+export function relacoesFortes(exps: Explicacao[], quantas = 2): RelacaoForte[] {
+  const peso = (campo: CampoNum, delta: number) => Math.abs(delta) / p(`benchmark.${campo}`);
+  const porMotivo = new Map<string, Map<CampoNum, number>>();
+  for (const ex of exps) {
+    const campos = porMotivo.get(ex.motivo) ?? new Map<CampoNum, number>();
+    campos.set(ex.campo, (campos.get(ex.campo) ?? 0) + ex.delta);
+    porMotivo.set(ex.motivo, campos);
+  }
+  return [...porMotivo]
+    .map(([motivo, campos]) => ({
+      motivo,
+      total: [...campos].reduce((s, [campo, delta]) => s + peso(campo, delta), 0),
+      campos: [...campos]
+        .map(([campo, delta]) => ({ campo, delta }))
+        .filter((c) => Math.abs(c.delta) >= 0.05)
+        .sort((a, b) => peso(b.campo, b.delta) - peso(a.campo, a.delta)),
+    }))
+    .filter((r) => r.campos.length > 0)
+    .sort((a, b) => b.total - a.total)
+    .slice(0, quantas)
+    .map(({ motivo, campos }) => ({ motivo, campos }));
+}
+
 export interface DecisaoChave {
   turno: number;
   deltaValor: number;

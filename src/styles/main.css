@@ -541,6 +541,92 @@ details.porque li { font-size: 0.85rem; color: var(--muted); }
 
 a { color: var(--blue); }
 
+/* ── Tema do escritório de cada ano ──
+   A classe fica em #app só nas telas de resultado; limpar() a remove depois. */
+.fase-1 { --bg2: #24203a; --panel: #2e2746; --border: #6b5a8c; --acento: #e8c87a; }
+.fase-2 { --bg2: #1b2440; --panel: #243156; --border: #4a6a9c; --acento: #7ab8ff; }
+.fase-3 { --bg2: #172a33; --panel: #1f3b46; --border: #3f7d8c; --acento: #6fe0d0; }
+.fase-4 { --bg2: #1e1a3a; --panel: #2a2050; --border: #7a5ac0; --acento: #b98cff; }
+
+.faixa-ano {
+  margin: 0 0 14px;
+  padding: 6px 12px;
+  border-left: 4px solid var(--acento, var(--gold));
+  background: var(--bg2);
+  color: var(--acento, var(--gold));
+  font-family: var(--font-title);
+  letter-spacing: 1px;
+}
+
+/* ── O que mais mexeu no semestre ── */
+.causas { margin: 6px 0 14px; padding-left: 20px; }
+.causas li { margin-bottom: 4px; }
+.causas strong { color: var(--gold); }
+
+/* ── Mini dashboard: uma linha por indicador ── */
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin: 8px 0 10px;
+}
+.dashboard-item {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+.dashboard-topo { display: flex; justify-content: space-between; align-items: baseline; gap: 6px; font-size: 0.8rem; }
+.dashboard-topo .rotulo { color: var(--muted); }
+.delta-neutro { color: var(--muted); }
+.sparkline { width: 100%; height: 34px; display: block; margin-top: 4px; overflow: visible; }
+.dashboard-item.oculto { border-style: dashed; }
+.sparkline-vazia { height: 34px; margin-top: 4px; }
+
+/* ── Valor do Banco: de onde vêm os pontos ── */
+.valor-composicao {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 12px 0;
+}
+.valor-topo { display: flex; align-items: center; gap: 8px; }
+.valor-rotulo { font-family: var(--font-title); letter-spacing: 1px; }
+.valor-numero { font-family: var(--font-title); font-size: 1.6rem; color: var(--gold); }
+.valor-barra {
+  display: flex;
+  height: 14px;
+  margin: 8px 0 6px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.valor-pedaco { height: 100%; }
+.valor-legenda { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 0.78rem; color: var(--muted); }
+.valor-legenda-item { display: inline-flex; align-items: center; gap: 5px; }
+.valor-ponto { width: 9px; height: 9px; border-radius: 2px; display: inline-block; }
+
+/* ── Fontes em letra pequena no pé das telas de resultado ── */
+.fontes {
+  margin: 20px 0 4px;
+  font-size: 0.72rem;
+  line-height: 1.7;
+  color: var(--muted);
+  text-align: center;
+}
+.fontes a { color: var(--muted); text-decoration: underline; }
+.fontes a:hover, .fontes a:focus-visible { color: var(--blue); }
+
+/* ── Persona final desenhada em pixel ── */
+.persona-pixel {
+  width: 112px;
+  height: 112px;
+  image-rendering: pixelated;
+  display: block;
+  margin: 0 auto 6px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }

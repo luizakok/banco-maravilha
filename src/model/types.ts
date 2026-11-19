@@ -56,7 +56,7 @@ export interface Estado {
 
 export interface Explicacao {
   motivo: string;
-  campo: string;
+  campo: CampoNum;
   delta: number;
 }
 

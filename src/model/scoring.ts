@@ -4,7 +4,10 @@ import { estadoInicial, p, simularTurno } from "./simulate";
 
 const clamp = (v: number, min: number, max: number) => Math.min(max, Math.max(min, v));
 
-export function valorDoBanco(e: Estado): number {
+export type ParteValor = "receita" | "eficiencia" | "nps" | "risco";
+
+/** Quantos pontos do Valor do Banco vêm de cada parte. A soma é o próprio valor. */
+export function composicaoValor(e: Estado): { parte: ParteValor; pontos: number }[] {
   const efScore = clamp(
     ((p("placar.eficienciaPior") - e.eficiencia) /
       (p("placar.eficienciaPior") - p("placar.eficienciaMelhor"))) *
@@ -14,12 +17,16 @@ export function valorDoBanco(e: Estado): number {
   );
   const npsScore = clamp(e.nps, 0, 100);
   const riscoScore = e.risco === 0 ? 100 : e.risco === 1 ? 50 : 0;
-  return (
-    p("placar.pesoReceita") * e.receita +
-    p("placar.pesoEficiencia") * efScore +
-    p("placar.pesoNps") * npsScore +
-    p("placar.pesoRisco") * riscoScore
-  );
+  return [
+    { parte: "receita", pontos: p("placar.pesoReceita") * e.receita },
+    { parte: "eficiencia", pontos: p("placar.pesoEficiencia") * efScore },
+    { parte: "nps", pontos: p("placar.pesoNps") * npsScore },
+    { parte: "risco", pontos: p("placar.pesoRisco") * riscoScore },
+  ];
+}
+
+export function valorDoBanco(e: Estado): number {
+  return composicaoValor(e).reduce((s, x) => s + x.pontos, 0);
 }
 
 function notaDeDelta(deltaMedioPorTurno: number): string {

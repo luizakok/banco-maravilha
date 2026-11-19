@@ -11,6 +11,8 @@ export function el<K extends keyof HTMLElementTagNameMap>(
 
 export function limpar(raiz: HTMLElement) {
   raiz.replaceChildren();
+  // o tema da fase pertence à tela: o da tela anterior não pode vazar
+  for (const c of [...raiz.classList]) if (c.startsWith("fase-")) raiz.classList.remove(c);
   raiz.scrollTop = 0;
   window.scrollTo(0, 0);
 }
