@@ -322,8 +322,14 @@ export function telaDecisaoTrad(
 
     // ── Assinar ──
     const acoes = el("div", "acoes");
-    const btn = el("button", "primario botao-assinar", `✒ ${t("decisao.assinar")}`);
-    btn.addEventListener("click", () => assinar(raiz, () => aoConfirmar(esc)));
+    const btn = el("button", "primario botao-assinar", `✒ ${t("decisao.assinar")}`) as HTMLButtonElement;
+    // a animação de assinatura leva 900ms e o botão continua no DOM atrás dela:
+    // sem isso, um clique duplo assina duas vezes e queima um semestre
+    btn.addEventListener("click", () => {
+      if (btn.disabled) return;
+      btn.disabled = true;
+      assinar(raiz, () => aoConfirmar(esc));
+    });
     acoes.append(btn);
     raiz.append(acoes);
   };

@@ -14,12 +14,15 @@ const DURACAO = 1800;
 
 export function telaPassagemAno(raiz: HTMLElement, estado: Estado, aoTerminar: () => void) {
   limpar(raiz);
-  const fase = faseDoTurno(estado.turno) as Fase;
+  // estado.turno é o semestre que acabou de fechar; esta tela anuncia o que
+  // começa agora, então tudo aqui olha para o turno seguinte
+  const proximo = estado.turno + 1;
+  const fase = faseDoTurno(proximo) as Fase;
   raiz.classList.add(`fase-${fase}`);
 
   const painel = el("div", "passagem");
   painel.append(el("p", "passagem-rotulo", t("passagem.rotulo")));
-  painel.append(el("h2", "passagem-ano", String(anoDoTurno(estado.turno))));
+  painel.append(el("h2", "passagem-ano", String(anoDoTurno(proximo))));
   painel.append(cenaEscritorio(estado, fase));
   painel.append(el("p", "centro relogio", tf("passagem.legenda", { estilo: t(`escritorio.estilo${fase}`) })));
   raiz.append(painel);
