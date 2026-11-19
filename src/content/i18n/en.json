@@ -197,31 +197,6 @@
     "chefaoAviso": "BOSS OF THE SEMESTER",
     "semestre": "Semester"
   },
-  "grupos": {
-    "recrutamento": "Recruiting and selection",
-    "ld": "Learning and development (L&D)",
-    "ia": "AI by job family",
-    "futuro": "Future of work",
-    "nota": "Workforce planning: for each gap, decide between build (L&D), buy (hiring), borrow (flex) or bot (AI)."
-  },
-  "alavancas": {
-    "contratar": "Hire from the market",
-    "contratarDica": "Immediate capacity; costs ~20% more and leaves more",
-    "interno": "Promote / move internally",
-    "internoDica": "Cheaper and engaging; takes a semester",
-    "ld_cargo": "Reskill in role",
-    "ld_cargoDica": "Pays back in 2 turns",
-    "ld_realocar": "Reskill and redeploy",
-    "ld_realocarDica": "Pays back more, in 3 turns",
-    "ia_auto": "Automate (2 coins = 1 family)",
-    "ia_autoDica": "Cuts cost; without L&D alongside, it hurts the team",
-    "ia_copiloto": "AI copilot (1 coin = 1 family/semester)",
-    "ia_copilotoDica": "Productivity and retention; train alongside",
-    "hibrido": "Hybrid model (one-time activation)",
-    "hibridoDica": "2 coins = with results-based management",
-    "flex": "Flexible workforce",
-    "flexDica": "Covers gaps now, at a price"
-  },
   "inteligencia": {
     "titulo": "Intelligence (optional)",
     "descricao": "People indicators are in the fog. Pay for data — or decide in the dark.",
@@ -273,10 +248,10 @@
   },
   "eventos": {
     "titulo": "Event of the semester",
-    "corte": { "texto": "The CFO asks for a 20% cut in next semester's people budget. 'Everyone is cutting.'", "a": "Accept the cut (2 fewer coins next semester; cost drops)", "b": "Negotiate and keep it (the team notices the defense; cost stays a bit higher)" },
+    "corte": { "texto": "The CFO asks for a 20% cut in next semester's people budget. 'Everyone is cutting.'", "a": "Accept the cut (20 fewer coins next semester; cost drops)", "b": "Negotiate and keep it (the team notices the defense; cost stays a bit higher)" },
     "aposentadoria": { "texto": "Three of the last specialists in the legacy credit system announce retirement at the end of the semester.", "a": "Retention package + mentoring (expensive, the knowledge stays)", "b": "Let them go and trust the documentation (spoiler: it doesn't exist)" },
     "voltaEscritorio": { "texto": "A board member read an article about 'the end of home office' and wants everyone back 5 days a week.", "a": "Defend flexibility with performance data", "b": "Comply: everyone back on site" },
-    "pilotoIA": { "texto": "An AI pilot in customer service did well in ONE branch. Every committee wants to scale it nationally — without a control group.", "a": "Scale now (quick revenue, unmeasured model risk)", "b": "Measure before scaling (costs 1 coin, becomes evidence)" }
+    "pilotoIA": { "texto": "An AI pilot in customer service did well in ONE branch. Every committee wants to scale it nationally — without a control group.", "a": "Scale now (quick revenue, unmeasured model risk)", "b": "Measure before scaling (costs 10 coins, becomes evidence)" }
   },
   "porqueEvento": {
     "corte.a": "You accepted the CFO's cut: lower cost, smaller budget.",

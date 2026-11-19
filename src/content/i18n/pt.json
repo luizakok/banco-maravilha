@@ -197,31 +197,6 @@
     "chefaoAviso": "CHEFÃO DO SEMESTRE",
     "semestre": "Semestre"
   },
-  "grupos": {
-    "recrutamento": "Recrutamento e seleção",
-    "ld": "Aprendizado e desenvolvimento (L&D)",
-    "ia": "IA por família de funções",
-    "futuro": "Futuro do trabalho",
-    "nota": "Workforce planning: para cada gap, decida entre build (L&D), buy (contratar), borrow (flex) ou bot (IA)."
-  },
-  "alavancas": {
-    "contratar": "Contratar no mercado",
-    "contratarDica": "Capacidade imediata; custa ~20% a mais e sai mais",
-    "interno": "Promover / mover interno",
-    "internoDica": "Mais barato e engaja; leva um semestre",
-    "ld_cargo": "Requalificar no cargo",
-    "ld_cargoDica": "Retorna em 2 turnos",
-    "ld_realocar": "Requalificar e realocar",
-    "ld_realocarDica": "Retorna mais, em 3 turnos",
-    "ia_auto": "Automatizar (2 moedas = 1 família)",
-    "ia_autoDica": "Corta custo; sem L&D junto, machuca o time",
-    "ia_copiloto": "Copiloto de IA (1 moeda = 1 família/semestre)",
-    "ia_copilotoDica": "Produtividade e retenção; treine junto",
-    "hibrido": "Modelo híbrido (ativação única)",
-    "hibridoDica": "2 moedas = com gestão por resultados",
-    "flex": "Força de trabalho flexível",
-    "flexDica": "Cobre gaps já, a um preço"
-  },
   "inteligencia": {
     "titulo": "Inteligência (opcional)",
     "descricao": "Os indicadores de pessoas estão na névoa. Pague por dados — ou decida no escuro.",
@@ -273,10 +248,10 @@
   },
   "eventos": {
     "titulo": "Evento do semestre",
-    "corte": { "texto": "O CFO pede um corte de 20% no orçamento de pessoas do próximo semestre. 'Todo mundo está cortando.'", "a": "Aceitar o corte (menos 2 moedas no próximo semestre; custo cai)", "b": "Negociar e manter (o time nota a defesa; custo segue um pouco maior)" },
+    "corte": { "texto": "O CFO pede um corte de 20% no orçamento de pessoas do próximo semestre. 'Todo mundo está cortando.'", "a": "Aceitar o corte (menos 20 moedas no próximo semestre; custo cai)", "b": "Negociar e manter (o time nota a defesa; custo segue um pouco maior)" },
     "aposentadoria": { "texto": "Três dos últimos especialistas no sistema legado de crédito anunciam aposentadoria no fim do semestre.", "a": "Pacote de permanência + mentoria (custa caro, o conhecimento fica)", "b": "Deixar ir e confiar na documentação (spoiler: ela não existe)" },
     "voltaEscritorio": { "texto": "Um conselheiro viu uma matéria sobre 'o fim do home office' e quer todo mundo de volta 5 dias por semana.", "a": "Defender a flexibilidade com dados de desempenho", "b": "Acatar: todos de volta ao presencial" },
-    "pilotoIA": { "texto": "Um piloto de IA no atendimento foi bem em UMA agência. Todo comitê quer escalar nacionalmente — sem grupo de controle.", "a": "Escalar já (receita rápida, risco de modelo sem medição)", "b": "Medir antes de escalar (custa 1 moeda, vira evidência)" }
+    "pilotoIA": { "texto": "Um piloto de IA no atendimento foi bem em UMA agência. Todo comitê quer escalar nacionalmente — sem grupo de controle.", "a": "Escalar já (receita rápida, risco de modelo sem medição)", "b": "Medir antes de escalar (custa 10 moedas, vira evidência)" }
   },
   "porqueEvento": {
     "corte.a": "Você aceitou o corte do CFO: custo menor, orçamento menor.",
