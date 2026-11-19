@@ -268,9 +268,11 @@ export function telaDecisaoTrad(
       raiz.append(card);
     }
 
-    // ── Políticas ──
-    raiz.append(el("h3", "titulo-secao", t("decisao.politicasTitulo")));
-    const grid = el("div", "politicas");
+    // ── Políticas ── com o híbrido já ativo, a seção vira uma linha de status.
+    const hibridoFeito = part.estado.hibridoAtivo;
+    if (!hibridoFeito) raiz.append(el("h3", "titulo-secao", t("decisao.politicasTitulo")));
+    const grid = el("div", hibridoFeito ? "politicas politicas-compacta" : "politicas");
+    if (hibridoFeito) grid.append(el("span", "chip-politica", `✓ ${t("politicas.hibridoAtivo")}`));
     for (const pol of politicas) {
       const card = el("div", "politica");
       const b = el("button", "opcao-gap");

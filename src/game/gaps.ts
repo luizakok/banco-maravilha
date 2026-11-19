@@ -97,11 +97,13 @@ function etiquetasDe(o: Omit<OpcaoGap, "etiquetas">): Etiqueta[] {
 
 export function opcoesDoGap(gap: GapDef): OpcaoGap[] {
   const saida: OpcaoGap[] = [];
+  // Gap pequeno não oferece pacote G: o G ali raramente compensa e custa leitura.
+  const tamanhos = gap.escala < p("economia.escalaMinimaParaG") ? TAMANHOS.filter((x) => x !== "G") : TAMANHOS;
   for (const abordagem of ABORDAGENS) {
     const alavanca = gap.alavancas[abordagem];
     if (!alavanca) continue;
     const vistos = new Set<number>();
-    for (const tamanho of TAMANHOS) {
+    for (const tamanho of tamanhos) {
       const esforco = quantizar(alavanca, esforcoBase(tamanho) * gap.escala);
       if (vistos.has(esforco)) continue; // automação P e M cairiam na mesma família
       vistos.add(esforco);

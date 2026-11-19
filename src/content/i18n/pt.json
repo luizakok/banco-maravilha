@@ -140,7 +140,8 @@
     "gpr": "Híbrido + avaliar por entregas, não por horas",
     "gprAjuda": "O mesmo híbrido, mas com metas e avaliação por resultado em vez de presença. Custa mais para implantar e evita a confusão de gestão que o híbrido solto provoca.",
     "painel": "Painel de people analytics",
-    "painelAjuda": "Compra dados de pessoas de forma permanente: tira indicadores da névoa com mais frequência e deixa a previsão do semestre mais precisa. Também serve de evidência quando o regulador pergunta."
+    "painelAjuda": "Compra dados de pessoas de forma permanente: tira indicadores da névoa com mais frequência e deixa a previsão do semestre mais precisa. Também serve de evidência quando o regulador pergunta.",
+    "hibridoAtivo": "Trabalho híbrido no ar"
   },
   "conselheiros": {
     "ceo": "CEO",

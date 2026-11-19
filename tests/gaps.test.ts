@@ -22,11 +22,20 @@ import {
 import { estadoInicial, p } from "../src/model/simulate";
 
 describe("catálogo de gaps", () => {
-  it("todo turno tem de 2 a 3 gaps conhecidos", () => {
+  it("todo turno tem exatamente 2 gaps conhecidos (orçamento de leitura do semestre)", () => {
     for (let turno = 1; turno <= TOTAL_TURNOS; turno++) {
-      const gaps = gapsDoTurno(turno);
-      expect(gaps.length).toBeGreaterThanOrEqual(2);
-      expect(gaps.length).toBeLessThanOrEqual(3);
+      expect(gapsDoTurno(turno)).toHaveLength(2);
+    }
+  });
+
+  it("gap pequeno não oferece pacote G, e cada abordagem mantém ao menos 2 tamanhos", () => {
+    for (const gap of CATALOGO) {
+      const opcoes = opcoesDoGap(gap);
+      const pequeno = gap.escala < p("economia.escalaMinimaParaG");
+      expect(opcoes.some((o) => o.tamanho === "G")).toBe(!pequeno);
+      for (const abordagem of new Set(opcoes.map((o) => o.abordagem))) {
+        expect(opcoes.filter((o) => o.abordagem === abordagem).length).toBeGreaterThanOrEqual(2);
+      }
     }
   });
 

@@ -368,6 +368,16 @@ details.porque li { font-size: 0.85rem; color: var(--muted); }
 }
 .politica-linha { display: flex; gap: 6px; align-items: flex-start; }
 .politica-linha .opcao-gap { flex: 1; }
+/* Híbrido já ativo: a seção inteira encolhe para uma linha de status. */
+.politicas-compacta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 12px; }
+.politicas-compacta .politica { flex: 1; min-width: 240px; }
+.chip-politica {
+  border: 1px solid var(--green);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  color: var(--green);
+}
 
 /* ── Botão "i" e ajuda ── */
 .btn-info {

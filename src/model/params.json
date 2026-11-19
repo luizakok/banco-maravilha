@@ -1,5 +1,5 @@
 {
-  "versaoModelo": { "valor": 2, "fonte": "v2: orçamento em 100 moedas, pacotes P/M/G por gap, custos recorrentes e previsão com incerteza" },
+  "versaoModelo": { "valor": 3, "fonte": "v3: v2 (100 moedas, pacotes P/M/G, recorrentes, previsão com incerteza) + enxugamento de 2 gaps por semestre e sem pacote G em gap pequeno" },
   "inicial": {
     "engajamento": { "valor": 62, "fonte": "premissa de design" },
     "turnover": { "valor": 12, "fonte": "premissa de design" },
@@ -26,7 +26,8 @@
     "recorrenteBot": { "valor": 0.2, "fonte": "premissa de design: licença por semestre" },
     "duracaoRecorrenteBorrow": { "valor": 2, "fonte": "premissa de design (contrato de 1 ano)" },
     "tetoRecorrente": { "valor": 45, "fonte": "premissa de design: o orçamento do semestre nunca cai abaixo de 55 moedas" },
-    "limiarCaro": { "valor": 30, "fonte": "premissa de design: etiqueta 💰 a partir de 30 moedas" }
+    "limiarCaro": { "valor": 30, "fonte": "premissa de design: etiqueta 💰 a partir de 30 moedas" },
+    "escalaMinimaParaG": { "valor": 1, "fonte": "premissa de design: gap pequeno não oferece pacote G (menos leitura por semestre)" }
   },
   "benchmark": {
     "engajamento": { "valor": 60, "fonte": "economia fictícia do jogo (não é benchmark real de mercado)" },

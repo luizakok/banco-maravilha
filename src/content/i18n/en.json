@@ -140,7 +140,8 @@
     "gpr": "Hybrid + assess by delivery, not by hours",
     "gprAjuda": "The same hybrid setup, but with goals and outcome-based assessment instead of presence. It costs more to roll out and avoids the management confusion loose hybrid creates.",
     "painel": "People analytics dashboard",
-    "painelAjuda": "Buys people data permanently: pulls indicators out of the fog more often and makes the semester forecast sharper. It also serves as evidence when the regulator asks."
+    "painelAjuda": "Buys people data permanently: pulls indicators out of the fog more often and makes the semester forecast sharper. It also serves as evidence when the regulator asks.",
+    "hibridoAtivo": "Hybrid work is live"
   },
   "conselheiros": {
     "ceo": "CEO",

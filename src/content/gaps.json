@@ -48,11 +48,11 @@
   ],
   "porTurno": {
     "1": ["atendimentoIA", "dadosSaida"],
-    "2": ["atendimentoIA", "legadoCredito", "backoffice"],
+    "2": ["legadoCredito", "backoffice"],
     "3": ["atendimentoIA", "squadIA"],
-    "4": ["squadIA", "comercialDigital", "legadoCredito"],
+    "4": ["squadIA", "comercialDigital"],
     "5": ["dadosSaida", "governancaModelos"],
-    "6": ["comercialDigital", "backoffice", "lideranca"],
+    "6": ["comercialDigital", "lideranca"],
     "7": ["governancaModelos", "atendimentoIA"],
     "8": ["lideranca", "sucessao"]
   }
