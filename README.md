@@ -3,7 +3,9 @@
 Um jogo gratuito e aberto de **estratégia de pessoas**: você lidera o RH de um banco fictício entre 2027 e 2030 e descobre, na prática, que estratégia de gente **é** estratégia de negócio — e que cada decisão tem efeitos diferentes no curto, médio e longo prazo.
 
 - 🎮 **Modo Expresso** (~5 min): 4 turnos anuais, uma carta por turno.
-- 🏦 **Modo Tradicional** (~15 min): 8 semestres, orçamento de 10 moedas, névoa de guerra, chefões e eventos.
+- 🏦 **Modo Tradicional** (~15 min): 8 semestres, orçamento por semestre, névoa de guerra sobre os indicadores de pessoas, três chefões e eventos.
+- 🎯 **Mandato de 2030**: a CEO pede três metas no início, e é por elas que você é cobrado no fim. Metade mora em indicador na névoa — escolher uma é aceitar ser medido por algo que você só vê se pagar pelo dado.
+- 🔒 **Preparo destrava respostas**: nos chefões, algumas saídas só existem se você se preparou semestres antes. As travadas ficam à vista, com o motivo.
 - 🌐 Português e English.
 - 🧾 100% estático: sem backend, sem login, sem cookies, sem analytics.
 
@@ -23,7 +25,7 @@ Requisitos: Node 20+.
 
 Toda a simulação é **determinística e pura**: `(estado, decisões, seed) → novo estado + explicações`. Não há IA nem rede em tempo de execução.
 
-Os números do modelo vivem em [`src/content/params.json`](src/content/params.json), sempre como pares `{ "valor": ..., "fonte": "..." }` — cada parâmetro cita a pesquisa que o inspirou (NBER w31161, Bidwell/Wharton, Bloom et al. (Nature, 2024), WEF Future of Jobs 2025, Gallup). Os links completos aparecem no debrief do jogo. Quer calibrar o jogo? Edite `params.json` e rode os testes.
+Os números do modelo vivem em [`src/model/params.json`](src/model/params.json), sempre como pares `{ "valor": ..., "fonte": "..." }` — cada parâmetro cita a pesquisa que o inspirou (NBER w31161, Bidwell/Wharton, Bloom et al. (Nature, 2024), WEF Future of Jobs 2025, Gallup). Os links completos aparecem no debrief do jogo. Quer calibrar o jogo? Edite `params.json` e rode os testes.
 
 Textos e nomes do banco ficam apenas em `src/content/i18n/pt.json` e `en.json` — o código não contém strings de conteúdo.
 
